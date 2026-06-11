@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="220" height="48" role="img" aria-label="Mirdita Reinigungen">
+  <rect x="0" y="6" width="36" height="36" rx="10" fill="#0059C3" />
+  <path d="M10 30V18l8 8 8-8v12" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="46" y="31" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#00153F">Mirdita</text>
+</svg>
