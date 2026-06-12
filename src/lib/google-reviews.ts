@@ -10,26 +10,28 @@ export type GoogleReviewsData = {
   reviews: GoogleReview[];
 };
 
+const CURATED_REVIEWS: GoogleReview[] = [
+  {
+    name: "Thierry A.",
+    time: "vor 5 Monaten",
+    text: "Berisha und sein Team haben bei uns die Baureinigung für ein grösseres EFH durchgeführt! Wir sind sehr zufrieden, absolut empfehlenswert!",
+  },
+  {
+    name: "Karl G.",
+    time: "vor 8 Monaten",
+    text: "Ich bin rundum zufrieden mit der Mirdita Reinigung! Das Team arbeitet absolut zuverlässig, gründlich und mit viel Sorgfalt – jedes Detail wird beachtet. Besonders gefällt mir, dass sie sehr flexibel auf individuelle Wünsche eingehen und immer freundlich auftreten. Ich kann die Mirdita Reinigung uneingeschränkt weiterempfehlen. Wer Wert auf Qualität und Zuverlässigkeit legt, ist hier genau richtig!",
+  },
+  {
+    name: "Lisa E.",
+    time: "vor 1 Monat",
+    text: "Das Mirdita-Team erledigt die Reinigung der Büros der Volken-Group zuverlässig, professionell, kundenorientiert und flexibel. Absolut empfehlenswert!",
+  },
+];
+
 const FALLBACK: GoogleReviewsData = {
   rating: 5,
   total: 40,
-  reviews: [
-    {
-      name: "Thierry A.",
-      time: "vor 5 Monaten",
-      text: "Berisha und sein Team haben bei uns die Baureinigung für ein grösseres EFH durchgeführt! Wir sind sehr zufrieden, absolut empfehlenswert!",
-    },
-    {
-      name: "Karl G.",
-      time: "vor 8 Monaten",
-      text: "Ich bin rundum zufrieden mit der Mirdita Reinigung! Das Team arbeitet absolut zuverlässig, gründlich und mit viel Sorgfalt – jedes Detail wird beachtet. Besonders gefällt mir, dass sie sehr flexibel auf individuelle Wünsche eingehen und immer freundlich auftreten. Ich kann die Mirdita Reinigung uneingeschränkt weiterempfehlen. Wer Wert auf Qualität und Zuverlässigkeit legt, ist hier genau richtig!",
-    },
-    {
-      name: "Lisa E.",
-      time: "vor 1 Monat",
-      text: "Das Mirdita-Team erledigt die Reinigung der Büros der Volken-Group zuverlässig, professionell, kundenorientiert und flexibel. Absolut empfehlenswert!",
-    },
-  ],
+  reviews: CURATED_REVIEWS,
 };
 
 type PlacesApiReview = {
@@ -67,7 +69,7 @@ export async function getGoogleReviews(): Promise<GoogleReviewsData> {
     if (!res.ok) return FALLBACK;
 
     const data: PlacesApiResponse = await res.json();
-    const reviews = (data.reviews ?? [])
+    const liveReviews = (data.reviews ?? [])
       .filter((r): r is PlacesApiReview & { text: { text: string } } => !!r.text?.text)
       .map((r) => ({
         name: abbreviateName(r.authorAttribution?.displayName ?? "Google Nutzer"),
@@ -75,10 +77,12 @@ export async function getGoogleReviews(): Promise<GoogleReviewsData> {
         text: r.text.text,
       }));
 
+    const extraReviews = liveReviews.filter((r) => !CURATED_REVIEWS.some((c) => c.name === r.name));
+
     return {
       rating: data.rating ?? FALLBACK.rating,
       total: data.userRatingCount ?? FALLBACK.total,
-      reviews: reviews.length > 0 ? reviews : FALLBACK.reviews,
+      reviews: [...CURATED_REVIEWS, ...extraReviews],
     };
   } catch {
     return FALLBACK;
