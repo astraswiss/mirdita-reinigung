@@ -305,8 +305,8 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
 
           {/* Panel */}
           <div className="rounded-[28px] bg-white border border-brand-deep/5 overflow-hidden shadow-[0_20px_50px_-30px_rgba(0,21,63,0.2)]">
-            <div className="grid lg:grid-cols-2 gap-0">
-              <div className="p-8 md:p-12 flex flex-col">
+            <div className="grid lg:grid-cols-2 gap-0 lg:min-h-[600px]">
+              <div className="p-8 md:p-12 flex flex-col justify-center">
                 <div className="inline-flex items-center gap-2 w-fit rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold">
                   <ActiveIcon className="size-3.5" />
                   {active.label}
@@ -336,6 +336,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
               <Photo
                 src={active.image}
                 alt={active.imageAlt}
+                objectPosition={active.imagePosition}
                 className="hidden lg:block min-h-[320px] lg:min-h-full aspect-[16/10] lg:aspect-auto"
               />
             </div>

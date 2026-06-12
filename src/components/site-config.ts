@@ -29,6 +29,7 @@ export const SERVICES: Record<
     items: string[];
     image: string;
     imageAlt: string;
+    imagePosition?: string;
   }
 > = {
   privat: {
@@ -46,6 +47,7 @@ export const SERVICES: Record<
     ],
     image: PHOTO_PRIVAT,
     imageAlt: "Mirdita Mitarbeiter reinigt eine Küchenarbeitsplatte",
+    imagePosition: "object-top",
   },
   firmen: {
     label: "Firmen & Gewerbe",
