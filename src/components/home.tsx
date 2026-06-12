@@ -153,8 +153,8 @@ export function Home() {
             <Image
               src={LOGO}
               alt="Mirdita Reinigungsdienste"
-              width={220}
-              height={48}
+              width={459}
+              height={91}
               unoptimized
               className="h-7 md:h-8 w-auto"
             />
@@ -276,10 +276,10 @@ export function Home() {
                   <Image
                     src={MARK}
                     alt=""
-                    width={40}
-                    height={40}
+                    width={140}
+                    height={64}
                     unoptimized
-                    className="h-full w-auto brightness-0 invert"
+                    className="max-h-full max-w-full w-auto h-auto brightness-0 invert"
                   />
                 </div>
                 <div>
@@ -594,8 +594,8 @@ export function Home() {
               <Image
                 src={LOGO}
                 alt="Mirdita Reinigungsdienste"
-                width={220}
-                height={48}
+                width={459}
+                height={91}
                 unoptimized
                 className="h-7 w-auto"
               />

@@ -33,7 +33,7 @@
 :root {
   --radius: 1rem;
   --brand-deep: #00153f;
-  --brand-bright: #0059c3;
+  --brand-bright: #0175ff;
   --brand-light: #f9f9f9;
   --background: oklch(0.985 0.001 286);
   --foreground: oklch(0.15 0.05 265);
