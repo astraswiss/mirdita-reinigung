@@ -415,25 +415,19 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
                     <Star key={i} className="size-4 fill-current" />
                   ))}
                 </div>
-                <div className="mt-0.5 flex items-center gap-1.5 text-xs text-brand-deep/60">
+                <a
+                  href="https://www.google.com/maps/place/Mirdita+Reinigung,+Belalpstrasse+2,+3904+Naters/@0,0,22z/data=!4m2!3m1!1s0x42c5237190cbda61:0xdc13d84cf19fc3d0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-0.5 flex items-center gap-1.5 text-xs text-brand-deep/60 hover:text-brand-bright transition-colors"
+                >
                   <GoogleLogo className="size-3.5" />
                   {googleReviews.total} Bewertungen
-                </div>
+                </a>
               </div>
             </div>
           </div>
           <ReviewsMarquee reviews={reviews} />
-          <div className="mt-8 flex justify-center">
-            <a
-              href="https://www.google.com/maps/place/Mirdita+Reinigung,+Belalpstrasse+2,+3904+Naters/@0,0,22z/data=!4m2!3m1!1s0x42c5237190cbda61:0xdc13d84cf19fc3d0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
-            >
-              <GoogleLogo className="size-4" />
-              Alle Bewertungen auf Google ansehen
-            </a>
-          </div>
         </div>
       </section>
 
