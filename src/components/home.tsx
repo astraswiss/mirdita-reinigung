@@ -328,27 +328,15 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
               Über uns
             </span>
             <h2 className="mt-4 text-2xl md:text-3xl font-bold tracking-tight text-balance">
-              Im Wallis verwurzelt, für das Wallis im Einsatz.
+              Wir versprechen weniger — und halten mehr.
             </h2>
             <p className="mt-4 text-brand-deep/70 leading-relaxed">
-              Mirdita Reinigung ist als kleiner Betrieb im Wallis gestartet — mit wenigen Aufträgen,
-              viel Einsatz und der Überzeugung, dass saubere Arbeit für sich spricht. Empfehlung um
-              Empfehlung sind wir gewachsen. Heute betreuen wir Privathaushalte, Unternehmen und
-              Liegenschaften in der ganzen Region. Geblieben ist, was uns von Anfang an ausgemacht
-              hat: kurze Wege, persönliche Betreuung und ein hoher Anspruch an jedes Resultat.
+              Viele versprechen Sauberkeit. Wir definieren vorab präzise, was gereinigt wird, zu
+              welchem Preis und bis wann. Danach halten wir uns daran — ohne Nachverhandlungen, ohne
+              Überraschungen. Bei Umzugsreinigungen gehen wir einen Schritt weiter: Mit unserer
+              Abnahmegarantie tragen wir das Risiko der Wohnungsübergabe. Wird etwas beanstandet,
+              bessern wir kostenlos nach.
             </p>
-            <div className="mt-5 rounded-2xl bg-white border border-brand-deep/5 p-5">
-              <div className="font-semibold text-brand-deep">
-                Wir versprechen weniger — und halten mehr.
-              </div>
-              <p className="mt-2 text-sm text-brand-deep/65 leading-relaxed">
-                Viele versprechen Sauberkeit. Wir definieren vorab präzise, was gereinigt wird, zu
-                welchem Preis und bis wann. Danach halten wir uns daran — ohne Nachverhandlungen,
-                ohne Überraschungen. Bei Umzugsreinigungen gehen wir einen Schritt weiter: Mit
-                unserer Abnahmegarantie tragen wir das Risiko der Wohnungsübergabe. Wird etwas
-                beanstandet, bessern wir kostenlos nach.
-              </p>
-            </div>
             <div className="mt-6 flex items-center gap-4">
               <Photo
                 src={PHOTO_TEAM}
