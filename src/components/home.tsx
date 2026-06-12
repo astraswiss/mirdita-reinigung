@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
 import {
@@ -173,8 +173,20 @@ function Photo({ src, alt, className = "" }: { src: string; alt: string; classNa
 export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeService, setActiveService] = useState<ServiceKey>("privat");
+  const [reviews, setReviews] = useState(googleReviews.reviews);
   const active = SERVICES[activeService];
   const ActiveIcon = active.icon;
+
+  useEffect(() => {
+    setReviews((current) => {
+      const shuffled = [...current];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    });
+  }, []);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -493,7 +505,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
               </div>
             </div>
           </div>
-          <ReviewsMarquee reviews={googleReviews.reviews} />
+          <ReviewsMarquee reviews={reviews} />
           <div className="mt-8 flex justify-center">
             <a
               href="https://www.google.com/maps/place/Mirdita+Reinigung,+Belalpstrasse+2,+3904+Naters/@0,0,22z/data=!4m2!3m1!1s0x42c5237190cbda61:0xdc13d84cf19fc3d0"
