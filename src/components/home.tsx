@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
 import {
@@ -149,11 +149,72 @@ function ReviewCard({ review }: { review: GoogleReview }) {
 
 function ReviewsMarquee({ reviews }: { reviews: GoogleReview[] }) {
   const items = [...reviews, ...reviews];
+  const trackRef = useRef<HTMLDivElement>(null);
+  const offsetRef = useRef(0);
+  const draggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartOffsetRef = useRef(0);
+
+  useEffect(() => {
+    const SPEED = 40; // px per second
+    let frameId: number;
+    let lastTime: number | null = null;
+
+    function tick(now: number) {
+      if (lastTime === null) lastTime = now;
+      const dt = now - lastTime;
+      lastTime = now;
+
+      if (!draggingRef.current) {
+        offsetRef.current -= (SPEED * dt) / 1000;
+      }
+
+      const track = trackRef.current;
+      if (track) {
+        const setWidth = track.scrollWidth / 2;
+        if (setWidth > 0) {
+          let o = offsetRef.current % setWidth;
+          if (o > 0) o -= setWidth;
+          offsetRef.current = o;
+        }
+        track.style.transform = `translateX(${offsetRef.current}px)`;
+      }
+
+      frameId = requestAnimationFrame(tick);
+    }
+
+    frameId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
+  function handlePointerDown(e: PointerEvent<HTMLDivElement>) {
+    draggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    dragStartOffsetRef.current = offsetRef.current;
+    e.currentTarget.setPointerCapture(e.pointerId);
+  }
+
+  function handlePointerMove(e: PointerEvent<HTMLDivElement>) {
+    if (!draggingRef.current) return;
+    offsetRef.current = dragStartOffsetRef.current + (e.clientX - dragStartXRef.current);
+  }
+
+  function handlePointerUp() {
+    draggingRef.current = false;
+  }
+
   return (
     <div className="relative -mx-5 md:-mx-10 overflow-hidden">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 md:w-24 bg-gradient-to-r from-brand-light to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 md:w-24 bg-gradient-to-l from-brand-light to-transparent" />
-      <div className="animate-marquee flex w-max gap-5 px-5 md:px-10">
+      <div
+        ref={trackRef}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        className="flex w-max cursor-grab touch-pan-y gap-5 px-5 select-none active:cursor-grabbing md:px-10"
+      >
         {items.map((r, i) => (
           <ReviewCard key={`${r.name}-${i}`} review={r} />
         ))}
