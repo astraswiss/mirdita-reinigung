@@ -16,8 +16,8 @@ import {
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import {
-  PHOTO_DETAIL,
   PHOTO_HERO,
+  PHOTO_PUTZEN,
   PHOTO_TEAM,
   SERVICES,
   type ServiceKey,
@@ -521,7 +521,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
             </ul>
             <div className="hidden lg:block mt-auto pt-8">
               <Photo
-                src={PHOTO_DETAIL}
+                src={PHOTO_PUTZEN}
                 alt="Mirdita Detailreinigung"
                 className="aspect-[4/3] w-full rounded-2xl border border-white/10"
               />

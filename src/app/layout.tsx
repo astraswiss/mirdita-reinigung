@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Mirdita Reinigungen — Sauberkeit im Wallis",
     description: "Professionelle Reinigungen im Wallis — mit Abnahmegarantie.",
     type: "website",
-    images: [{ url: "/hero.jpeg", width: 1200, height: 844 }],
+    images: [{ url: "/hero.jpg", width: 1200, height: 844 }],
   },
   twitter: {
     card: "summary",
