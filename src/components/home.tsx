@@ -575,7 +575,7 @@ export function Home() {
               <InfoLine icon={MapPin} label="Adresse" value="Wallis, Schweiz" />
               <InfoLine icon={Clock} label="Öffnungszeiten" value="Mo–Fr 08:00–18:00" />
             </ul>
-            <div className="mt-auto pt-8">
+            <div className="hidden lg:block mt-auto pt-8">
               <Photo
                 src={PHOTO_DETAIL}
                 alt="Mirdita Detailreinigung"
