@@ -210,7 +210,7 @@ export function Home() {
       </header>
 
       {/* Hero — asymmetric split */}
-      <section id="top" className="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
+      <section id="top" className="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24 scroll-mt-16">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-7">
             <span className="inline-flex items-center gap-2 rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold tracking-wide">
@@ -298,8 +298,8 @@ export function Home() {
       </section>
 
       {/* Services — Tabs */}
-      <section id="leistungen" className="px-5 md:px-10 py-20 scroll-mt-16">
-        <div className="max-w-7xl mx-auto">
+      <section className="px-5 md:px-10 py-20">
+        <div id="leistungen" className="max-w-7xl mx-auto scroll-mt-20">
           <div className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-10">
             <div className="max-w-xl">
               <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
@@ -407,8 +407,11 @@ export function Home() {
       </section>
 
       {/* About — Quote */}
-      <section id="ueber-uns" className="px-5 md:px-10 py-20 scroll-mt-16">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
+      <section className="px-5 md:px-10 py-20">
+        <div
+          id="ueber-uns"
+          className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center scroll-mt-20"
+        >
           <div className="lg:col-span-7">
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
               Über uns
@@ -450,8 +453,8 @@ export function Home() {
       </section>
 
       {/* Reviews */}
-      <section id="bewertungen" className="px-5 md:px-10 py-20 scroll-mt-16">
-        <div className="max-w-7xl mx-auto">
+      <section className="px-5 md:px-10 py-20">
+        <div id="bewertungen" className="max-w-7xl mx-auto scroll-mt-20">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
               <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
@@ -498,8 +501,11 @@ export function Home() {
       </section>
 
       {/* Contact */}
-      <section id="kontakt" className="px-5 md:px-10 py-20 scroll-mt-16">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-6 lg:gap-8">
+      <section className="px-5 md:px-10 py-20">
+        <div
+          id="kontakt"
+          className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-6 lg:gap-8 scroll-mt-20"
+        >
           {/* Form */}
           <div className="lg:col-span-3 rounded-[28px] bg-white border border-brand-deep/5 p-8 md:p-10">
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
