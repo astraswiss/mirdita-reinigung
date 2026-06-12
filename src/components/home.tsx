@@ -298,7 +298,7 @@ export function Home() {
       </section>
 
       {/* Services — Tabs */}
-      <section id="leistungen" className="px-5 md:px-10 py-20 scroll-mt-20">
+      <section id="leistungen" className="px-5 md:px-10 py-20 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-10">
             <div className="max-w-xl">
@@ -407,7 +407,7 @@ export function Home() {
       </section>
 
       {/* About — Quote */}
-      <section id="ueber-uns" className="px-5 md:px-10 py-20 scroll-mt-20">
+      <section id="ueber-uns" className="px-5 md:px-10 py-20 scroll-mt-16">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
@@ -450,7 +450,7 @@ export function Home() {
       </section>
 
       {/* Reviews */}
-      <section id="bewertungen" className="px-5 md:px-10 py-20 scroll-mt-20">
+      <section id="bewertungen" className="px-5 md:px-10 py-20 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
@@ -498,7 +498,7 @@ export function Home() {
       </section>
 
       {/* Contact */}
-      <section id="kontakt" className="px-5 md:px-10 py-20 scroll-mt-20">
+      <section id="kontakt" className="px-5 md:px-10 py-20 scroll-mt-16">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-6 lg:gap-8">
           {/* Form */}
           <div className="lg:col-span-3 rounded-[28px] bg-white border border-brand-deep/5 p-8 md:p-10">
