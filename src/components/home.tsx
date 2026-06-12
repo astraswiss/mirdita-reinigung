@@ -21,8 +21,7 @@ import {
 } from "lucide-react";
 
 const LOGO = "/mirdita-logo.svg";
-const MARK = "/mirdita-mark.svg";
-const PHOTO_HERO = "/hero-fenster.svg";
+const PHOTO_HERO = "/hero.jpeg";
 const PHOTO_DETAIL = "/detail-kueche.svg";
 const PHOTO_TEAM = "/team-reinigung.svg";
 
@@ -269,25 +268,6 @@ export function Home() {
               alt="Mirdita Mitarbeiter reinigt eine Glasfront mit Walliser Bergen im Hintergrund"
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
             />
-            {/* Floating stat card */}
-            <div className="absolute -left-4 md:-left-8 bottom-6 md:bottom-10 bg-white rounded-2xl shadow-[0_20px_40px_-20px_rgba(0,21,63,0.25)] border border-brand-deep/5 p-4 md:p-5 max-w-[220px]">
-              <div className="flex items-center gap-3">
-                <div className="size-10 rounded-xl bg-brand-deep grid place-items-center p-1.5">
-                  <Image
-                    src={MARK}
-                    alt=""
-                    width={140}
-                    height={64}
-                    unoptimized
-                    className="max-h-full max-w-full w-auto h-auto brightness-0 invert"
-                  />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold leading-none">100%</div>
-                  <div className="text-xs text-brand-deep/60 mt-1">Abnahmegarantie</div>
-                </div>
-              </div>
-            </div>
             {/* Floating badge top */}
             <div className="hidden md:flex absolute -right-4 top-8 bg-brand-bright text-white rounded-full px-4 py-2 text-xs font-semibold shadow-lg gap-2 items-center">
               <Sparkles className="size-3.5" />
