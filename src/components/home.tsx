@@ -1,109 +1,30 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
-import Image from "next/image";
 import { toast } from "sonner";
 import {
-  Phone,
+  ArrowRight,
+  Check,
   Mail,
   MapPin,
   MessageCircle,
-  Star,
-  Check,
-  ArrowRight,
+  Phone,
   ShieldCheck,
-  Sparkles,
-  Building2,
-  Home as HomeIcon,
-  Menu,
-  X,
-  Quote,
+  Star,
 } from "lucide-react";
 
+import { Photo } from "@/components/photo";
+import { ProcessSteps } from "@/components/process-steps";
+import {
+  PHOTO_DETAIL,
+  PHOTO_HERO,
+  PHOTO_TEAM,
+  SERVICES,
+  type ServiceKey,
+} from "@/components/site-config";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import type { GoogleReview, GoogleReviewsData } from "@/lib/google-reviews";
-
-const LOGO = "/mirdita-logo.svg";
-const PHOTO_HERO = "/hero.jpeg";
-const PHOTO_DETAIL = "/detail-kueche.svg";
-const PHOTO_TEAM = "/team-reinigung.svg";
-
-const NAV = [
-  { href: "#leistungen", label: "Leistungen" },
-  { href: "#ueber-uns", label: "Über uns" },
-  { href: "#bewertungen", label: "Bewertungen" },
-  { href: "#kontakt", label: "Kontakt" },
-];
-
-type ServiceKey = "privat" | "firmen" | "spezial";
-
-const SERVICES: Record<
-  ServiceKey,
-  {
-    label: string;
-    icon: typeof HomeIcon;
-    title: string;
-    description: string;
-    items: string[];
-    image: string;
-    imageAlt: string;
-  }
-> = {
-  privat: {
-    label: "Privathaushalt",
-    icon: HomeIcon,
-    title: "Reinigung für Ihr Zuhause",
-    description:
-      "Ob Umzug, Frühlingsputz oder regelmässige Pflege — wir hinterlassen Ihr Zuhause makellos sauber. Mit Abnahmegarantie bei Wohnungsübergaben.",
-    items: [
-      "Umzugsreinigung mit Abnahmegarantie",
-      "Wohnungs- & Hausreinigung",
-      "Unterhalts- & Frühlingsputz",
-      "Fenster, Storen & Rollläden",
-      "Teppich- & Polsterpflege",
-    ],
-    image: PHOTO_DETAIL,
-    imageAlt: "Mirdita Mitarbeiter reinigt eine Küchenarbeitsplatte",
-  },
-  firmen: {
-    label: "Firmen & Gewerbe",
-    icon: Building2,
-    title: "Sauberkeit für Ihren Betrieb",
-    description:
-      "Repräsentative Räume sind Ihre Visitenkarte. Wir reinigen diskret ausserhalb Ihrer Geschäftszeiten — zuverlässig und nach Schweizer Standard.",
-    items: [
-      "Büro- & Praxisreinigung",
-      "Ladenlokale & Showrooms",
-      "Fitness- & Wellnessbereiche",
-      "Baureinigung & Bauendreinigung",
-      "Regelmässige Wartungsabos",
-    ],
-    image: PHOTO_TEAM,
-    imageAlt: "Mirdita Mitarbeiterin bei der Reinigung einer Küchenfront",
-  },
-  spezial: {
-    label: "Spezialreinigungen",
-    icon: Sparkles,
-    title: "Spezielle Anforderungen",
-    description:
-      "Für alles, was über die klassische Reinigung hinausgeht. Wir bringen das richtige Equipment und die Erfahrung mit.",
-    items: [
-      "Fassaden- & Glasflächenreinigung",
-      "Teppich- & Polster-Tiefenreinigung",
-      "Desinfektion & Geruchsneutralisation",
-      "Steinboden- & Parkettpflege",
-      "Wasser- & Brandschadenreinigung",
-    ],
-    image: PHOTO_HERO,
-    imageAlt: "Mirdita Mitarbeiter reinigt eine grosse Glasfront",
-  },
-};
-
-const STEPS = [
-  { n: "01", title: "Anfrage", body: "Sie kontaktieren uns per Formular oder Telefon." },
-  { n: "02", title: "Offerte", body: "Innert 24 h erhalten Sie ein transparentes Angebot." },
-  { n: "03", title: "Reinigung", body: "Unser Team arbeitet zuverlässig und termingerecht." },
-  { n: "04", title: "Abnahme", body: "Garantierte Übergabe — wir bleiben bis alles stimmt." },
-];
 
 function GoogleLogo({ className = "" }: { className?: string }) {
   return (
@@ -223,16 +144,7 @@ function ReviewsMarquee({ reviews }: { reviews: GoogleReview[] }) {
   );
 }
 
-function Photo({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
-  return (
-    <div className={`relative overflow-hidden bg-brand-deep/5 ${className}`}>
-      <Image src={src} alt={alt} fill unoptimized className="object-cover" />
-    </div>
-  );
-}
-
 export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [activeService, setActiveService] = useState<ServiceKey>("privat");
   const [reviews, setReviews] = useState(googleReviews.reviews);
   const active = SERVICES[activeService];
@@ -259,68 +171,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
 
   return (
     <div className="min-h-screen bg-brand-light text-brand-deep font-sans antialiased">
-      {/* Top bar */}
-      <header className="sticky top-0 z-50 bg-brand-light/85 backdrop-blur border-b border-brand-deep/5">
-        <div className="max-w-7xl mx-auto px-5 md:px-10 h-16 flex items-center justify-between gap-6">
-          <a href="#top" className="flex items-center" aria-label="Mirdita — Startseite">
-            <Image
-              src={LOGO}
-              alt="Mirdita Reinigungsdienste"
-              width={459}
-              height={91}
-              unoptimized
-              className="h-7 md:h-8 w-auto"
-            />
-          </a>
-
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-brand-deep/70">
-            {NAV.map((n) => (
-              <a key={n.href} href={n.href} className="hover:text-brand-deep transition-colors">
-                {n.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-2">
-            <a
-              href="tel:+41762027984"
-              className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-brand-deep/80 hover:text-brand-deep border border-brand-deep/10 rounded-full px-3 py-2"
-            >
-              <Phone className="size-3.5" />
-              <span className="hidden lg:inline">+41 76 202 79 84</span>
-            </a>
-            <a
-              href="#kontakt"
-              className="inline-flex items-center gap-2 bg-brand-bright text-white text-sm font-semibold rounded-full px-4 py-2.5 hover:brightness-110 transition-all"
-            >
-              Offerte
-              <ArrowRight className="size-3.5" />
-            </a>
-            <button
-              className="md:hidden p-2 -mr-2 text-brand-deep"
-              onClick={() => setMobileOpen((v) => !v)}
-              aria-label="Menü"
-            >
-              {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-            </button>
-          </div>
-        </div>
-
-        {mobileOpen && (
-          <div className="md:hidden border-t border-brand-deep/5 px-5 py-4 space-y-3 bg-brand-light">
-            {NAV.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                onClick={() => setMobileOpen(false)}
-                className="block py-1.5 text-sm font-medium text-brand-deep/80"
-              >
-                {n.label}
-              </a>
-            ))}
-          </div>
-        )}
-      </header>
+      <SiteHeader />
 
       {/* Hero — asymmetric split */}
       <section id="top" className="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24 scroll-mt-16">
@@ -464,36 +315,9 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="px-5 md:px-10 py-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
-              So einfach geht&apos;s
-            </span>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-              In vier Schritten zum sauberen Ergebnis
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 relative">
-            {STEPS.map((s, i) => (
-              <div
-                key={s.n}
-                className="relative rounded-2xl bg-white border border-brand-deep/5 p-6"
-              >
-                <div className="text-xs font-bold text-brand-bright tracking-widest">{s.n}</div>
-                <h4 className="mt-2 font-semibold text-lg">{s.title}</h4>
-                <p className="mt-2 text-sm text-brand-deep/60 leading-relaxed">{s.body}</p>
-                {i < STEPS.length - 1 && (
-                  <ArrowRight className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 size-5 text-brand-deep/20" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProcessSteps />
 
-      {/* About — Quote */}
+      {/* About */}
       <section className="px-5 md:px-10 py-20">
         <div
           id="ueber-uns"
@@ -503,12 +327,28 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
               Über uns
             </span>
-            <Quote className="mt-4 size-10 text-brand-bright/30" strokeWidth={1.5} />
-            <blockquote className="mt-2 text-2xl md:text-3xl font-medium leading-snug tracking-tight text-balance">
-              „Wir sind ein lokales Familienunternehmen aus dem Wallis. Jede Reinigung erledigen
-              wir, als wäre es unser eigenes Zuhause — mit echter Sorgfalt und Schweizer
-              Gründlichkeit.&quot;
-            </blockquote>
+            <h2 className="mt-4 text-2xl md:text-3xl font-bold tracking-tight text-balance">
+              Im Wallis verwurzelt, für das Wallis im Einsatz.
+            </h2>
+            <p className="mt-4 text-brand-deep/70 leading-relaxed">
+              Mirdita Reinigung ist als kleiner Betrieb im Wallis gestartet — mit wenigen Aufträgen,
+              viel Einsatz und der Überzeugung, dass saubere Arbeit für sich spricht. Empfehlung um
+              Empfehlung sind wir gewachsen. Heute betreuen wir Privathaushalte, Unternehmen und
+              Liegenschaften in der ganzen Region. Geblieben ist, was uns von Anfang an ausgemacht
+              hat: kurze Wege, persönliche Betreuung und ein hoher Anspruch an jedes Resultat.
+            </p>
+            <div className="mt-5 rounded-2xl bg-white border border-brand-deep/5 p-5">
+              <div className="font-semibold text-brand-deep">
+                Wir versprechen weniger — und halten mehr.
+              </div>
+              <p className="mt-2 text-sm text-brand-deep/65 leading-relaxed">
+                Viele versprechen Sauberkeit. Wir definieren vorab präzise, was gereinigt wird, zu
+                welchem Preis und bis wann. Danach halten wir uns daran — ohne Nachverhandlungen,
+                ohne Überraschungen. Bei Umzugsreinigungen gehen wir einen Schritt weiter: Mit
+                unserer Abnahmegarantie tragen wir das Risiko der Wohnungsübergabe. Wird etwas
+                beanstandet, bessern wir kostenlos nach.
+              </p>
+            </div>
             <div className="mt-6 flex items-center gap-4">
               <Photo
                 src={PHOTO_TEAM}
@@ -679,43 +519,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-brand-deep/5 px-5 md:px-10 py-12 mt-8">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
-          <div>
-            <a href="#top" className="flex items-center" aria-label="Mirdita — nach oben">
-              <Image
-                src={LOGO}
-                alt="Mirdita Reinigungsdienste"
-                width={459}
-                height={91}
-                unoptimized
-                className="h-7 w-auto"
-              />
-            </a>
-            <p className="mt-3 text-sm text-brand-deep/55 max-w-xs">
-              Ihr Partner für Sauberkeit im ganzen Kanton Wallis.
-            </p>
-          </div>
-          <FooterCol
-            title="Leistungen"
-            links={["Umzugsreinigung", "Wohnungsreinigung", "Büroreinigung", "Spezialreinigung"]}
-          />
-          <FooterCol
-            title="Kontakt"
-            links={["+41 76 202 79 84", "info@mirdita.ch", "Wallis, CH"]}
-          />
-          <FooterCol title="Rechtliches" links={["Impressum", "Datenschutz", "AGB"]} />
-        </div>
-        <div className="max-w-7xl mx-auto mt-10 pt-6 border-t border-brand-deep/5 flex flex-col sm:flex-row justify-between gap-3 text-xs text-brand-deep/50">
-          <span>© {new Date().getFullYear()} Mirdita GmbH. Alle Rechte vorbehalten.</span>
-          <div className="flex gap-4">
-            <span className="font-semibold text-brand-deep/70">DE</span>
-            <span>FR</span>
-            <span>IT</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
@@ -785,24 +589,5 @@ function InfoLine({
         <div className="flex items-center gap-3">{content}</div>
       )}
     </li>
-  );
-}
-
-function FooterCol({ title, links }: { title: string; links: string[] }) {
-  return (
-    <div>
-      <h4 className="text-xs font-bold tracking-[0.18em] uppercase text-brand-deep mb-4">
-        {title}
-      </h4>
-      <ul className="space-y-2.5 text-sm text-brand-deep/60">
-        {links.map((l) => (
-          <li key={l}>
-            <a href="#" className="hover:text-brand-bright transition-colors">
-              {l}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
