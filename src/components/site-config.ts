@@ -85,3 +85,22 @@ export const STEPS = [
   { n: "03", title: "Reinigung", body: "Unser Team arbeitet zuverlässig und termingerecht." },
   { n: "04", title: "Abnahme", body: "Garantierte Übergabe — wir bleiben bis alles stimmt." },
 ];
+
+export const LOCAL_BUSINESS_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Mirdita Reinigung Berisha",
+  image: "https://mirdita.ch/hero.jpeg",
+  url: "https://mirdita.ch",
+  telephone: "+41762027984",
+  email: "info@mirdita.ch",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Belalpstrasse 2",
+    postalCode: "3904",
+    addressLocality: "Naters",
+    addressRegion: "Wallis",
+    addressCountry: "CH",
+  },
+  areaServed: "Wallis",
+};

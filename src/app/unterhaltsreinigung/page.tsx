@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Unterhalts- & Frühlingsreinigung im Wallis | Mirdita Reinigungen",
+  title: "Unterhalts- & Frühlingsreinigung im Wallis | Mirdita",
   description:
     "Regelmässige Unterhaltsreinigung und gründliche Frühlingsreinigung im Wallis — für ein dauerhaft frisches und gepflegtes Zuhause.",
   alternates: {

@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Fenster-, Glas- & Storenreinigung im Wallis | Mirdita Reinigungen",
+  title: "Fenster-, Glas- & Storenreinigung im Wallis | Mirdita",
   description:
     "Streifenfreie Fensterreinigung im Wallis für Privat & Gewerbe: Fenster, Rahmen, Storen, Fassaden und grosse Glasflächen — auf Wunsch im festen Rhythmus.",
   alternates: {

@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Teppich- & Polster-Tiefenreinigung im Wallis | Mirdita Reinigungen",
+  title: "Teppich- & Polster-Tiefenreinigung im Wallis | Mirdita",
   description:
     "Professionelle Teppich- und Polster-Tiefenreinigung im Wallis: Flecken, Gerüche und Allergene schonend entfernt — für Teppiche, Sofas & Matratzen.",
   alternates: {

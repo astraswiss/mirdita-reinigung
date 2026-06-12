@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Büro- & Praxisreinigung im Wallis | Mirdita Reinigungen",
+  title: "Büro- & Praxisreinigung im Wallis | Mirdita",
   description:
     "Diskrete Büroreinigung im Wallis ausserhalb Ihrer Geschäftszeiten — zuverlässig, nach Schweizer Standard und mit fixem Reinigungsplan.",
   alternates: {

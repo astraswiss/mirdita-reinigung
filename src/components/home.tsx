@@ -147,6 +147,7 @@ function ReviewsMarquee({ reviews }: { reviews: GoogleReview[] }) {
 export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
   const [activeService, setActiveService] = useState<ServiceKey>("privat");
   const [reviews, setReviews] = useState(googleReviews.reviews);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const active = SERVICES[activeService];
   const ActiveIcon = active.icon;
 
@@ -161,12 +162,39 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
     });
   }, []);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    (e.currentTarget as HTMLFormElement).reset();
-    toast.success("Anfrage gesendet", {
-      description: "Danke — wir melden uns innert 24 Stunden bei Ihnen.",
-    });
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          type: data.get("type"),
+          message: data.get("message"),
+        }),
+      });
+
+      if (!res.ok) throw new Error("request_failed");
+
+      form.reset();
+      toast.success("Anfrage gesendet", {
+        description: "Danke — wir melden uns innert 24 Stunden bei Ihnen.",
+      });
+    } catch {
+      toast.error("Senden fehlgeschlagen", {
+        description:
+          "Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch unter +41 76 202 79 84.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -460,9 +488,10 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
               </div>
               <button
                 type="submit"
-                className="sm:col-span-2 inline-flex justify-center items-center gap-2 bg-brand-bright text-white rounded-full px-6 py-3.5 font-semibold hover:brightness-110 transition-all"
+                disabled={isSubmitting}
+                className="sm:col-span-2 inline-flex justify-center items-center gap-2 bg-brand-bright text-white rounded-full px-6 py-3.5 font-semibold hover:brightness-110 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Anfrage senden
+                {isSubmitting ? "Senden…" : "Anfrage senden"}
                 <ArrowRight className="size-4" />
               </button>
             </form>

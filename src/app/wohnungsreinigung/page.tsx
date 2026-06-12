@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Wohnungs- & Hausreinigung im Wallis | Mirdita Reinigungen",
+  title: "Wohnungs- & Hausreinigung im Wallis | Mirdita",
   description:
     "Regelmässige oder einmalige Wohnungs- und Hausreinigung im Wallis — gründlich, zuverlässig und nach Ihrem Rhythmus.",
   alternates: {

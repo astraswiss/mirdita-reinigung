@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Baureinigung & Bauendreinigung im Wallis | Mirdita Reinigungen",
+  title: "Baureinigung & Bauendreinigung im Wallis | Mirdita",
   description:
     "Bauendreinigung im Wallis: termingerecht bezugsfertig — von der Grobreinigung bis zur Feinreinigung für Bauherrschaft, Architekten und Verwaltungen.",
   alternates: {

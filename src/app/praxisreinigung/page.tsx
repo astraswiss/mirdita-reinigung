@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Praxis- & Wartezimmerreinigung im Wallis | Mirdita Reinigungen",
+  title: "Praxis- & Wartezimmerreinigung im Wallis | Mirdita",
   description:
     "Hygienische Praxisreinigung im Wallis: Behandlungsräume, Wartezimmer und Sanitäranlagen inkl. Desinfektion — flexibel ausserhalb der Sprechstunden.",
   alternates: {

@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Hauswartung & Liegenschaftsunterhalt im Wallis | Mirdita Reinigungen",
+  title: "Hauswartung & Liegenschaftsunterhalt im Wallis | Mirdita",
   description:
     "Hauswartung im Wallis für Verwaltungen und Eigentümerschaften: Treppenhaus, Eingänge, Tiefgaragen und Umgebung im festen Reinigungsabo.",
   alternates: {

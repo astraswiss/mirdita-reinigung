@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Umzugsreinigung mit Abnahmegarantie im Wallis | Mirdita Reinigungen",
+  title: "Umzugsreinigung mit Abnahmegarantie im Wallis | Mirdita",
   description:
     "Professionelle Umzugsreinigung im Wallis mit Abnahmegarantie: Küche, Bad, Böden und Fenster bezugsfertig — bei Beanstandung bessern wir kostenlos nach.",
   alternates: {

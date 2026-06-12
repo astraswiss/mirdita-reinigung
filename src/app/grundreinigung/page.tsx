@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Grundreinigung im Wallis | Mirdita Reinigungen",
+  title: "Grundreinigung im Wallis | Mirdita",
   description:
     "Grundreinigung im Wallis für Renovationen, Verkauf oder lange ungenutzte Räume: Fassaden, Böden und hartnäckige Verschmutzungen gründlich entfernt.",
   alternates: {
