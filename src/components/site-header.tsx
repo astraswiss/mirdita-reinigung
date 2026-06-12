@@ -11,8 +11,8 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-brand-light/85 backdrop-blur border-b border-brand-deep/5">
-      <div className="max-w-7xl mx-auto px-5 md:px-10 h-16 flex items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 bg-brand-light/85 backdrop-blur border-b border-brand-deep/5 px-5 md:px-10">
+      <div className="max-w-7xl mx-auto h-16 flex items-center justify-between gap-6">
         <Link href="/" className="flex items-center" aria-label="Mirdita — Startseite">
           <Image
             src={LOGO}
@@ -58,7 +58,7 @@ export function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-brand-deep/5 px-5 py-4 space-y-3 bg-brand-light">
+        <div className="md:hidden -mx-5 md:-mx-10 border-t border-brand-deep/5 px-5 py-4 space-y-3 bg-brand-light">
           {NAV.map((n) => (
             <a
               key={n.href}
