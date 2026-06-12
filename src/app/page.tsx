@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { Home } from "@/components/home";
+import { getGoogleReviews } from "@/lib/google-reviews";
 
 export const metadata: Metadata = {
   title: "Mirdita Reinigungen — Glanz & Sauberkeit im Wallis",
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <Home />;
+export default async function Page() {
+  const googleReviews = await getGoogleReviews();
+  return <Home googleReviews={googleReviews} />;
 }

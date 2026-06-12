@@ -20,6 +20,8 @@ import {
   Quote,
 } from "lucide-react";
 
+import type { GoogleReview, GoogleReviewsData } from "@/lib/google-reviews";
+
 const LOGO = "/mirdita-logo.svg";
 const PHOTO_HERO = "/hero.jpeg";
 const PHOTO_DETAIL = "/detail-kueche.svg";
@@ -103,24 +105,6 @@ const STEPS = [
   { n: "04", title: "Abnahme", body: "Garantierte Übergabe — wir bleiben bis alles stimmt." },
 ];
 
-const REVIEWS = [
-  {
-    name: "Thierry A.",
-    time: "vor 5 Monaten",
-    text: "Berisha und sein Team haben bei uns die Baureinigung für ein grösseres EFH durchgeführt! Wir sind sehr zufrieden, absolut empfehlenswert!",
-  },
-  {
-    name: "Karl G.",
-    time: "vor 8 Monaten",
-    text: "Ich bin rundum zufrieden mit der Mirdita Reinigung! Das Team arbeitet absolut zuverlässig, gründlich und mit viel Sorgfalt – jedes Detail wird beachtet. Besonders gefällt mir, dass sie sehr flexibel auf individuelle Wünsche eingehen und immer freundlich auftreten. Ich kann die Mirdita Reinigung uneingeschränkt weiterempfehlen. Wer Wert auf Qualität und Zuverlässigkeit legt, ist hier genau richtig!",
-  },
-  {
-    name: "Lisa E.",
-    time: "vor 1 Monat",
-    text: "Das Mirdita-Team erledigt die Reinigung der Büros der Volken-Group zuverlässig, professionell, kundenorientiert und flexibel. Absolut empfehlenswert!",
-  },
-];
-
 function GoogleLogo({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
@@ -144,6 +128,40 @@ function GoogleLogo({ className = "" }: { className?: string }) {
   );
 }
 
+function ReviewCard({ review }: { review: GoogleReview }) {
+  return (
+    <div className="w-[320px] md:w-[380px] shrink-0 rounded-2xl bg-white border border-brand-deep/5 p-6 flex flex-col">
+      <div className="flex text-brand-bright mb-3">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star key={i} className="size-3.5 fill-current" />
+        ))}
+      </div>
+      <p className="text-brand-deep/80 leading-relaxed text-sm line-clamp-6">
+        „{review.text}&quot;
+      </p>
+      <div className="mt-5 pt-5 border-t border-brand-deep/5">
+        <div className="font-semibold text-sm">{review.name}</div>
+        <div className="text-xs text-brand-deep/55">{review.time}</div>
+      </div>
+    </div>
+  );
+}
+
+function ReviewsMarquee({ reviews }: { reviews: GoogleReview[] }) {
+  const items = [...reviews, ...reviews];
+  return (
+    <div className="relative -mx-5 md:-mx-10 overflow-hidden">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 md:w-24 bg-gradient-to-r from-brand-light to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 md:w-24 bg-gradient-to-l from-brand-light to-transparent" />
+      <div className="animate-marquee flex w-max gap-5 px-5 md:px-10">
+        {items.map((r, i) => (
+          <ReviewCard key={`${r.name}-${i}`} review={r} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Photo({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
     <div className={`relative overflow-hidden bg-brand-deep/5 ${className}`}>
@@ -152,7 +170,7 @@ function Photo({ src, alt, className = "" }: { src: string; alt: string; classNa
   );
 }
 
-export function Home() {
+export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeService, setActiveService] = useState<ServiceKey>("privat");
   const active = SERVICES[activeService];
@@ -271,8 +289,10 @@ export function Home() {
                     <Star key={i} className="size-4 fill-current" />
                   ))}
                 </div>
-                <span className="font-semibold text-brand-deep">5.0/5</span>
-                <span>· 40+ Bewertungen</span>
+                <span className="font-semibold text-brand-deep">
+                  {googleReviews.rating.toFixed(1)}/5
+                </span>
+                <span>· {googleReviews.total} Bewertungen</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="size-4 text-brand-bright" />
@@ -459,7 +479,7 @@ export function Home() {
               </h2>
             </div>
             <div className="flex items-center gap-3">
-              <div className="text-4xl font-bold">5.0</div>
+              <div className="text-4xl font-bold">{googleReviews.rating.toFixed(1)}</div>
               <div>
                 <div className="flex text-brand-bright">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -468,32 +488,12 @@ export function Home() {
                 </div>
                 <div className="mt-0.5 flex items-center gap-1.5 text-xs text-brand-deep/60">
                   <GoogleLogo className="size-3.5" />
-                  40+ Bewertungen
+                  {googleReviews.total} Bewertungen
                 </div>
               </div>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {REVIEWS.map((r) => (
-              <div
-                key={r.name}
-                className="rounded-2xl bg-white border border-brand-deep/5 p-6 flex flex-col"
-              >
-                <div className="flex text-brand-bright mb-3">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="size-3.5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-brand-deep/80 leading-relaxed text-sm flex-grow">
-                  „{r.text}&quot;
-                </p>
-                <div className="mt-5 pt-5 border-t border-brand-deep/5">
-                  <div className="font-semibold text-sm">{r.name}</div>
-                  <div className="text-xs text-brand-deep/55">{r.time}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ReviewsMarquee reviews={googleReviews.reviews} />
           <div className="mt-8 flex justify-center">
             <a
               href="https://www.google.com/maps/place/Mirdita+Reinigung,+Belalpstrasse+2,+3904+Naters/@0,0,22z/data=!4m2!3m1!1s0x42c5237190cbda61:0xdc13d84cf19fc3d0"
