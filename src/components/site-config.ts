@@ -47,7 +47,7 @@ export const SERVICES: Record<
     ],
     image: PHOTO_PRIVAT,
     imageAlt: "Mirdita Mitarbeiter reinigt eine Küchenarbeitsplatte",
-    imagePosition: "object-top",
+    imagePosition: "object-bottom",
   },
   firmen: {
     label: "Firmen & Gewerbe",
