@@ -370,7 +370,7 @@ export function Home() {
               <Photo
                 src={active.image}
                 alt={active.imageAlt}
-                className="hidden lg:block min-h-[320px] lg:min-h-full aspect-[16/10] lg:aspect-auto"
+                className="min-h-[320px] lg:min-h-full aspect-[16/10] lg:aspect-auto"
               />
             </div>
           </div>
