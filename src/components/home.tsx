@@ -7,7 +7,7 @@ import {
   Phone,
   Mail,
   MapPin,
-  Clock,
+  MessageCircle,
   Star,
   Check,
   ArrowRight,
@@ -105,21 +105,44 @@ const STEPS = [
 
 const REVIEWS = [
   {
-    name: "Sandra B.",
-    location: "Sion",
-    text: "Pünktlich, super gründlich und sehr freundlich. Die Wohnungsübergabe war problemlos — sehr empfehlenswert!",
+    name: "Thierry A.",
+    time: "vor 5 Monaten",
+    text: "Berisha und sein Team haben bei uns die Baureinigung für ein grösseres EFH durchgeführt! Wir sind sehr zufrieden, absolut empfehlenswert!",
   },
   {
-    name: "Marco F.",
-    location: "Visp",
-    text: "Wir lassen unser Büro seit zwei Jahren von Mirdita reinigen. Top Qualität und faire Preise.",
+    name: "Karl G.",
+    time: "vor 8 Monaten",
+    text: "Ich bin rundum zufrieden mit der Mirdita Reinigung! Das Team arbeitet absolut zuverlässig, gründlich und mit viel Sorgfalt – jedes Detail wird beachtet. Besonders gefällt mir, dass sie sehr flexibel auf individuelle Wünsche eingehen und immer freundlich auftreten. Ich kann die Mirdita Reinigung uneingeschränkt weiterempfehlen. Wer Wert auf Qualität und Zuverlässigkeit legt, ist hier genau richtig!",
   },
   {
-    name: "Lea M.",
-    location: "Sierre",
-    text: "Hatte kurzfristig eine Umzugsreinigung gebraucht — innert 48 Stunden organisiert. Klare Empfehlung.",
+    name: "Lisa E.",
+    time: "vor 1 Monat",
+    text: "Das Mirdita-Team erledigt die Reinigung der Büros der Volken-Group zuverlässig, professionell, kundenorientiert und flexibel. Absolut empfehlenswert!",
   },
 ];
+
+function GoogleLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
+      <path
+        fill="#EA4335"
+        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+      />
+      <path
+        fill="#4285F4"
+        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+      />
+      <path
+        fill="#34A853"
+        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+      />
+    </svg>
+  );
+}
 
 function Photo({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
@@ -169,11 +192,11 @@ export function Home() {
 
           <div className="flex items-center gap-2">
             <a
-              href="tel:+41000000000"
+              href="tel:+41762027984"
               className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-brand-deep/80 hover:text-brand-deep border border-brand-deep/10 rounded-full px-3 py-2"
             >
               <Phone className="size-3.5" />
-              <span className="hidden lg:inline">+41 27 000 00 00</span>
+              <span className="hidden lg:inline">+41 76 202 79 84</span>
             </a>
             <a
               href="#kontakt"
@@ -248,31 +271,22 @@ export function Home() {
                     <Star key={i} className="size-4 fill-current" />
                   ))}
                 </div>
-                <span className="font-semibold text-brand-deep">4.9/5</span>
-                <span>· 120+ Bewertungen</span>
+                <span className="font-semibold text-brand-deep">5.0/5</span>
+                <span>· 40+ Bewertungen</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="size-4 text-brand-bright" />
                 <span>Abnahmegarantie</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Sparkles className="size-4 text-brand-bright" />
-                <span>Eigenes Profi-Equipment</span>
-              </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5">
             <Photo
               src={PHOTO_HERO}
               alt="Mirdita Mitarbeiter reinigt eine Glasfront mit Walliser Bergen im Hintergrund"
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
             />
-            {/* Floating badge top */}
-            <div className="hidden md:flex absolute -right-4 top-8 bg-brand-bright text-white rounded-full px-4 py-2 text-xs font-semibold shadow-lg gap-2 items-center">
-              <Sparkles className="size-3.5" />
-              Seit 2014 im Wallis
-            </div>
           </div>
         </div>
       </section>
@@ -445,14 +459,17 @@ export function Home() {
               </h2>
             </div>
             <div className="flex items-center gap-3">
-              <div className="text-4xl font-bold">4.9</div>
+              <div className="text-4xl font-bold">5.0</div>
               <div>
                 <div className="flex text-brand-bright">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="size-4 fill-current" />
                   ))}
                 </div>
-                <div className="text-xs text-brand-deep/60 mt-0.5">120+ Bewertungen</div>
+                <div className="mt-0.5 flex items-center gap-1.5 text-xs text-brand-deep/60">
+                  <GoogleLogo className="size-3.5" />
+                  40+ Bewertungen
+                </div>
               </div>
             </div>
           </div>
@@ -472,10 +489,21 @@ export function Home() {
                 </p>
                 <div className="mt-5 pt-5 border-t border-brand-deep/5">
                   <div className="font-semibold text-sm">{r.name}</div>
-                  <div className="text-xs text-brand-deep/55">{r.location}</div>
+                  <div className="text-xs text-brand-deep/55">{r.time}</div>
                 </div>
               </div>
             ))}
+          </div>
+          <div className="mt-8 flex justify-center">
+            <a
+              href="https://www.google.com/maps/place/Mirdita+Reinigung,+Belalpstrasse+2,+3904+Naters/@0,0,22z/data=!4m2!3m1!1s0x42c5237190cbda61:0xdc13d84cf19fc3d0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
+            >
+              <GoogleLogo className="size-4" />
+              Alle Bewertungen auf Google ansehen
+            </a>
           </div>
         </div>
       </section>
@@ -549,8 +577,15 @@ export function Home() {
               <InfoLine
                 icon={Phone}
                 label="Telefon"
-                value="+41 27 000 00 00"
-                href="tel:+41270000000"
+                value="+41 76 202 79 84"
+                href="tel:+41762027984"
+              />
+              <InfoLine
+                icon={MessageCircle}
+                label="WhatsApp"
+                value="+41 76 202 79 84"
+                href="https://wa.me/41762027984"
+                external
               />
               <InfoLine
                 icon={Mail}
@@ -559,7 +594,6 @@ export function Home() {
                 href="mailto:info@mirdita.ch"
               />
               <InfoLine icon={MapPin} label="Adresse" value="Wallis, Schweiz" />
-              <InfoLine icon={Clock} label="Öffnungszeiten" value="Mo–Fr 08:00–18:00" />
             </ul>
             <div className="hidden lg:block mt-auto pt-8">
               <Photo
@@ -596,7 +630,7 @@ export function Home() {
           />
           <FooterCol
             title="Kontakt"
-            links={["+41 27 000 00 00", "info@mirdita.ch", "Wallis, CH"]}
+            links={["+41 76 202 79 84", "info@mirdita.ch", "Wallis, CH"]}
           />
           <FooterCol title="Rechtliches" links={["Impressum", "Datenschutz", "AGB"]} />
         </div>
@@ -645,11 +679,13 @@ function InfoLine({
   label,
   value,
   href,
+  external,
 }: {
   icon: typeof Phone;
   label: string;
   value: string;
   href?: string;
+  external?: boolean;
 }) {
   const content = (
     <>
@@ -668,6 +704,7 @@ function InfoLine({
         <a
           href={href}
           className="flex items-center gap-3 hover:text-brand-bright transition-colors"
+          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         >
           {content}
         </a>
