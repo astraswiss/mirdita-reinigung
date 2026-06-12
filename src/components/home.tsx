@@ -378,7 +378,7 @@ export function Home() {
       </section>
 
       {/* Process */}
-      <section className="px-5 md:px-10 py-16">
+      <section className="px-5 md:px-10 py-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-12">
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
