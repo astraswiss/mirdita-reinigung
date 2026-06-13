@@ -2,11 +2,8 @@ import { Building2, Home as HomeIcon, Sparkles } from "lucide-react";
 
 export const LOGO = "/mirdita-logo.svg";
 export const PHOTO_HERO = "/hero.jpg";
-export const PHOTO_DETAIL = "/detail-kueche.svg";
-export const PHOTO_TEAM = "/team-reinigung.svg";
 export const PHOTO_PRIVAT = "/Privatkunden.jpeg";
 export const PHOTO_SPEZIAL = "/spezialreinigung.jpg";
-export const PHOTO_FENSTER = "/hero-fenster.svg";
 export const PHOTO_PUTZEN = "/putzen.jpg";
 export const PHOTO_BUERO = "/buero.jpg";
 

@@ -5,9 +5,11 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { CtaBanner } from "@/components/cta-banner";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
-import { PHOTO_FENSTER } from "@/components/site-config";
+import { ReviewsSection } from "@/components/reviews-section";
+import { PHOTO_HERO } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { getGoogleReviews } from "@/lib/google-reviews";
 
 export const metadata: Metadata = {
   title: "Fenster-, Glas- & Storenreinigung im Wallis | Mirdita",
@@ -33,7 +35,9 @@ const ITEMS = [
   "Auf Wunsch im festen saisonalen Rhythmus",
 ];
 
-export default function Page() {
+export default async function Page() {
+  const googleReviews = await getGoogleReviews();
+
   return (
     <div className="min-h-screen bg-brand-light text-brand-deep font-sans antialiased">
       <SiteHeader />
@@ -82,7 +86,7 @@ export default function Page() {
 
           <div className="lg:col-span-5">
             <Photo
-              src={PHOTO_FENSTER}
+              src={PHOTO_HERO}
               alt="Fensterreinigung mit Blick auf die Walliser Berge"
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
             />
@@ -120,6 +124,8 @@ export default function Page() {
       </section>
 
       <ProcessSteps title="In vier Schritten zu klaren Fenstern" />
+
+      <ReviewsSection googleReviews={googleReviews} />
 
       <CtaBanner
         title="Klarer Blick, das ganze Jahr."

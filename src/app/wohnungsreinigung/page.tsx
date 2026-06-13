@@ -5,9 +5,11 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { CtaBanner } from "@/components/cta-banner";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
+import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_PRIVAT } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { getGoogleReviews } from "@/lib/google-reviews";
 
 export const metadata: Metadata = {
   title: "Wohnungs- & Hausreinigung im Wallis | Mirdita",
@@ -33,7 +35,9 @@ const ITEMS = [
   "Treppenhaus bei Ein- & Mehrfamilienhäusern",
 ];
 
-export default function Page() {
+export default async function Page() {
+  const googleReviews = await getGoogleReviews();
+
   return (
     <div className="min-h-screen bg-brand-light text-brand-deep font-sans antialiased">
       <SiteHeader />
@@ -119,6 +123,8 @@ export default function Page() {
       </section>
 
       <ProcessSteps title="In vier Schritten zur sauberen Wohnung" />
+
+      <ReviewsSection googleReviews={googleReviews} />
 
       <CtaBanner
         title="Lassen Sie uns übernehmen."

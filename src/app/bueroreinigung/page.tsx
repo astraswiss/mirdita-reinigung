@@ -5,9 +5,11 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { CtaBanner } from "@/components/cta-banner";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
-import { PHOTO_TEAM } from "@/components/site-config";
+import { ReviewsSection } from "@/components/reviews-section";
+import { PHOTO_BUERO } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { getGoogleReviews } from "@/lib/google-reviews";
 
 export const metadata: Metadata = {
   title: "Büro- & Praxisreinigung im Wallis | Mirdita",
@@ -33,7 +35,9 @@ const ITEMS = [
   "Glasflächen, Türen & Trennwände",
 ];
 
-export default function Page() {
+export default async function Page() {
+  const googleReviews = await getGoogleReviews();
+
   return (
     <div className="min-h-screen bg-brand-light text-brand-deep font-sans antialiased">
       <SiteHeader />
@@ -81,9 +85,10 @@ export default function Page() {
 
           <div className="lg:col-span-5">
             <Photo
-              src={PHOTO_TEAM}
-              alt="Mirdita Mitarbeiterin bei der Büroreinigung im Wallis"
+              src={PHOTO_BUERO}
+              alt="Modernes Büro nach der professionellen Reinigung durch Mirdita"
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
+              objectPosition="object-left"
             />
           </div>
         </div>
@@ -118,6 +123,8 @@ export default function Page() {
       </section>
 
       <ProcessSteps title="In vier Schritten zum sauberen Büro" />
+
+      <ReviewsSection googleReviews={googleReviews} />
 
       <CtaBanner
         title="Saubere Räume, zufriedene Mitarbeitende."

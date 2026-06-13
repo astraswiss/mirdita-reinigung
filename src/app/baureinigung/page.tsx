@@ -5,9 +5,11 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { CtaBanner } from "@/components/cta-banner";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
-import { PHOTO_HERO } from "@/components/site-config";
+import { ReviewsSection } from "@/components/reviews-section";
+import { PHOTO_SPEZIAL } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { getGoogleReviews } from "@/lib/google-reviews";
 
 export const metadata: Metadata = {
   title: "Baureinigung & Bauendreinigung im Wallis | Mirdita",
@@ -33,7 +35,9 @@ const ITEMS = [
   "Termingerechte Übergabe an Bauherrschaft",
 ];
 
-export default function Page() {
+export default async function Page() {
+  const googleReviews = await getGoogleReviews();
+
   return (
     <div className="min-h-screen bg-brand-light text-brand-deep font-sans antialiased">
       <SiteHeader />
@@ -81,8 +85,8 @@ export default function Page() {
 
           <div className="lg:col-span-5">
             <Photo
-              src={PHOTO_HERO}
-              alt="Mirdita Mitarbeiter bei der Bauendreinigung einer Glasfront im Wallis"
+              src={PHOTO_SPEZIAL}
+              alt="Baustelle eines Einfamilienhauses im Wallis vor der Bauendreinigung"
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
             />
           </div>
@@ -119,6 +123,8 @@ export default function Page() {
       </section>
 
       <ProcessSteps title="In vier Schritten zur bezugsfertigen Liegenschaft" />
+
+      <ReviewsSection googleReviews={googleReviews} />
 
       <CtaBanner
         title="Termin im Bauablauf? Wir richten uns danach."
