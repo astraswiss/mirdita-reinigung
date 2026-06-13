@@ -15,13 +15,7 @@ import {
 
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
-import {
-  PHOTO_DETAIL,
-  PHOTO_HERO,
-  PHOTO_TEAM,
-  SERVICES,
-  type ServiceKey,
-} from "@/components/site-config";
+import { PHOTO_DETAIL, PHOTO_HERO, SERVICES, type ServiceKey } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { GoogleReview, GoogleReviewsData } from "@/lib/google-reviews";
@@ -365,17 +359,6 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
               Abnahmegarantie tragen wir das Risiko der Wohnungsübergabe. Wird etwas beanstandet,
               bessern wir kostenlos nach.
             </p>
-            <div className="mt-6 flex items-center gap-4">
-              <Photo
-                src={PHOTO_TEAM}
-                alt="Mirdita Team"
-                className="size-14 rounded-full shrink-0"
-              />
-              <div>
-                <div className="font-semibold">Familie Mirdita</div>
-                <div className="text-sm text-brand-deep/60">Gründer · Wallis</div>
-              </div>
-            </div>
           </div>
           <div className="lg:col-span-5 grid grid-cols-3 gap-3">
             {[
