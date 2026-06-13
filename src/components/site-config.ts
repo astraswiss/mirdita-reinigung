@@ -63,7 +63,8 @@ export const SERVICES: Record<
       "Regelmässige Wartungsabos",
     ],
     image: PHOTO_BUERO,
-    imageAlt: "Mirdita Mitarbeiterin bei der Reinigung einer Küchenfront",
+    imageAlt: "Modernes Büro nach professioneller Reinigung",
+    imagePosition: "object-left",
   },
   spezial: {
     label: "Spezialreinigungen",
