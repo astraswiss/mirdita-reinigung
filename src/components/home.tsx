@@ -43,6 +43,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
           phone: data.get("phone"),
           type: data.get("type"),
           message: data.get("message"),
+          website: data.get("website"),
         }),
       });
 
@@ -270,6 +271,12 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
               Erzählen Sie uns kurz von Ihrem Anliegen. Wir melden uns innert 24 Stunden.
             </p>
             <form onSubmit={handleSubmit} className="mt-8 grid sm:grid-cols-2 gap-4">
+              <div className="hidden" aria-hidden="true">
+                <label>
+                  Website
+                  <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                </label>
+              </div>
               <Field label="Name" name="name" required />
               <Field label="E-Mail" name="email" type="email" required />
               <Field label="Telefon" name="phone" />

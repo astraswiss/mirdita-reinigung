@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Klare Sicht, mehr Licht: Fenster, Rahmen, Storen und Fassaden streifenfrei gereinigt.",
     url: "/fensterreinigung",
+    images: [{ url: PHOTO_HERO, width: 1200, height: 1600 }],
   },
 };
 

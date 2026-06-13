@@ -56,15 +56,10 @@ export function SiteFooter() {
           ]}
         />
       </div>
-      <div className="max-w-7xl mx-auto mt-10 pt-6 border-t border-brand-deep/5 flex flex-col sm:flex-row justify-between gap-3 text-xs text-brand-deep/50">
+      <div className="max-w-7xl mx-auto mt-10 pt-6 border-t border-brand-deep/5 text-xs text-brand-deep/50">
         <span>
           © {new Date().getFullYear()} Mirdita Reinigung Berisha. Alle Rechte vorbehalten.
         </span>
-        <div className="flex gap-4">
-          <span className="font-semibold text-brand-deep/70">DE</span>
-          <span>FR</span>
-          <span>IT</span>
-        </div>
       </div>
     </footer>
   );

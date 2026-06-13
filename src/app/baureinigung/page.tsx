@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Von der Grobreinigung bis zur Feinreinigung — wir übergeben Ihre Liegenschaft termingerecht bezugsfertig.",
     url: "/baureinigung",
+    images: [{ url: PHOTO_SPEZIAL, width: 2048, height: 1536 }],
   },
 };
 

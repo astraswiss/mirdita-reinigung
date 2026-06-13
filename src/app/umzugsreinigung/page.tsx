@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Wohnungsübergabe ohne Stress: Wir reinigen gründlich und übernehmen das Risiko mit unserer Abnahmegarantie.",
     url: "/umzugsreinigung",
+    images: [{ url: PHOTO_PUTZEN, width: 1536, height: 1426 }],
   },
 };
 

@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Wir bringen Ihre Wohnung oder Ihr Haus auf Hochglanz — einmalig oder im festen Rhythmus.",
     url: "/wohnungsreinigung",
+    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
   },
 };
 

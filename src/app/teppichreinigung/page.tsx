@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     title: "Teppich- & Polster-Tiefenreinigung im Wallis",
     description: "Teppiche, Sofas und Matratzen schonend und materialgerecht tiefenrein gereinigt.",
     url: "/teppichreinigung",
+    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
   },
 };
 

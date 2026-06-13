@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     title: "Hauswartung & Liegenschaftsunterhalt im Wallis",
     description: "Wir übernehmen die laufende Reinigung Ihrer Liegenschaft nach einem fixen Plan.",
     url: "/hauswartung",
+    images: [{ url: PHOTO_HERO, width: 1200, height: 1600 }],
   },
 };
 

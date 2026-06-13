@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Reinigung und Desinfektion von Behandlungsräumen, Wartezimmern und Sanitäranlagen.",
     url: "/praxisreinigung",
+    images: [{ url: PHOTO_BUERO, width: 1280, height: 854 }],
   },
 };
 

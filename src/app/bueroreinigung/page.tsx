@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Wir reinigen Ihre Geschäftsräume diskret ausserhalb der Öffnungszeiten — nach fixem Plan.",
     url: "/bueroreinigung",
+    images: [{ url: PHOTO_BUERO, width: 1280, height: 854 }],
   },
 };
 

@@ -1,18 +1,51 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const rateLimitByIp = new Map<string, { count: number; resetAt: number }>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitByIp.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitByIp.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  entry.count += 1;
+  return entry.count > RATE_LIMIT_MAX;
+}
+
+function getClientIp(request: Request): string {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (forwardedFor) return forwardedFor.split(",")[0].trim();
+  return request.headers.get("x-real-ip") ?? "unknown";
+}
+
 function sanitize(value: unknown): string {
   return typeof value === "string" ? value.replace(/[\r\n]+/g, " ").trim() : "";
 }
 
 export async function POST(request: Request) {
+  if (isRateLimited(getClientIp(request))) {
+    return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+  }
+
   const body = await request.json().catch(() => null);
 
   if (!body || typeof body !== "object") {
     return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   }
 
-  const { name, email, phone, type, message } = body as Record<string, unknown>;
+  const { name, email, phone, type, message, website } = body as Record<string, unknown>;
+
+  // Honeypot: real users never fill this hidden field. Pretend success without sending.
+  if (sanitize(website)) {
+    return NextResponse.json({ ok: true });
+  }
+
   const cleanName = sanitize(name);
   const cleanEmail = sanitize(email);
 

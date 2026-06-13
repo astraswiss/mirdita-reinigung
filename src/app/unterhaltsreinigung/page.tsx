@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Wiederkehrende Unterhaltsreinigung kombiniert mit einer gründlichen saisonalen Tiefenreinigung.",
     url: "/unterhaltsreinigung",
+    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
   },
 };
 

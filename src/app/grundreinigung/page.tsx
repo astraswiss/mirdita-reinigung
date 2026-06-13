@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Einmalige Tiefenreinigung für Fälle, die mehr brauchen als die übliche Reinigung.",
     url: "/grundreinigung",
+    images: [{ url: PHOTO_PUTZEN, width: 1536, height: 1426 }],
   },
 };
 

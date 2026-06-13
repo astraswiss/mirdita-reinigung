@@ -19,9 +19,6 @@ export const metadata: Metadata = {
   description:
     "Mirdita Reinigungen: Umzugs-, Wohnungs- und Büroreinigungen im Wallis. Schnell, gründlich und mit Abnahmegarantie.",
   authors: [{ name: "Mirdita Reinigungen" }],
-  icons: {
-    icon: "/mirdita-mark.svg",
-  },
   openGraph: {
     title: "Mirdita Reinigungen — Sauberkeit im Wallis",
     description: "Professionelle Reinigungen im Wallis — mit Abnahmegarantie.",
