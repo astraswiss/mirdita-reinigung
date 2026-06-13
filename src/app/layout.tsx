@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter } from "next/font/google";
 
+import { Clarity } from "@/components/clarity";
 import { Toaster } from "@/components/toaster";
 import { LOCAL_BUSINESS_JSON_LD } from "@/components/site-config";
 import "./globals.css";
@@ -41,6 +43,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased">
         {children}
         <Toaster />
+        <Analytics />
+        <Clarity />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_JSON_LD) }}

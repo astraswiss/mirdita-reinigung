@@ -44,13 +44,15 @@ export default function Page() {
             <section>
               <h2 className="text-lg font-bold">2. Welche Daten wir erheben</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
-                Beim Besuch unserer Website werden grundsätzlich keine personenbezogenen Daten
-                gespeichert. Diese Website verzichtet bewusst auf Tracking- und Analyse-Cookies.
+                Beim Besuch unserer Website erheben wir mit Vercel Analytics und Microsoft Clarity
+                anonymisierte Nutzungsstatistiken (z. B. aufgerufene Seiten, ungefähre Herkunft,
+                Geräteart, Klick- und Scrollverhalten), um die Website zu verbessern. Es werden
+                dabei keine Kontaktdaten erhoben.
               </p>
               <p className="mt-3 text-brand-deep/70 leading-relaxed">
-                Wenn Sie unser Kontaktformular nutzen, erheben wir die von Ihnen freiwillig
-                angegebenen Daten: Name, E-Mail-Adresse, Telefonnummer (optional), Art der
-                gewünschten Reinigung und Ihre Nachricht.
+                Wenn Sie unser Kontaktformular nutzen, erheben wir zusätzlich die von Ihnen
+                freiwillig angegebenen Daten: Name, E-Mail-Adresse, Telefonnummer (optional), Art
+                der gewünschten Reinigung und Ihre Nachricht.
               </p>
             </section>
 
@@ -77,6 +79,12 @@ export default function Page() {
                 in Server-Logs anfallen, die für den Betrieb und die Sicherheit der Website
                 erforderlich sind.
               </p>
+              <p className="mt-3 text-brand-deep/70 leading-relaxed">
+                Für die Auswertung der Websitenutzung setzen wir Vercel Analytics (Vercel Inc.) und
+                Microsoft Clarity (Microsoft Corporation) ein. Beide Dienste helfen uns zu
+                verstehen, wie Besucher unsere Seiten nutzen, damit wir das Angebot laufend
+                verbessern können.
+              </p>
             </section>
 
             <section>
@@ -91,8 +99,11 @@ export default function Page() {
             <section>
               <h2 className="text-lg font-bold">6. Cookies</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
-                Diese Website verwendet derzeit keine Tracking- oder Analyse-Cookies und keine
-                Cookies von Drittanbietern.
+                Vercel Analytics arbeitet ohne Cookies und ohne Speicherung von personenbezogenen
+                Kennungen. Microsoft Clarity setzt Cookies, um Klicks, Mausbewegungen und
+                Scrollverhalten anonymisiert aufzuzeichnen (Heatmaps und Sitzungsaufzeichnungen) und
+                so die Bedienbarkeit der Website zu verbessern. Weitere Cookies von Drittanbietern
+                werden nicht eingesetzt.
               </p>
             </section>
 
