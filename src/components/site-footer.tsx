@@ -6,7 +6,7 @@ import { LOGO } from "@/components/site-config";
 export function SiteFooter() {
   return (
     <footer className="border-t border-brand-deep/5 px-5 md:px-10 py-12 mt-8">
-      <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+      <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-5">
         <div>
           <Link href="/" className="flex items-center" aria-label="Mirdita — Startseite">
             <Image
@@ -24,6 +24,8 @@ export function SiteFooter() {
         </div>
         <FooterCol
           title="Leistungen"
+          className="md:col-span-2"
+          columns={2}
           links={[
             { label: "Umzugsreinigung", href: "/umzugsreinigung" },
             { label: "Wohnungsreinigung", href: "/wohnungsreinigung" },
@@ -68,13 +70,29 @@ export function SiteFooter() {
   );
 }
 
-function FooterCol({ title, links }: { title: string; links: { label: string; href?: string }[] }) {
+function FooterCol({
+  title,
+  links,
+  className,
+  columns = 1,
+}: {
+  title: string;
+  links: { label: string; href?: string }[];
+  className?: string;
+  columns?: 1 | 2;
+}) {
   return (
-    <div>
+    <div className={className}>
       <h4 className="text-xs font-bold tracking-[0.18em] uppercase text-brand-deep mb-4">
         {title}
       </h4>
-      <ul className="space-y-2.5 text-sm text-brand-deep/60">
+      <ul
+        className={
+          columns === 2
+            ? "grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-brand-deep/60"
+            : "space-y-2.5 text-sm text-brand-deep/60"
+        }
+      >
         {links.map((l) => (
           <li key={l.label}>
             {l.href?.startsWith("/") ? (
