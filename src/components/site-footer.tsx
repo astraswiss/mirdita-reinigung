@@ -6,7 +6,7 @@ import { LOGO } from "@/components/site-config";
 export function SiteFooter() {
   return (
     <footer className="border-t border-brand-deep/5 px-5 md:px-10 py-12 mt-8">
-      <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-5">
+      <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-4">
         <div>
           <Link href="/" className="flex items-center" aria-label="Mirdita — Startseite">
             <Image
@@ -30,11 +30,6 @@ export function SiteFooter() {
             { label: "Unterhaltsreinigung", href: "/unterhaltsreinigung" },
             { label: "Fensterreinigung", href: "/fensterreinigung" },
             { label: "Teppichreinigung", href: "/teppichreinigung" },
-          ]}
-        />
-        <FooterCol
-          title="Mehr Leistungen"
-          links={[
             { label: "Büroreinigung", href: "/bueroreinigung" },
             { label: "Praxisreinigung", href: "/praxisreinigung" },
             { label: "Baureinigung", href: "/baureinigung" },
