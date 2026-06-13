@@ -1,12 +1,14 @@
 import { Building2, Home as HomeIcon, Sparkles } from "lucide-react";
 
 export const LOGO = "/mirdita-logo.svg";
-export const PHOTO_HERO = "/hero.jpeg";
+export const PHOTO_HERO = "/hero.jpg";
 export const PHOTO_DETAIL = "/detail-kueche.svg";
 export const PHOTO_TEAM = "/team-reinigung.svg";
 export const PHOTO_PRIVAT = "/Privatkunden.jpeg";
 export const PHOTO_SPEZIAL = "/spezialreinigung.jpg";
 export const PHOTO_FENSTER = "/hero-fenster.svg";
+export const PHOTO_PUTZEN = "/putzen.jpg";
+export const PHOTO_BUERO = "/buero.jpg";
 
 export const NAV = [
   { href: "/#leistungen", label: "Leistungen" },
@@ -27,6 +29,7 @@ export const SERVICES: Record<
     items: string[];
     image: string;
     imageAlt: string;
+    imagePosition?: string;
   }
 > = {
   privat: {
@@ -42,8 +45,9 @@ export const SERVICES: Record<
       "Fenster, Storen & Rollläden",
       "Teppich- & Polsterpflege",
     ],
-    image: PHOTO_DETAIL,
+    image: PHOTO_PRIVAT,
     imageAlt: "Mirdita Mitarbeiter reinigt eine Küchenarbeitsplatte",
+    imagePosition: "object-bottom",
   },
   firmen: {
     label: "Firmen & Gewerbe",
@@ -58,7 +62,7 @@ export const SERVICES: Record<
       "Baureinigung & Bauendreinigung",
       "Regelmässige Wartungsabos",
     ],
-    image: PHOTO_TEAM,
+    image: PHOTO_BUERO,
     imageAlt: "Mirdita Mitarbeiterin bei der Reinigung einer Küchenfront",
   },
   spezial: {
@@ -74,7 +78,7 @@ export const SERVICES: Record<
       "Steinboden- & Parkettpflege",
       "Wasser- & Brandschadenreinigung",
     ],
-    image: PHOTO_HERO,
+    image: PHOTO_SPEZIAL,
     imageAlt: "Mirdita Mitarbeiter reinigt eine grosse Glasfront",
   },
 };
@@ -90,7 +94,7 @@ export const LOCAL_BUSINESS_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Mirdita Reinigung Berisha",
-  image: "https://mirdita.ch/hero.jpeg",
+  image: "https://mirdita.ch/hero.jpg",
   url: "https://mirdita.ch",
   telephone: "+41762027984",
   email: "info@mirdita.ch",
