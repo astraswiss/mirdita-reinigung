@@ -5,6 +5,7 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { CtaBanner } from "@/components/cta-banner";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
+import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_PUTZEN } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
@@ -100,7 +101,7 @@ export default async function Page() {
       {/* Was ist enthalten */}
       <section className="px-5 md:px-10 py-20">
         <div id="leistungen" className="max-w-7xl mx-auto scroll-mt-20">
-          <div className="rounded-[28px] bg-white border border-brand-deep/5 p-8 md:p-12">
+          <Reveal className="rounded-[28px] bg-white border border-brand-deep/5 p-8 md:p-12">
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
               Was ist enthalten
             </span>
@@ -122,7 +123,7 @@ export default async function Page() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </div>
       </section>
 

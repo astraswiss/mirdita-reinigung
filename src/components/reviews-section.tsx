@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { Star } from "lucide-react";
 
+import { Reveal } from "@/components/reveal";
 import type { GoogleReview, GoogleReviewsData } from "@/lib/google-reviews";
 
 function GoogleLogo({ className = "" }: { className?: string }) {
@@ -140,7 +141,7 @@ export function ReviewsSection({ googleReviews }: { googleReviews: GoogleReviews
   return (
     <section className="px-5 md:px-10 py-20">
       <div id="bewertungen" className="max-w-7xl mx-auto scroll-mt-20">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
               Bewertungen
@@ -168,7 +169,7 @@ export function ReviewsSection({ googleReviews }: { googleReviews: GoogleReviews
               </a>
             </div>
           </div>
-        </div>
+        </Reveal>
         <ReviewsMarquee reviews={reviews} />
       </div>
     </section>

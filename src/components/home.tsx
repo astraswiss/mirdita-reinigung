@@ -15,6 +15,7 @@ import {
 
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
+import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_HERO, PHOTO_PUTZEN, SERVICES, type ServiceKey } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
@@ -132,7 +133,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
       {/* Services — Tabs */}
       <section className="px-5 md:px-10 py-20">
         <div id="leistungen" className="max-w-7xl mx-auto scroll-mt-20">
-          <div className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-10">
+          <Reveal className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-10">
             <div className="max-w-xl">
               <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
                 Leistungen
@@ -144,7 +145,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
             <p className="text-brand-deep/65 md:max-w-sm">
               Wählen Sie Ihren Bereich — wir zeigen Ihnen, was wir konkret übernehmen.
             </p>
-          </div>
+          </Reveal>
 
           {/* Tab nav */}
           <div className="flex flex-wrap gap-2 mb-6">
@@ -170,7 +171,10 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
           </div>
 
           {/* Panel */}
-          <div className="rounded-[28px] bg-white border border-brand-deep/5 overflow-hidden shadow-[0_20px_50px_-30px_rgba(0,21,63,0.2)]">
+          <Reveal
+            delay={100}
+            className="rounded-[28px] bg-white border border-brand-deep/5 overflow-hidden shadow-[0_20px_50px_-30px_rgba(0,21,63,0.2)]"
+          >
             <div className="grid lg:grid-cols-2 gap-0 lg:min-h-[600px]">
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <div className="inline-flex items-center gap-2 w-fit rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold">
@@ -206,7 +210,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
                 className="hidden lg:block min-h-[320px] lg:min-h-full aspect-[16/10] lg:aspect-auto"
               />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -218,7 +222,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
           id="ueber-uns"
           className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center scroll-mt-20"
         >
-          <div className="lg:col-span-7">
+          <Reveal className="lg:col-span-7">
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
               Über uns
             </span>
@@ -232,8 +236,8 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
               Abnahmegarantie tragen wir das Risiko der Wohnungsübergabe. Wird etwas beanstandet,
               bessern wir kostenlos nach.
             </p>
-          </div>
-          <div className="lg:col-span-5 grid grid-cols-3 gap-3">
+          </Reveal>
+          <Reveal delay={120} className="lg:col-span-5 grid grid-cols-3 gap-3">
             {[
               { v: "10+", l: "Jahre Erfahrung" },
               { v: "500+", l: "Aufträge" },
@@ -247,7 +251,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
                 <div className="mt-1 text-xs text-brand-deep/60 leading-tight">{s.l}</div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -260,7 +264,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
           className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-6 lg:gap-8 scroll-mt-20"
         >
           {/* Form */}
-          <div className="lg:col-span-3 rounded-[28px] bg-white border border-brand-deep/5 p-8 md:p-10">
+          <Reveal className="lg:col-span-3 rounded-[28px] bg-white border border-brand-deep/5 p-8 md:p-10">
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
               Kontakt
             </span>
@@ -317,7 +321,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
                 <ArrowRight className="size-4" />
               </button>
             </form>
-          </div>
+          </Reveal>
 
           {/* Info card */}
           <aside className="lg:col-span-2 rounded-[28px] bg-brand-deep text-white p-8 md:p-10 flex flex-col">

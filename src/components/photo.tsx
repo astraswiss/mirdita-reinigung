@@ -13,7 +13,13 @@ export function Photo({
 }) {
   return (
     <div className={`relative overflow-hidden bg-brand-deep/5 ${className}`}>
-      <Image src={src} alt={alt} fill unoptimized className={`object-cover ${objectPosition}`} />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(min-width: 1024px) 50vw, 100vw"
+        className={`object-cover ${objectPosition}`}
+      />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
+import { Reveal } from "@/components/reveal";
 import { STEPS } from "@/components/site-config";
 
 export function ProcessSteps({
@@ -20,14 +21,18 @@ export function ProcessSteps({
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 relative">
           {STEPS.map((s, i) => (
-            <div key={s.n} className="relative rounded-2xl bg-white border border-brand-deep/5 p-6">
+            <Reveal
+              key={s.n}
+              delay={i * 80}
+              className="relative rounded-2xl bg-white border border-brand-deep/5 p-6"
+            >
               <div className="text-xs font-bold text-brand-bright tracking-widest">{s.n}</div>
               <h4 className="mt-2 font-semibold text-lg">{s.title}</h4>
               <p className="mt-2 text-sm text-brand-deep/60 leading-relaxed">{s.body}</p>
               {i < STEPS.length - 1 && (
                 <ArrowRight className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 size-5 text-brand-deep/20" />
               )}
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
