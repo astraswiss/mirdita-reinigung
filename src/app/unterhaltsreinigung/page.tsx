@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 
 import { CtaBanner } from "@/components/cta-banner";
+import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
@@ -126,6 +127,8 @@ export default async function Page() {
       <ProcessSteps title="In vier Schritten zum frischen Zuhause" />
 
       <ReviewsSection googleReviews={googleReviews} />
+
+      <EinsatzgebietSection />
 
       <CtaBanner
         title="Frischer Start, jede Saison."
