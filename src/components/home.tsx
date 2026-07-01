@@ -258,18 +258,18 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
       {/* Einsatzgebiet */}
       <section className="px-5 md:px-10 py-16">
         <div className="max-w-7xl mx-auto">
-          <Reveal className="text-center mb-10">
+          <Reveal className="mb-10 md:text-center">
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
               Einsatzgebiet
             </span>
             <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-              Im ganzen Wallis für Sie da
+              Im ganzen Wallis <span className="whitespace-nowrap">für Sie da</span>
             </h2>
-            <p className="mt-4 text-brand-deep/65 max-w-xl mx-auto">
+            <p className="mt-4 text-brand-deep/65 max-w-xl md:mx-auto">
               Von Brig bis Martigny — wir reinigen im ganzen Wallis, Ober- und Unterwallis.
             </p>
           </Reveal>
-          <Reveal delay={100} className="flex flex-wrap justify-center gap-3">
+          <Reveal delay={100} className="flex flex-wrap justify-start md:justify-center gap-3">
             {[
               "Brig-Glis",
               "Naters",

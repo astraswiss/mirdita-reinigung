@@ -13,7 +13,7 @@ export function ProcessSteps({
   return (
     <section className="px-5 md:px-10 py-20">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-xl mx-auto mb-12">
+        <div className="max-w-xl mb-12 md:text-center md:mx-auto">
           <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
             {eyebrow}
           </span>
