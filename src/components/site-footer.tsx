@@ -10,6 +10,12 @@ const FOOTER_DE = {
   servicesTitle: "Leistungen",
   contactTitle: "Kontakt",
   legalTitle: "Rechtliches",
+  regionsTitle: "Regionen",
+  regions: [
+    { label: "Reinigung Naters", href: "/reinigung-naters" },
+    { label: "Reinigung Brig-Glis", href: "/reinigung-brig-glis" },
+    { label: "Reinigung Visp", href: "/reinigung-visp" },
+  ],
   services: [
     { label: "Umzugsreinigung", href: "/umzugsreinigung" },
     { label: "Wohnungsreinigung", href: "/wohnungsreinigung" },
@@ -36,6 +42,8 @@ const FOOTER_FR = {
   servicesTitle: "Services",
   contactTitle: "Contact",
   legalTitle: "Informations légales",
+  regionsTitle: "Régions",
+  regions: [{ label: "Nettoyage à Sion", href: "/fr/nettoyage-sion" }],
   services: [
     { label: "Nettoyage fin de bail", href: "/fr/nettoyage-fin-de-bail-valais" },
     { label: "Nettoyage d’appartement", href: "/fr/nettoyage-appartement-valais" },
@@ -61,7 +69,7 @@ export function SiteFooter({ lang = "de" }: { lang?: "de" | "fr" }) {
 
   return (
     <footer className="border-t border-brand-deep/5 px-5 md:px-10 py-12 mt-8">
-      <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-5">
+      <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-6">
         <div>
           <Link href={t.home} className="flex items-center" aria-label={t.homeAria}>
             <Image
@@ -81,6 +89,7 @@ export function SiteFooter({ lang = "de" }: { lang?: "de" | "fr" }) {
           columns={2}
           links={t.services}
         />
+        <FooterCol title={t.regionsTitle} links={t.regions} />
         <FooterCol
           title={t.contactTitle}
           links={[
