@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
 import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { FrContact } from "@/components/fr/fr-contact";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
+import { FrServicesTabs } from "@/components/fr/fr-services-tabs";
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
@@ -27,39 +27,6 @@ export const metadata: Metadata = {
     images: [{ url: "/hero.jpg", width: 1200, height: 844 }],
   },
 };
-
-const SERVICES = [
-  {
-    href: "/fr/nettoyage-fin-de-bail-valais",
-    label: "Nettoyage fin de bail",
-    desc: "Nettoyage complet avant la remise des clés, avec garantie de remise.",
-  },
-  {
-    href: "/fr/nettoyage-appartement-valais",
-    label: "Nettoyage d’appartement",
-    desc: "Nettoyage d’appartements et de maisons, ponctuel ou régulier.",
-  },
-  {
-    href: "/fr/nettoyage-bureaux-valais",
-    label: "Nettoyage de bureaux",
-    desc: "Entretien discret et régulier de vos bureaux et locaux commerciaux.",
-  },
-  {
-    href: "/fr/nettoyage-fin-de-chantier-valais",
-    label: "Nettoyage fin de chantier",
-    desc: "Nettoyage après travaux avant la remise ou l’utilisation des locaux.",
-  },
-  {
-    href: "/fr/conciergerie-valais",
-    label: "Conciergerie d’immeubles",
-    desc: "Entretien régulier des parties communes pour PPE et régies.",
-  },
-  {
-    href: "/fr/nettoyage-vitres-valais",
-    label: "Nettoyage de vitres",
-    desc: "Vitres, fenêtres et surfaces vitrées, à l’intérieur comme à l’extérieur.",
-  },
-];
 
 export default async function Page() {
   const googleReviews = await getGoogleReviews();
@@ -121,39 +88,7 @@ export default async function Page() {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="px-5 md:px-10 py-20">
-        <div id="leistungen" className="max-w-7xl mx-auto scroll-mt-20">
-          <Reveal className="max-w-xl mb-10">
-            <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
-              Services
-            </span>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-              Nos prestations de nettoyage
-            </h2>
-            <p className="mt-4 text-brand-deep/65">
-              Pour les particuliers comme pour les entreprises, les régies et les PPE — choisissez
-              le service adapté à votre besoin.
-            </p>
-          </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {SERVICES.map((s, i) => (
-              <Reveal key={s.href} delay={i * 70}>
-                <Link
-                  href={s.href}
-                  className="group flex h-full flex-col rounded-2xl bg-white border border-brand-deep/5 p-6 hover:border-brand-bright/40 transition-colors"
-                >
-                  <h3 className="font-semibold text-lg flex items-center gap-2">
-                    {s.label}
-                    <ArrowRight className="size-4 text-brand-bright opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                  </h3>
-                  <p className="mt-2 text-sm text-brand-deep/60 leading-relaxed">{s.desc}</p>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FrServicesTabs />
 
       <FrProcessSteps />
 
