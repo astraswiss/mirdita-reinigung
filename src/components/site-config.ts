@@ -88,6 +88,22 @@ export const STEPS = [
   { n: "04", title: "Abnahme", body: "Garantierte Übergabe — wir bleiben bis alles stimmt." },
 ];
 
+export const AREA_SERVED = [
+  "Kanton Wallis",
+  "Canton du Valais",
+  "Naters",
+  "Brig-Glis",
+  "Visp",
+  "Sion",
+  "Sierre",
+  "Martigny",
+  "Monthey",
+  "Crans-Montana",
+  "Zermatt",
+  "Saas-Fee",
+  "Verbier",
+];
+
 export const LOCAL_BUSINESS_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -104,5 +120,41 @@ export const LOCAL_BUSINESS_JSON_LD = {
     addressRegion: "Wallis",
     addressCountry: "CH",
   },
-  areaServed: "Wallis",
+  areaServed: AREA_SERVED,
 };
+
+/**
+ * Maps every German route to its French (/fr) equivalent. Single source of
+ * truth for the header language switcher, per-page hreflang alternates and the
+ * sitemap. Keep the German homepage first so lookups on unmapped routes can
+ * safely fall back to the pair at index 0.
+ */
+export const ROUTE_ALTERNATES: { de: string; fr: string }[] = [
+  { de: "/", fr: "/fr" },
+  { de: "/umzugsreinigung", fr: "/fr/nettoyage-fin-de-bail-valais" },
+  { de: "/wohnungsreinigung", fr: "/fr/nettoyage-appartement-valais" },
+  { de: "/unterhaltsreinigung", fr: "/fr/nettoyage-regulier-valais" },
+  { de: "/fensterreinigung", fr: "/fr/nettoyage-vitres-valais" },
+  { de: "/teppichreinigung", fr: "/fr/nettoyage-tapis-valais" },
+  { de: "/bueroreinigung", fr: "/fr/nettoyage-bureaux-valais" },
+  { de: "/praxisreinigung", fr: "/fr/nettoyage-cabinets-medicaux-valais" },
+  { de: "/baureinigung", fr: "/fr/nettoyage-fin-de-chantier-valais" },
+  { de: "/hauswartung", fr: "/fr/conciergerie-valais" },
+  { de: "/grundreinigung", fr: "/fr/nettoyage-en-profondeur-valais" },
+];
+
+/** hreflang alternates for a page, given either its DE or FR path. */
+export function alternatesFor(path: string): {
+  canonical: string;
+  languages: Record<string, string>;
+} {
+  const pair = ROUTE_ALTERNATES.find((p) => p.de === path || p.fr === path) ?? ROUTE_ALTERNATES[0];
+  return {
+    canonical: path,
+    languages: {
+      "de-CH": pair.de,
+      "fr-CH": pair.fr,
+      "x-default": pair.de,
+    },
+  };
+}

@@ -8,7 +8,7 @@ import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
-import { PHOTO_PUTZEN } from "@/components/site-config";
+import { PHOTO_PUTZEN, alternatesFor } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getGoogleReviews } from "@/lib/google-reviews";
@@ -17,9 +17,7 @@ export const metadata: Metadata = {
   title: "Grundreinigung im Wallis | Mirdita",
   description:
     "Grundreinigung im Wallis für Renovationen, Verkauf oder lange ungenutzte Räume: Fassaden, Böden und hartnäckige Verschmutzungen gründlich entfernt.",
-  alternates: {
-    canonical: "/grundreinigung",
-  },
+  alternates: alternatesFor("/grundreinigung"),
   openGraph: {
     title: "Grundreinigung im Wallis",
     description:

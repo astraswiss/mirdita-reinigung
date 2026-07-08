@@ -8,7 +8,7 @@ import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
-import { PHOTO_HERO } from "@/components/site-config";
+import { PHOTO_HERO, alternatesFor } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getGoogleReviews } from "@/lib/google-reviews";
@@ -17,9 +17,7 @@ export const metadata: Metadata = {
   title: "Hauswartung & Liegenschaftsunterhalt im Wallis | Mirdita",
   description:
     "Hauswartung im Wallis für Verwaltungen und Eigentümerschaften: Treppenhaus, Eingänge, Tiefgaragen und Umgebung im festen Reinigungsabo.",
-  alternates: {
-    canonical: "/hauswartung",
-  },
+  alternates: alternatesFor("/hauswartung"),
   openGraph: {
     title: "Hauswartung & Liegenschaftsunterhalt im Wallis",
     description: "Wir übernehmen die laufende Reinigung Ihrer Liegenschaft nach einem fixen Plan.",

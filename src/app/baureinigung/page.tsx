@@ -8,7 +8,7 @@ import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
-import { PHOTO_SPEZIAL } from "@/components/site-config";
+import { PHOTO_SPEZIAL, alternatesFor } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getGoogleReviews } from "@/lib/google-reviews";
@@ -17,9 +17,7 @@ export const metadata: Metadata = {
   title: "Baureinigung & Bauendreinigung im Wallis | Mirdita",
   description:
     "Bauendreinigung im Wallis: termingerecht bezugsfertig — von der Grobreinigung bis zur Feinreinigung für Bauherrschaft, Architekten und Verwaltungen.",
-  alternates: {
-    canonical: "/baureinigung",
-  },
+  alternates: alternatesFor("/baureinigung"),
   openGraph: {
     title: "Baureinigung & Bauendreinigung im Wallis",
     description:

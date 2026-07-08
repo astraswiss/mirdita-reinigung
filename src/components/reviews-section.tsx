@@ -124,7 +124,17 @@ function ReviewsMarquee({ reviews }: { reviews: GoogleReview[] }) {
   );
 }
 
-export function ReviewsSection({ googleReviews }: { googleReviews: GoogleReviewsData }) {
+export function ReviewsSection({
+  googleReviews,
+  eyebrow = "Bewertungen",
+  title = "Was unsere Kund:innen sagen",
+  reviewsLabel = "Bewertungen",
+}: {
+  googleReviews: GoogleReviewsData;
+  eyebrow?: string;
+  title?: string;
+  reviewsLabel?: string;
+}) {
   const [reviews, setReviews] = useState(googleReviews.reviews);
 
   useEffect(() => {
@@ -144,11 +154,9 @@ export function ReviewsSection({ googleReviews }: { googleReviews: GoogleReviews
         <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
-              Bewertungen
+              {eyebrow}
             </span>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-              Was unsere Kund:innen sagen
-            </h2>
+            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">{title}</h2>
           </div>
           <div className="flex items-center gap-3">
             <div className="text-4xl font-bold">{googleReviews.rating.toFixed(1)}</div>
@@ -165,7 +173,7 @@ export function ReviewsSection({ googleReviews }: { googleReviews: GoogleReviews
                 className="mt-0.5 flex items-center gap-1.5 text-xs text-brand-deep/60 hover:text-brand-bright transition-colors"
               >
                 <GoogleLogo className="size-3.5" />
-                {googleReviews.total} Bewertungen
+                {googleReviews.total} {reviewsLabel}
               </a>
             </div>
           </div>
