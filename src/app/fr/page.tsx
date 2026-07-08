@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 
 import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { FrContact } from "@/components/fr/fr-contact";
-import { FrCtaRow } from "@/components/fr/fr-cta-row";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
@@ -62,13 +61,6 @@ const SERVICES = [
   },
 ];
 
-const USP = [
-  "Devis gratuit et réponse rapide",
-  "Travail propre, fiable et soigné",
-  "Nettoyage fin de bail avec garantie de remise",
-  "Intervention dans tout le Valais, depuis Naters",
-];
-
 export default async function Page() {
   const googleReviews = await getGoogleReviews();
 
@@ -95,7 +87,21 @@ export default async function Page() {
               travaillons proprement, avec fiabilité et soin.
             </p>
 
-            <FrCtaRow />
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#kontakt"
+                className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
+              >
+                Demander un devis
+                <ArrowRight className="size-4" />
+              </a>
+              <a
+                href="#leistungen"
+                className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
+              >
+                Voir les services
+              </a>
+            </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-brand-deep/70">
               <div className="flex items-center gap-2">
@@ -112,24 +118,6 @@ export default async function Page() {
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
             />
           </div>
-        </div>
-      </section>
-
-      {/* USP band */}
-      <section className="px-5 md:px-10 pb-4">
-        <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {USP.map((u, i) => (
-            <Reveal
-              key={u}
-              delay={i * 70}
-              className="flex items-start gap-3 rounded-2xl bg-white border border-brand-deep/5 p-5 text-sm"
-            >
-              <span className="size-5 rounded-full bg-brand-bright/15 text-brand-bright grid place-items-center shrink-0 mt-0.5">
-                <Check className="size-3" strokeWidth={3} />
-              </span>
-              <span className="text-brand-deep/85">{u}</span>
-            </Reveal>
-          ))}
         </div>
       </section>
 

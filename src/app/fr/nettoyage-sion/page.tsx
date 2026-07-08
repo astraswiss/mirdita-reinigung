@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
 
 import { CitySchema } from "@/components/city-schema";
+import { CtaBanner } from "@/components/cta-banner";
 import { FrAreaSection } from "@/components/fr/fr-area-section";
-import { FrContact } from "@/components/fr/fr-contact";
-import { FrCtaBanner } from "@/components/fr/fr-cta-banner";
-import { FrHero } from "@/components/fr/fr-hero";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
 import { FrRelated } from "@/components/fr/fr-related";
-import { Reveal } from "@/components/reveal";
+import { Photo } from "@/components/photo";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_PUTZEN } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
@@ -46,44 +45,47 @@ export default async function Page() {
       />
       <SiteHeader />
 
-      <FrHero
-        badge="Nettoyage dans la région de Sion"
-        title={
-          <>
-            Entreprise de nettoyage à <span className="text-brand-bright">Sion</span>.
-          </>
-        }
-        intro={
-          <>
-            Mirdita Reinigung intervient dans la région de Sion et dans tout le Valais central.
-            Notre spécialité : le nettoyage de fin de bail avec garantie de remise, pour que la
-            remise des clés se passe sans stress. Nous nettoyons aussi appartements, bureaux et
-            immeubles — pour les particuliers, les régies et les entreprises.
-          </>
-        }
-        image={PHOTO_PUTZEN}
-        imageAlt="Nettoyage réalisé par Mirdita Reinigung dans la région de Sion"
-        imagePosition="object-left"
-        trust="Garantie de remise incluse"
-      />
-
-      <section className="px-5 md:px-10 pb-4">
-        <div className="max-w-7xl mx-auto">
-          <Reveal className="rounded-[28px] bg-brand-deep text-white p-8 md:p-12">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight max-w-3xl">
-              Basés à Naters, actifs dans la région de Sion
-            </h2>
-            <p className="mt-4 text-white/75 leading-relaxed max-w-3xl">
-              Notre entreprise est basée à Naters, dans le Haut-Valais, et nous nous déplaçons dans
-              tout le canton — Sion, Sierre, Martigny et le Valais central compris. Vous pouvez nous
-              envoyer des photos de votre logement par WhatsApp pour recevoir un devis rapide, sans
-              engagement.
+      <section className="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="lg:col-span-7">
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold tracking-wide">
+              <MapPin className="size-3.5" />
+              Nettoyage dans la région de Sion
+            </span>
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-balance">
+              Entreprise de nettoyage à <span className="text-brand-bright">Sion</span>.
+            </h1>
+            <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">
+              Mirdita Reinigung intervient dans la région de Sion et dans tout le Valais central.
+              Notre spécialité : le nettoyage de fin de bail avec garantie de remise, pour que la
+              remise des clés se passe sans stress. Nous nettoyons aussi appartements, bureaux et
+              immeubles — pour les particuliers, les régies et les entreprises.
             </p>
-            <div className="mt-6 flex items-center gap-2 text-sm text-white/80">
-              <ShieldCheck className="size-4 text-brand-bright" />
-              Devis gratuit · Réponse sous 24 h · Garantie de remise
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/fr#kontakt"
+                className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
+              >
+                Demander un devis
+                <ArrowRight className="size-4" />
+              </Link>
+              <a
+                href="tel:+41762027984"
+                className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
+              >
+                <Phone className="size-4" />
+                Appeler maintenant
+              </a>
             </div>
-          </Reveal>
+          </div>
+          <div className="lg:col-span-5">
+            <Photo
+              src={PHOTO_PUTZEN}
+              alt="Nettoyage réalisé par Mirdita Reinigung dans la région de Sion"
+              className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
+              objectPosition="object-left"
+            />
+          </div>
         </div>
       </section>
 
@@ -134,11 +136,11 @@ export default async function Page() {
 
       <FrAreaSection />
 
-      <FrContact defaultType="Nettoyage fin de bail" />
-
-      <FrCtaBanner
+      <CtaBanner
         title="Un devis pour un nettoyage à Sion ?"
         body="Décrivez-nous votre besoin ou envoyez des photos par WhatsApp — nous vous répondons sous 24 heures avec une offre claire."
+        ctaLabel="Demander un devis"
+        ctaHref="/fr#kontakt"
       />
 
       <SiteFooter lang="fr" />
