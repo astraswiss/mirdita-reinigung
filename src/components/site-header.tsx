@@ -98,6 +98,12 @@ export function SiteHeader() {
   );
 }
 
+// Persist an explicit language choice so the homepage auto-redirect never
+// overrides it (and never bounces the user back after they switch).
+function rememberLang(lang: "de" | "fr") {
+  document.cookie = `mirdita_lang=${lang}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+}
+
 function LangSwitch({ deHref, frHref, isFr }: { deHref: string; frHref: string; isFr: boolean }) {
   const base = "px-2 py-1 rounded-full text-xs font-semibold transition-colors";
   return (
@@ -107,6 +113,7 @@ function LangSwitch({ deHref, frHref, isFr }: { deHref: string; frHref: string; 
         hrefLang="de"
         aria-label="Deutsche Version"
         aria-current={!isFr ? "true" : undefined}
+        onClick={() => rememberLang("de")}
         className={`${base} ${!isFr ? "bg-brand-deep text-white" : "text-brand-deep/60 hover:text-brand-deep"}`}
       >
         DE
@@ -116,6 +123,7 @@ function LangSwitch({ deHref, frHref, isFr }: { deHref: string; frHref: string; 
         hrefLang="fr"
         aria-label="Version française"
         aria-current={isFr ? "true" : undefined}
+        onClick={() => rememberLang("fr")}
         className={`${base} ${isFr ? "bg-brand-deep text-white" : "text-brand-deep/60 hover:text-brand-deep"}`}
       >
         FR
