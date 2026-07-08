@@ -8,7 +8,7 @@ import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
-import { PHOTO_PUTZEN } from "@/components/site-config";
+import { PHOTO_PUTZEN, alternatesFor } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getGoogleReviews } from "@/lib/google-reviews";
@@ -17,9 +17,7 @@ export const metadata: Metadata = {
   title: "Umzugsreinigung mit Abnahmegarantie im Wallis | Mirdita",
   description:
     "Professionelle Umzugsreinigung im Wallis mit Abnahmegarantie: Küche, Bad, Böden und Fenster bezugsfertig — bei Beanstandung bessern wir kostenlos nach.",
-  alternates: {
-    canonical: "/umzugsreinigung",
-  },
+  alternates: alternatesFor("/umzugsreinigung"),
   openGraph: {
     title: "Umzugsreinigung mit Abnahmegarantie im Wallis",
     description:

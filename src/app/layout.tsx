@@ -16,12 +16,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mirdita.ch"),
-  title: "Mirdita Reinigungen — Glanz & Sauberkeit im Wallis",
+  title: "Mirdita Reinigung — Glanz & Sauberkeit im Wallis",
   description:
-    "Mirdita Reinigungen: Umzugs-, Wohnungs- und Büroreinigungen im Wallis. Schnell, gründlich und mit Abnahmegarantie.",
-  authors: [{ name: "Mirdita Reinigungen" }],
+    "Mirdita Reinigung: Umzugs-, Wohnungs- und Büroreinigungen im Wallis. Schnell, gründlich und mit Abnahmegarantie.",
+  authors: [{ name: "Mirdita Reinigung" }],
   openGraph: {
-    title: "Mirdita Reinigungen — Sauberkeit im Wallis",
+    title: "Mirdita Reinigung — Sauberkeit im Wallis",
     description: "Professionelle Reinigungen im Wallis — mit Abnahmegarantie.",
     type: "website",
     images: [{ url: "/hero.jpg", width: 1200, height: 844 }],

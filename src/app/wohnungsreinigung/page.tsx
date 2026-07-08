@@ -8,7 +8,7 @@ import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
-import { PHOTO_PRIVAT } from "@/components/site-config";
+import { PHOTO_PRIVAT, alternatesFor } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getGoogleReviews } from "@/lib/google-reviews";
@@ -17,9 +17,7 @@ export const metadata: Metadata = {
   title: "Wohnungs- & Hausreinigung im Wallis | Mirdita",
   description:
     "Regelmässige oder einmalige Wohnungs- und Hausreinigung im Wallis — gründlich, zuverlässig und nach Ihrem Rhythmus.",
-  alternates: {
-    canonical: "/wohnungsreinigung",
-  },
+  alternates: alternatesFor("/wohnungsreinigung"),
   openGraph: {
     title: "Wohnungs- & Hausreinigung im Wallis",
     description:

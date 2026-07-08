@@ -8,7 +8,7 @@ import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
-import { PHOTO_BUERO } from "@/components/site-config";
+import { PHOTO_BUERO, alternatesFor } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getGoogleReviews } from "@/lib/google-reviews";
@@ -17,9 +17,7 @@ export const metadata: Metadata = {
   title: "Praxis- & Wartezimmerreinigung im Wallis | Mirdita",
   description:
     "Hygienische Praxisreinigung im Wallis: Behandlungsräume, Wartezimmer und Sanitäranlagen inkl. Desinfektion — flexibel ausserhalb der Sprechstunden.",
-  alternates: {
-    canonical: "/praxisreinigung",
-  },
+  alternates: alternatesFor("/praxisreinigung"),
   openGraph: {
     title: "Praxis- & Wartezimmerreinigung im Wallis",
     description:
