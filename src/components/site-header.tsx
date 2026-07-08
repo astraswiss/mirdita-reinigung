@@ -38,7 +38,7 @@ export function SiteHeader() {
         >
           <Image
             src={LOGO}
-            alt="Mirdita Reinigungsdienste"
+            alt="Mirdita Reinigung"
             width={459}
             height={91}
             unoptimized

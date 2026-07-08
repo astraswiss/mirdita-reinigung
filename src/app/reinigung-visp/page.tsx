@@ -7,6 +7,7 @@ import { CtaBanner } from "@/components/cta-banner";
 import { DeServiceLinks } from "@/components/de/de-service-links";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
+import { ProseSection } from "@/components/prose-section";
 import { ProcessSteps } from "@/components/process-steps";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_PUTZEN } from "@/components/site-config";
@@ -86,6 +87,15 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
+      <ProseSection
+        eyebrow="Im Herzen des Oberwallis"
+        title="Reinigung in Visp und Umgebung"
+        paragraphs={[
+          "Visp ist der wirtschaftliche Knotenpunkt des Oberwallis und Umsteigeort Richtung Zermatt und Saas-Fee. Von Naters aus sind wir schnell vor Ort — für Privathaushalte ebenso wie für die vielen Betriebe rund um Bahnhof und Industrie.",
+          "Wir reinigen Wohnungen und Häuser bei Umzügen mit Abnahmegarantie, pflegen Büros und Praxen im Unterhalt und übernehmen die Bauendreinigung nach Um- und Neubauten. So sind Ihre Räume termingerecht und bezugsfertig übergeben.",
+        ]}
+      />
 
       <DeServiceLinks title="Was wir in Visp für Sie reinigen" />
 

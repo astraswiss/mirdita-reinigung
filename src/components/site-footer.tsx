@@ -74,7 +74,7 @@ export function SiteFooter({ lang = "de" }: { lang?: "de" | "fr" }) {
           <Link href={t.home} className="flex items-center" aria-label={t.homeAria}>
             <Image
               src={LOGO}
-              alt="Mirdita Reinigungsdienste"
+              alt="Mirdita Reinigung"
               width={459}
               height={91}
               unoptimized

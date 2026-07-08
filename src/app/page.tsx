@@ -5,12 +5,12 @@ import { alternatesFor } from "@/components/site-config";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 export const metadata: Metadata = {
-  title: "Mirdita Reinigungen — Glanz & Sauberkeit im Wallis",
+  title: "Mirdita Reinigung — Glanz & Sauberkeit im Wallis",
   description:
-    "Mirdita Reinigungen: Umzugs-, Wohnungs- und Büroreinigungen im Wallis. Schnell, gründlich und mit Abnahmegarantie.",
+    "Mirdita Reinigung: Umzugs-, Wohnungs- und Büroreinigungen im Wallis. Schnell, gründlich und mit Abnahmegarantie.",
   alternates: alternatesFor("/"),
   openGraph: {
-    title: "Mirdita Reinigungen — Sauberkeit im Wallis",
+    title: "Mirdita Reinigung — Sauberkeit im Wallis",
     description: "Professionelle Reinigungen im Wallis — mit Abnahmegarantie.",
     url: "/",
   },

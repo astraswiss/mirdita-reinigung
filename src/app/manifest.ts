@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Mirdita Reinigung Berisha",
     short_name: "Mirdita",
     description:
-      "Mirdita Reinigungen: Umzugs-, Wohnungs- und Büroreinigungen im Wallis. Schnell, gründlich und mit Abnahmegarantie.",
+      "Mirdita Reinigung: Umzugs-, Wohnungs- und Büroreinigungen im Wallis. Schnell, gründlich und mit Abnahmegarantie.",
     start_url: "/",
     display: "standalone",
     background_color: "#f9f9f9",

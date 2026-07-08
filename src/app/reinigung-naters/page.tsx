@@ -7,6 +7,7 @@ import { CtaBanner } from "@/components/cta-banner";
 import { DeServiceLinks } from "@/components/de/de-service-links";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
+import { ProseSection } from "@/components/prose-section";
 import { ProcessSteps } from "@/components/process-steps";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_HERO } from "@/components/site-config";
@@ -84,6 +85,15 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
+      <ProseSection
+        eyebrow="Lokal verankert"
+        title="Ihre Reinigungsfirma direkt in Naters"
+        paragraphs={[
+          "Unser Team ist in Naters zu Hause. Von unserem Standort an der Belalpstrasse aus sind wir in wenigen Minuten bei Ihnen — ob im Dorfkern, in den Wohnquartieren oberhalb des Dorfes oder Richtung Blatten und Belalp. Diese Nähe bedeutet für Sie kurze Reaktionszeiten und flexible Termine, auch kurzfristig.",
+          "Gerade bei Umzugsreinigungen in Naters ist das ein Vorteil: Wir kennen die Ansprüche der lokalen Verwaltungen und Vermieter bei der Wohnungsübergabe und reinigen so gründlich, dass die Abnahme reibungslos verläuft. Für Privathaushalte, Eigentümer und Betriebe im Dorf sind wir Ihr fester Ansprechpartner.",
+        ]}
+      />
 
       <DeServiceLinks title="Was wir in Naters für Sie reinigen" />
 

@@ -8,6 +8,7 @@ import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
 import { FrRelated } from "@/components/fr/fr-related";
 import { Photo } from "@/components/photo";
+import { ProseSection } from "@/components/prose-section";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_PUTZEN } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
@@ -88,6 +89,15 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
+      <ProseSection
+        eyebrow="Au cœur du Valais central"
+        title="Nettoyage à Sion et dans le Valais central"
+        paragraphs={[
+          "Sion, capitale du Valais, est au cœur de la région francophone du canton. Depuis notre base à Naters, dans le Haut-Valais, nous nous déplaçons régulièrement dans le Valais central pour les nettoyages de fin de bail, l’entretien d’appartements et le nettoyage de bureaux.",
+          "Que vous soyez un particulier qui rend son appartement, une régie qui prépare un état des lieux ou une entreprise à la recherche d’un entretien régulier, nous adaptons notre intervention à votre besoin. Vous pouvez nous envoyer des photos par WhatsApp pour recevoir un devis rapide, sans engagement.",
+        ]}
+      />
 
       <FrRelated
         title="Nos services dans la région de Sion"

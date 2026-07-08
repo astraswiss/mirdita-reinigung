@@ -7,6 +7,7 @@ import { CtaBanner } from "@/components/cta-banner";
 import { DeServiceLinks } from "@/components/de/de-service-links";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
+import { ProseSection } from "@/components/prose-section";
 import { ProcessSteps } from "@/components/process-steps";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_BUERO } from "@/components/site-config";
@@ -86,6 +87,15 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
+      <ProseSection
+        eyebrow="Schnell vor Ort"
+        title="Reinigung in Brig-Glis aus dem Nachbardorf"
+        paragraphs={[
+          "Brig-Glis erreichen wir von Naters aus in wenigen Minuten. Ob Wohnung in Brig, Geschäftslokal in Glis oder Liegenschaft in Gamsen — wir sind rasch vor Ort und planen Termine flexibel, ohne lange Anfahrtswege.",
+          "Als regionaler Verkehrs- und Einkaufsort hat Brig-Glis viele Mietwohnungen, Büros und Ladenlokale. Wir übernehmen die Umzugsreinigung mit Abnahmegarantie ebenso wie die regelmässige Unterhaltsreinigung von Praxen, Kanzleien und Geschäftsräumen — auf Wunsch diskret ausserhalb Ihrer Öffnungszeiten.",
+        ]}
+      />
 
       <DeServiceLinks title="Was wir in Brig-Glis für Sie reinigen" />
 

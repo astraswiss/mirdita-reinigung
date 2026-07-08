@@ -4,6 +4,10 @@ import { ROUTE_ALTERNATES } from "@/components/site-config";
 
 const BASE_URL = "https://mirdita.ch";
 
+// Stable content date. Bump this when pages meaningfully change, so a plain
+// redeploy does not tell search engines every URL was modified.
+const LAST_MODIFIED = new Date("2026-07-08");
+
 // City landing pages. Standalone (no translated counterpart), so no hreflang
 // alternates — a self-referencing canonical is enough.
 const CITY_ROUTES = [
@@ -16,7 +20,7 @@ const CITY_ROUTES = [
 const LEGAL_ROUTES = ["/impressum", "/datenschutz", "/agb"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const now = LAST_MODIFIED;
 
   // Emit both the German and French URL of every mapped route, each pointing to
   // its counterpart via hreflang alternates.
