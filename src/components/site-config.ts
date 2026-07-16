@@ -104,6 +104,16 @@ export const AREA_SERVED = [
   "Verbier",
 ];
 
+// Explicit site-name signal for Google's SERP "site name" feature, so it uses
+// "Mirdita Reinigung" instead of guessing (it had cached "Mirdita Reinigungen").
+export const WEBSITE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Mirdita Reinigung",
+  alternateName: "Mirdita Reinigung Berisha",
+  url: "https://mirdita.ch",
+};
+
 export const LOCAL_BUSINESS_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",

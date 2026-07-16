@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 
 import { Clarity } from "@/components/clarity";
 import { Toaster } from "@/components/toaster";
-import { LOCAL_BUSINESS_JSON_LD } from "@/components/site-config";
+import { LOCAL_BUSINESS_JSON_LD, WEBSITE_JSON_LD } from "@/components/site-config";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,8 +19,10 @@ export const metadata: Metadata = {
   title: "Mirdita Reinigung — Glanz & Sauberkeit im Wallis",
   description:
     "Mirdita Reinigung: Umzugs-, Wohnungs- und Büroreinigungen im Wallis. Schnell, gründlich und mit Abnahmegarantie.",
+  applicationName: "Mirdita Reinigung",
   authors: [{ name: "Mirdita Reinigung" }],
   openGraph: {
+    siteName: "Mirdita Reinigung",
     title: "Mirdita Reinigung — Sauberkeit im Wallis",
     description: "Professionelle Reinigungen im Wallis — mit Abnahmegarantie.",
     type: "website",
@@ -44,6 +46,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
         <SpeedInsights />
         <Clarity />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSON_LD) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_JSON_LD) }}
