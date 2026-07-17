@@ -3,7 +3,9 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
 
+import { AnalyticsEvents } from "@/components/analytics-events";
 import { Clarity } from "@/components/clarity";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { Toaster } from "@/components/toaster";
 import { LOCAL_BUSINESS_JSON_LD, WEBSITE_JSON_LD } from "@/components/site-config";
 import "./globals.css";
@@ -31,6 +33,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
   },
+  // Google Search Console ownership check via the HTML-tag method. Set
+  // GOOGLE_SITE_VERIFICATION to the token Search Console gives you; when unset
+  // the meta tag is simply omitted. (Alternatively, verify via the already
+  // installed Google Analytics tag — that needs no token.)
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export const viewport: Viewport = {
@@ -46,6 +55,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
         <SpeedInsights />
         <Clarity />
+        <GoogleAnalytics />
+        <AnalyticsEvents />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSON_LD) }}

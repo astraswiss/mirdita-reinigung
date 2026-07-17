@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
+import { trackEvent } from "@/lib/analytics";
 import { Reveal } from "@/components/reveal";
 
 const TYPES = [
@@ -47,6 +48,7 @@ export function FrContact({ defaultType }: { defaultType?: string }) {
       if (!res.ok) throw new Error("request_failed");
 
       form.reset();
+      trackEvent("generate_lead", { method: "contact_form" });
       toast.success("Demande envoyée", {
         description: "Merci — nous vous répondons dans les 24 heures.",
       });

@@ -13,6 +13,7 @@ import {
   Star,
 } from "lucide-react";
 
+import { trackEvent } from "@/lib/analytics";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
@@ -52,6 +53,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
       if (!res.ok) throw new Error("request_failed");
 
       form.reset();
+      trackEvent("generate_lead", { method: "contact_form" });
       toast.success("Anfrage gesendet", {
         description: "Danke — wir melden uns innert 24 Stunden bei Ihnen.",
       });
