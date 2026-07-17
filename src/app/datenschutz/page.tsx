@@ -44,10 +44,10 @@ export default function Page() {
             <section>
               <h2 className="text-lg font-bold">2. Welche Daten wir erheben</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
-                Beim Besuch unserer Website erheben wir mit Vercel Analytics und Microsoft Clarity
-                anonymisierte Nutzungsstatistiken (z. B. aufgerufene Seiten, ungefähre Herkunft,
-                Geräteart, Klick- und Scrollverhalten), um die Website zu verbessern. Es werden
-                dabei keine Kontaktdaten erhoben.
+                Beim Besuch unserer Website erheben wir mit Vercel Analytics, Google Analytics 4 und
+                Microsoft Clarity anonymisierte Nutzungsstatistiken (z. B. aufgerufene Seiten,
+                ungefähre Herkunft, Geräteart, Klick- und Scrollverhalten), um die Website zu
+                verbessern. Es werden dabei keine Kontaktdaten erhoben.
               </p>
               <p className="mt-3 text-brand-deep/70 leading-relaxed">
                 Wenn Sie unser Kontaktformular nutzen, erheben wir zusätzlich die von Ihnen
@@ -80,10 +80,22 @@ export default function Page() {
                 erforderlich sind.
               </p>
               <p className="mt-3 text-brand-deep/70 leading-relaxed">
-                Für die Auswertung der Websitenutzung setzen wir Vercel Analytics (Vercel Inc.) und
-                Microsoft Clarity (Microsoft Corporation) ein. Beide Dienste helfen uns zu
-                verstehen, wie Besucher unsere Seiten nutzen, damit wir das Angebot laufend
-                verbessern können.
+                Für die Auswertung der Websitenutzung setzen wir Vercel Analytics (Vercel Inc.),
+                Google Analytics 4 (Google Ireland Limited bzw. Google LLC) und Microsoft Clarity
+                (Microsoft Corporation) ein. Diese Dienste helfen uns zu verstehen, wie Besucher
+                unsere Seiten nutzen, damit wir das Angebot laufend verbessern können. Bei Google
+                Analytics kann dabei eine Übermittlung von Daten an Server in den USA erfolgen. Sie
+                können die Erfassung durch Google Analytics verhindern, indem Sie das Browser-Add-on
+                zur Deaktivierung von Google Analytics installieren:{" "}
+                <a
+                  href="https://tools.google.com/dlpage/gaoptout"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-bright hover:underline"
+                >
+                  tools.google.com/dlpage/gaoptout
+                </a>
+                .
               </p>
             </section>
 
@@ -100,10 +112,10 @@ export default function Page() {
               <h2 className="text-lg font-bold">6. Cookies</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Vercel Analytics arbeitet ohne Cookies und ohne Speicherung von personenbezogenen
-                Kennungen. Microsoft Clarity setzt Cookies, um Klicks, Mausbewegungen und
-                Scrollverhalten anonymisiert aufzuzeichnen (Heatmaps und Sitzungsaufzeichnungen) und
-                so die Bedienbarkeit der Website zu verbessern. Weitere Cookies von Drittanbietern
-                werden nicht eingesetzt.
+                Kennungen. Google Analytics 4 und Microsoft Clarity setzen Cookies, um die Nutzung
+                der Website (u. a. aufgerufene Seiten, Klicks, Maus- und Scrollverhalten)
+                anonymisiert auszuwerten und so die Bedienbarkeit der Website zu verbessern. Weitere
+                Cookies von Drittanbietern werden nicht eingesetzt.
               </p>
             </section>
 
