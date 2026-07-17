@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
 
+import { AnalyticsEvents } from "@/components/analytics-events";
 import { Clarity } from "@/components/clarity";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { Toaster } from "@/components/toaster";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SpeedInsights />
         <Clarity />
         <GoogleAnalytics />
+        <AnalyticsEvents />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSON_LD) }}
