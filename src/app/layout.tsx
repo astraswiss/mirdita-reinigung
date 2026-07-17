@@ -33,6 +33,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
   },
+  // Google Search Console ownership check via the HTML-tag method. Set
+  // GOOGLE_SITE_VERIFICATION to the token Search Console gives you; when unset
+  // the meta tag is simply omitted. (Alternatively, verify via the already
+  // installed Google Analytics tag — that needs no token.)
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export const viewport: Viewport = {
