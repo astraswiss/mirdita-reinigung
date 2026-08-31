@@ -7,6 +7,7 @@ import { AnalyticsEvents } from "@/components/analytics-events";
 import { Clarity } from "@/components/clarity";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { Toaster } from "@/components/toaster";
+import { WhatsappButton } from "@/components/whatsapp-button";
 import { LOCAL_BUSINESS_JSON_LD, WEBSITE_JSON_LD } from "@/components/site-config";
 import "./globals.css";
 
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de" className={inter.variable}>
       <body className="font-sans antialiased">
         {children}
+        <WhatsappButton />
         <Toaster />
         <Analytics />
         <SpeedInsights />
