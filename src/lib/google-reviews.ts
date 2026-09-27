@@ -55,7 +55,19 @@ function abbreviateName(fullName: string): string {
 export async function getGoogleReviews(): Promise<GoogleReviewsData> {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
   const placeId = process.env.GOOGLE_PLACE_ID;
-  if (!apiKey || !placeId) return FALLBACK;
+  if (!apiKey || !placeId) {
+    // Not an error per se, but the #1 reason live reviews silently fall back:
+    // the env vars are missing on the host. Make it visible in the logs.
+    console.warn(
+      `[google-reviews] Falling back to static reviews — missing env: ${[
+        !apiKey && "GOOGLE_PLACES_API_KEY",
+        !placeId && "GOOGLE_PLACE_ID",
+      ]
+        .filter(Boolean)
+        .join(", ")}`,
+    );
+    return FALLBACK;
+  }
 
   try {
     const res = await fetch(`https://places.googleapis.com/v1/places/${placeId}?languageCode=de`, {
@@ -66,7 +78,15 @@ export async function getGoogleReviews(): Promise<GoogleReviewsData> {
       next: { revalidate: 60 * 60 * 24 },
     });
 
-    if (!res.ok) return FALLBACK;
+    if (!res.ok) {
+      // Surface the real reason (403 billing/quota, 404 wrong Place ID, key
+      // restriction, "Places API (New)" not enabled, …) instead of failing mute.
+      const body = await res.text().catch(() => "");
+      console.error(
+        `[google-reviews] Google Places API error ${res.status} ${res.statusText}: ${body.slice(0, 500)}`,
+      );
+      return FALLBACK;
+    }
 
     const data: PlacesApiResponse = await res.json();
     const liveReviews = (data.reviews ?? [])
@@ -84,7 +104,8 @@ export async function getGoogleReviews(): Promise<GoogleReviewsData> {
       total: data.userRatingCount ?? FALLBACK.total,
       reviews: [...CURATED_REVIEWS, ...extraReviews],
     };
-  } catch {
+  } catch (err) {
+    console.error("[google-reviews] Failed to fetch live reviews:", err);
     return FALLBACK;
   }
 }
