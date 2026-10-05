@@ -17,10 +17,7 @@ import { SiteHeader } from "@/components/site-header";
 import type { GoogleReviewsData } from "@/lib/google-reviews";
 
 export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
-  const [activeService, setActiveService] = useState<ServiceKey>("privat");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const active = SERVICES[activeService];
-  const ActiveIcon = active.icon;
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -118,7 +115,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
         </div>
       </section>
 
-      {/* Services — Tabs */}
+      {/* Services */}
       <section className="px-5 md:px-10 py-20">
         <div id="leistungen" className="max-w-7xl mx-auto scroll-mt-20">
           <Reveal className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-10">
@@ -131,74 +128,55 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
               </h2>
             </div>
             <p className="text-brand-deep/65 md:max-w-sm">
-              Wählen Sie Ihren Bereich — wir zeigen Ihnen, was wir konkret übernehmen.
+              Von Privathaushalten über Firmen bis zu Spezialreinigungen — alles aus einer Hand.
             </p>
           </Reveal>
 
-          {/* Tab nav */}
-          <div className="flex flex-wrap gap-2 mb-6">
-            {(Object.keys(SERVICES) as ServiceKey[]).map((key) => {
+          <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(Object.keys(SERVICES) as ServiceKey[]).map((key, i) => {
               const s = SERVICES[key];
               const Icon = s.icon;
-              const isActive = key === activeService;
               return (
-                <button
-                  key={key}
-                  onClick={() => setActiveService(key)}
-                  className={`inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all border ${
-                    isActive
-                      ? "bg-brand-deep text-white border-brand-deep"
-                      : "bg-white text-brand-deep/75 border-brand-deep/10 hover:border-brand-deep/30"
-                  }`}
-                >
-                  <Icon className="size-4" />
-                  {s.label}
-                </button>
+                <Reveal key={key} delay={i * 80} className="flex">
+                  <div className="flex w-full flex-col overflow-hidden rounded-[28px] bg-white border border-brand-deep/5 shadow-[0_20px_50px_-30px_rgba(0,21,63,0.2)]">
+                    <Photo
+                      src={s.image}
+                      alt={s.imageAlt}
+                      objectPosition={s.imagePosition}
+                      className="aspect-[16/10] w-full"
+                    />
+                    <div className="flex flex-1 flex-col p-7">
+                      <div className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold">
+                        <Icon className="size-3.5" />
+                        {s.label}
+                      </div>
+                      <h3 className="mt-4 text-xl font-bold tracking-tight">{s.title}</h3>
+                      <p className="mt-3 text-sm text-brand-deep/65 leading-relaxed">
+                        {s.description}
+                      </p>
+                      <ul className="mt-5 space-y-2.5">
+                        {s.items.map((item) => (
+                          <li key={item} className="flex items-start gap-2.5 text-sm">
+                            <span className="size-5 rounded-full bg-brand-bright/15 text-brand-bright grid place-items-center shrink-0 mt-0.5">
+                              <Check className="size-3" strokeWidth={3} />
+                            </span>
+                            <span className="text-brand-deep/85">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <a
+                        href="#kontakt"
+                        className="mt-auto inline-flex w-fit items-center gap-2 pt-6 text-sm font-semibold text-brand-bright transition-all hover:gap-3"
+                      >
+                        Offerte anfordern
+                        <ArrowRight className="size-4" />
+                      </a>
+                    </div>
+                  </div>
+                </Reveal>
               );
             })}
           </div>
-
-          {/* Panel */}
-          <Reveal
-            delay={100}
-            className="rounded-[28px] bg-white border border-brand-deep/5 overflow-hidden shadow-[0_20px_50px_-30px_rgba(0,21,63,0.2)]"
-          >
-            <div className="grid lg:grid-cols-2 gap-0 lg:min-h-[600px]">
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 w-fit rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold">
-                  <ActiveIcon className="size-3.5" />
-                  {active.label}
-                </div>
-                <h3 className="mt-5 text-2xl md:text-3xl font-bold tracking-tight">
-                  {active.title}
-                </h3>
-                <p className="mt-4 text-brand-deep/65 leading-relaxed">{active.description}</p>
-                <ul className="mt-6 space-y-3">
-                  {active.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm">
-                      <span className="size-5 rounded-full bg-brand-bright/15 text-brand-bright grid place-items-center shrink-0 mt-0.5">
-                        <Check className="size-3" strokeWidth={3} />
-                      </span>
-                      <span className="text-brand-deep/85">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#kontakt"
-                  className="mt-8 inline-flex items-center gap-2 w-fit bg-brand-bright text-white rounded-full px-5 py-3 text-sm font-semibold hover:brightness-110 transition-all"
-                >
-                  Offerte für {active.label}
-                  <ArrowRight className="size-4" />
-                </a>
-              </div>
-              <Photo
-                src={active.image}
-                alt={active.imageAlt}
-                objectPosition={active.imagePosition}
-                className="hidden lg:block min-h-[320px] lg:min-h-full aspect-[16/10] lg:aspect-auto"
-              />
-            </div>
-          </Reveal>
         </div>
       </section>
 
