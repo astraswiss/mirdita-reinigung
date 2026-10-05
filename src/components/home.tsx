@@ -2,16 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
-import {
-  ArrowRight,
-  Check,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-  ShieldCheck,
-  Star,
-} from "lucide-react";
+import { ArrowRight, Check, Mail, MapPin, MessageCircle, Phone, Star } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
 import { TrustedBy } from "@/components/trusted-by";
@@ -111,11 +102,6 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
                 >
                   Leistungen ansehen
                 </a>
-              </div>
-
-              <div className="mt-8 flex items-center gap-2 text-sm text-brand-deep/70">
-                <ShieldCheck className="size-4 text-brand-bright" />
-                <span>Abnahmegarantie</span>
               </div>
             </div>
 
