@@ -9,7 +9,7 @@ export type Client = { name: string; logo: string; sizeClass: string };
  */
 export const CLIENTS: Client[] = [
   { name: "Bosch Scintilla AG", logo: "/clients/bosch-scintilla.webp", sizeClass: "h-7 md:h-8" },
-  { name: "Volken-Group", logo: "/clients/volken.svg", sizeClass: "h-10 md:h-12" },
+  { name: "Volken-Group", logo: "/clients/volken.svg", sizeClass: "h-7 md:h-8" },
   { name: "Augenzentrum Visp", logo: "/clients/augenzentrum-visp.png", sizeClass: "h-6 md:h-7" },
 ];
 
