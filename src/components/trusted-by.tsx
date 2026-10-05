@@ -1,20 +1,24 @@
-export type Client = { name: string; logo: string };
+export type Client = { name: string; logo: string; sizeClass: string };
 
 /**
  * Clients shown in the "trusted by" strip. Each logo lives in /public/clients.
- * Displayed with permission of the respective company.
+ * Displayed with permission of the respective company. `sizeClass` tunes each
+ * logo's height individually so marks with different proportions (e.g. the
+ * stacked Volken lockup vs. the wide Augenzentrum wordmark) read at a balanced
+ * optical size on a shared centre line.
  */
 export const CLIENTS: Client[] = [
-  { name: "Bosch Scintilla AG", logo: "/clients/bosch-scintilla.webp" },
-  { name: "Volken-Group", logo: "/clients/volken.svg" },
-  { name: "Augenzentrum Visp", logo: "/clients/augenzentrum-visp.png" },
+  { name: "Bosch Scintilla AG", logo: "/clients/bosch-scintilla.webp", sizeClass: "h-7 md:h-8" },
+  { name: "Volken-Group", logo: "/clients/volken.svg", sizeClass: "h-10 md:h-12" },
+  { name: "Augenzentrum Visp", logo: "/clients/augenzentrum-visp.png", sizeClass: "h-6 md:h-7" },
 ];
 
 /**
- * Social-proof client logo row. Grayscale by default, colour on hover. Layout
- * is caller-placed (no section wrapper) so it can sit inline in the hero or as
- * a standalone band. `align` switches between a centered band and a left-
- * aligned in-hero strip; `label` follows the page language.
+ * Social-proof client logo row. Grayscale by default, colour on hover. Logos
+ * are vertically centred on a shared line (items-center). Layout is caller-
+ * placed (no section wrapper) so it can sit inline in the hero or as a
+ * standalone band; `align` switches the heading/row alignment and `label`
+ * follows the page language.
  */
 export function TrustedBy({
   label = "Diese Unternehmen vertrauen uns",
@@ -36,8 +40,8 @@ export function TrustedBy({
         {label}
       </p>
       <div
-        className={`mt-5 flex flex-wrap items-center gap-x-8 gap-y-5 ${
-          centered ? "justify-center md:gap-x-16" : "md:gap-x-10"
+        className={`mt-6 flex flex-wrap items-center gap-x-10 gap-y-5 md:gap-x-14 ${
+          centered ? "justify-center" : ""
         }`}
       >
         {CLIENTS.map((client) => (
@@ -46,7 +50,7 @@ export function TrustedBy({
             key={client.name}
             src={client.logo}
             alt={client.name}
-            className="h-8 w-auto object-contain opacity-60 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0 md:h-10"
+            className={`w-auto object-contain opacity-70 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0 ${client.sizeClass}`}
           />
         ))}
       </div>
