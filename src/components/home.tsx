@@ -2,18 +2,10 @@
 
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
-import {
-  ArrowRight,
-  Check,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-  ShieldCheck,
-  Star,
-} from "lucide-react";
+import { ArrowRight, Check, Mail, MapPin, MessageCircle, Phone, Star } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
+import { TrustedBy } from "@/components/trusted-by";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
@@ -73,39 +65,10 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
 
       {/* Hero — asymmetric split */}
       <section id="top" className="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24 scroll-mt-16">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className="lg:col-span-7">
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold tracking-wide">
-              <span className="size-1.5 rounded-full bg-brand-bright" />
-              Reinigung im ganzen Wallis
-            </span>
-            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-balance">
-              Ihre Profis für Glanz & <span className="text-brand-bright">Sauberkeit</span> im
-              Wallis.
-            </h1>
-            <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">
-              Umzugs-, Wohnungs- und Büroreinigungen — schnell, gründlich und mit Abnahmegarantie.
-              Wir nehmen Ihnen die Arbeit ab.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#kontakt"
-                className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
-              >
-                Kostenlose Offerte
-                <ArrowRight className="size-4" />
-              </a>
-              <a
-                href="#leistungen"
-                className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
-              >
-                Leistungen ansehen
-              </a>
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-brand-deep/70">
-              <div className="flex items-center gap-2">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
+          <div className="lg:col-span-7 flex flex-col">
+            <div className="flex flex-col justify-center lg:flex-1">
+              <div className="flex items-center gap-2 text-sm">
                 <div className="flex text-brand-bright">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="size-4 fill-current" />
@@ -114,16 +77,38 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
                 <span className="font-semibold text-brand-deep">
                   {googleReviews.rating.toFixed(1)}/5
                 </span>
-                <span>· {googleReviews.total} Bewertungen</span>
+                <span className="text-brand-deep/60">· {googleReviews.total} Bewertungen</span>
               </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="size-4 text-brand-bright" />
-                <span>Abnahmegarantie</span>
+              <h1 className="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-balance">
+                Ihre Profis für Glanz & <span className="text-brand-bright">Sauberkeit</span> im
+                Wallis.
+              </h1>
+              <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">
+                Umzugs-, Wohnungs- und Büroreinigungen — schnell, gründlich und mit Abnahmegarantie.
+                Wir nehmen Ihnen die Arbeit ab.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="#kontakt"
+                  className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
+                >
+                  Kostenlose Offerte
+                  <ArrowRight className="size-4" />
+                </a>
+                <a
+                  href="#leistungen"
+                  className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
+                >
+                  Leistungen ansehen
+                </a>
               </div>
             </div>
+
+            <TrustedBy align="left" className="mt-12 lg:mt-auto lg:pt-10" />
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 flex">
             <Photo
               src={PHOTO_HERO}
               alt="Mirdita Mitarbeiter reinigt eine Glasfront mit Walliser Bergen im Hintergrund"
