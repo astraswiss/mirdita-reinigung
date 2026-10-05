@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
+import { TrustedBy } from "@/components/trusted-by";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
@@ -132,6 +133,8 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
           </div>
         </div>
       </section>
+
+      <TrustedBy />
 
       {/* Services — Tabs */}
       <section className="px-5 md:px-10 py-20">
