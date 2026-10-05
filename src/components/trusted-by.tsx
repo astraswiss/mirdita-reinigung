@@ -11,28 +11,45 @@ export const CLIENTS: Client[] = [
 ];
 
 /**
- * Social-proof logo strip, placed just below the hero. Grayscale by default,
- * colour on hover. The label follows the page language via the `label` prop.
+ * Social-proof client logo row. Grayscale by default, colour on hover. Layout
+ * is caller-placed (no section wrapper) so it can sit inline in the hero or as
+ * a standalone band. `align` switches between a centered band and a left-
+ * aligned in-hero strip; `label` follows the page language.
  */
-export function TrustedBy({ label = "Diese Unternehmen vertrauen uns" }: { label?: string }) {
+export function TrustedBy({
+  label = "Diese Unternehmen vertrauen uns",
+  align = "center",
+  className = "",
+}: {
+  label?: string;
+  align?: "center" | "left";
+  className?: string;
+}) {
+  const centered = align === "center";
   return (
-    <section className="px-5 md:px-10 pb-10 md:pb-14">
-      <div className="mx-auto max-w-7xl">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-brand-deep/45">
-          {label}
-        </p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:mt-8 md:gap-x-16">
-          {CLIENTS.map((client) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={client.name}
-              src={client.logo}
-              alt={client.name}
-              className="h-9 w-auto object-contain opacity-60 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0 md:h-11"
-            />
-          ))}
-        </div>
+    <div className={className}>
+      <p
+        className={`text-xs font-semibold uppercase tracking-[0.18em] text-brand-deep/45 ${
+          centered ? "text-center" : ""
+        }`}
+      >
+        {label}
+      </p>
+      <div
+        className={`mt-5 flex flex-wrap items-center gap-x-8 gap-y-5 ${
+          centered ? "justify-center md:gap-x-16" : "md:gap-x-10"
+        }`}
+      >
+        {CLIENTS.map((client) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={client.name}
+            src={client.logo}
+            alt={client.name}
+            className="h-8 w-auto object-contain opacity-60 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0 md:h-10"
+          />
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
