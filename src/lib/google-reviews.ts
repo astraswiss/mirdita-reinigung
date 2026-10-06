@@ -1,3 +1,5 @@
+import { unstable_cache } from "next/cache";
+
 export type GoogleReview = {
   name: string;
   time: string;
@@ -28,6 +30,7 @@ const CURATED_REVIEWS: GoogleReview[] = [
   },
 ];
 
+// Last-resort static values, only used if a live result was never cached.
 const FALLBACK: GoogleReviewsData = {
   rating: 5,
   total: 40,
@@ -52,60 +55,75 @@ function abbreviateName(fullName: string): string {
   return `${parts[0]} ${parts[parts.length - 1][0]}.`;
 }
 
-export async function getGoogleReviews(): Promise<GoogleReviewsData> {
+/**
+ * Fetches the live reviews from the Places API. Throws on any problem (missing
+ * config, API error, …) on purpose: wrapped in unstable_cache below, a throwing
+ * refresh does NOT overwrite the cache, so the last successful result keeps
+ * being served (e.g. when the daily quota is exhausted) instead of reverting to
+ * the static fallback.
+ */
+async function fetchLiveReviews(): Promise<GoogleReviewsData> {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
   const placeId = process.env.GOOGLE_PLACE_ID;
   if (!apiKey || !placeId) {
-    // Not an error per se, but the #1 reason live reviews silently fall back:
-    // the env vars are missing on the host. Make it visible in the logs.
-    console.warn(
-      `[google-reviews] Falling back to static reviews — missing env: ${[
+    throw new Error(
+      `[google-reviews] Missing env: ${[
         !apiKey && "GOOGLE_PLACES_API_KEY",
         !placeId && "GOOGLE_PLACE_ID",
       ]
         .filter(Boolean)
         .join(", ")}`,
     );
-    return FALLBACK;
   }
 
+  const res = await fetch(`https://places.googleapis.com/v1/places/${placeId}?languageCode=de`, {
+    headers: {
+      "X-Goog-Api-Key": apiKey,
+      "X-Goog-FieldMask": "rating,userRatingCount,reviews",
+    },
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    // Surface the real reason (403 billing/quota, 429 quota cap, 404 wrong
+    // Place ID, key restriction, …) in the logs, then throw to keep the cache.
+    const body = await res.text().catch(() => "");
+    throw new Error(
+      `[google-reviews] Places API error ${res.status} ${res.statusText}: ${body.slice(0, 300)}`,
+    );
+  }
+
+  const data: PlacesApiResponse = await res.json();
+  const liveReviews = (data.reviews ?? [])
+    .filter((r): r is PlacesApiReview & { text: { text: string } } => !!r.text?.text)
+    .map((r) => ({
+      name: abbreviateName(r.authorAttribution?.displayName ?? "Google Nutzer"),
+      time: r.relativePublishTimeDescription ?? "",
+      text: r.text.text,
+    }));
+
+  const extraReviews = liveReviews.filter((r) => !CURATED_REVIEWS.some((c) => c.name === r.name));
+
+  return {
+    rating: data.rating ?? FALLBACK.rating,
+    total: data.userRatingCount ?? FALLBACK.total,
+    reviews: [...CURATED_REVIEWS, ...extraReviews],
+  };
+}
+
+// Refresh at most once a day. When the stale entry's background refresh throws
+// (quota cap hit, API error), the cached last-good value is preserved and kept
+// on screen — only a cold cache with a failing fetch falls through to FALLBACK.
+const getCachedReviews = unstable_cache(fetchLiveReviews, ["google-reviews"], {
+  revalidate: 60 * 60 * 24,
+  tags: ["google-reviews"],
+});
+
+export async function getGoogleReviews(): Promise<GoogleReviewsData> {
   try {
-    const res = await fetch(`https://places.googleapis.com/v1/places/${placeId}?languageCode=de`, {
-      headers: {
-        "X-Goog-Api-Key": apiKey,
-        "X-Goog-FieldMask": "rating,userRatingCount,reviews",
-      },
-      next: { revalidate: 60 * 60 * 24 },
-    });
-
-    if (!res.ok) {
-      // Surface the real reason (403 billing/quota, 404 wrong Place ID, key
-      // restriction, "Places API (New)" not enabled, …) instead of failing mute.
-      const body = await res.text().catch(() => "");
-      console.error(
-        `[google-reviews] Google Places API error ${res.status} ${res.statusText}: ${body.slice(0, 500)}`,
-      );
-      return FALLBACK;
-    }
-
-    const data: PlacesApiResponse = await res.json();
-    const liveReviews = (data.reviews ?? [])
-      .filter((r): r is PlacesApiReview & { text: { text: string } } => !!r.text?.text)
-      .map((r) => ({
-        name: abbreviateName(r.authorAttribution?.displayName ?? "Google Nutzer"),
-        time: r.relativePublishTimeDescription ?? "",
-        text: r.text.text,
-      }));
-
-    const extraReviews = liveReviews.filter((r) => !CURATED_REVIEWS.some((c) => c.name === r.name));
-
-    return {
-      rating: data.rating ?? FALLBACK.rating,
-      total: data.userRatingCount ?? FALLBACK.total,
-      reviews: [...CURATED_REVIEWS, ...extraReviews],
-    };
+    return await getCachedReviews();
   } catch (err) {
-    console.error("[google-reviews] Failed to fetch live reviews:", err);
+    console.error(err instanceof Error ? err.message : err);
     return FALLBACK;
   }
 }
