@@ -90,24 +90,25 @@ export default async function Page() {
 
       <ProseSection
         eyebrow="Im Herzen des Oberwallis"
-        title="Reinigung in Visp und Umgebung"
+        title="Reinigung in Visp und Eyholz"
         paragraphs={[
-          "Visp ist der wirtschaftliche Knotenpunkt des Oberwallis und Umsteigeort Richtung Zermatt und Saas-Fee. Von Naters aus sind wir schnell vor Ort — für Privathaushalte ebenso wie für die vielen Betriebe rund um Bahnhof und Industrie.",
-          "Wir reinigen Wohnungen und Häuser bei Umzügen mit Abnahmegarantie, pflegen Büros und Praxen im Unterhalt und übernehmen die Bauendreinigung nach Um- und Neubauten. So sind Ihre Räume termingerecht und bezugsfertig übergeben.",
+          "Visp ist Verkehrsknoten des Oberwallis und Umsteigeort Richtung Zermatt und Saas-Fee. Mit dem Lonza-Werk, dem grössten Arbeitgeber der Region, ist die Gemeinde in den letzten Jahren stark gewachsen — und mit ihr die Zahl der Wohnungen, Büros und Gewerbeflächen.",
+          "Viele ziehen für die Arbeit nach Visp oder innerhalb der Region um. Entsprechend häufig übernehmen wir hier Umzugsreinigungen mit Abnahmegarantie, vom Studio in Bahnhofsnähe bis zum Einfamilienhaus in Eyholz. Neue Wohnungen reinigen wir nach Bauabschluss bezugsfertig.",
+          "Für Betriebe, Praxen und Büros in Visp bieten wir die regelmässige Unterhaltsreinigung im Schichtrhythmus Ihrer Wahl an — früh morgens, abends oder am Wochenende. Von Naters aus sind wir schnell vor Ort, auch wenn kurzfristig etwas anfällt.",
         ]}
       />
 
-      <DeServiceLinks title="Was wir in Visp für Sie reinigen" />
+      <DeServiceLinks title="Unsere Leistungen in Visp und Eyholz" />
 
-      <ProcessSteps title="In vier Schritten zu Ihrer Reinigung in Visp" />
+      <ProcessSteps title="In vier Schritten zur Reinigung in Visp" />
 
       <ReviewsSection googleReviews={googleReviews} />
 
       <EinsatzgebietSection />
 
       <CtaBanner
-        title="Reinigung in Visp gesucht?"
-        body="Von Naters aus sind wir schnell in Visp und Umgebung. Fordern Sie jetzt Ihre kostenlose Offerte an."
+        title="Reinigung in Visp oder Eyholz gesucht?"
+        body="Für Ihre Wohnung, Ihren Neubau oder Ihren Betrieb: Schildern Sie uns kurz Ihr Anliegen — Sie erhalten innert 24 Stunden eine transparente Offerte."
       />
 
       <SiteFooter />

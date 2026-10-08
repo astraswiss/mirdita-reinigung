@@ -90,24 +90,25 @@ export default async function Page() {
 
       <ProseSection
         eyebrow="Schnell vor Ort"
-        title="Reinigung in Brig-Glis aus dem Nachbardorf"
+        title="Reinigung in Brig, Glis, Gamsen und Brigerbad"
         paragraphs={[
-          "Brig-Glis erreichen wir von Naters aus in wenigen Minuten. Ob Wohnung in Brig, Geschäftslokal in Glis oder Liegenschaft in Gamsen — wir sind rasch vor Ort und planen Termine flexibel, ohne lange Anfahrtswege.",
-          "Als regionaler Verkehrs- und Einkaufsort hat Brig-Glis viele Mietwohnungen, Büros und Ladenlokale. Wir übernehmen die Umzugsreinigung mit Abnahmegarantie ebenso wie die regelmässige Unterhaltsreinigung von Praxen, Kanzleien und Geschäftsräumen — auf Wunsch diskret ausserhalb Ihrer Öffnungszeiten.",
+          "Brig-Glis entstand 1972 aus dem Zusammenschluss von Brig, Glis und Brigerbad; auch Gamsen gehört dazu. Vom Stockalperschloss über die Bahnhofstrasse bis zu den Wohnquartieren in Glis ist die grösste Gemeinde des Oberwallis für uns nur eine Brücke von Naters entfernt.",
+          "Rund um Bahnhof und Altstadt reinigen wir Büros, Praxen und Ladenlokale — diskret am frühen Morgen oder nach Geschäftsschluss, damit Ihr Betrieb ungestört bleibt. In Glis und Gamsen, wo viele Mehrfamilienhäuser und Neubauten stehen, übernehmen wir Treppenhausreinigung, Hauswartung und Bauendreinigung.",
+          "Brig ist als Bahnknoten Richtung Simplon, Lötschberg und Zermatt ein Ort mit vielen Zu- und Wegzügen. Für Mieterinnen und Mieter bieten wir die Umzugsreinigung mit Abnahmegarantie an — so wird die Wohnungsübergabe zur reinen Formsache.",
         ]}
       />
 
       <DeServiceLinks title="Was wir in Brig-Glis für Sie reinigen" />
 
-      <ProcessSteps title="In vier Schritten zu Ihrer Reinigung in Brig-Glis" />
+      <ProcessSteps title="Ihre Reinigung in Brig-Glis in vier Schritten" />
 
       <ReviewsSection googleReviews={googleReviews} />
 
       <EinsatzgebietSection />
 
       <CtaBanner
-        title="Reinigung in Brig-Glis gesucht?"
-        body="Aus dem benachbarten Naters sind wir schnell in Brig-Glis. Fordern Sie jetzt Ihre kostenlose Offerte an."
+        title="Reinigung in Brig-Glis geplant?"
+        body="Ob Geschäftsräume an der Bahnhofstrasse, Treppenhaus in Glis oder Wohnungsübergabe: Wir sind aus dem Nachbarort Naters schnell bei Ihnen. Jetzt kostenlose Offerte anfordern."
       />
 
       <SiteFooter />

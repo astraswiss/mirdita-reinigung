@@ -90,22 +90,23 @@ export default async function Page() {
         eyebrow="Lokal verankert"
         title="Ihre Reinigungsfirma direkt in Naters"
         paragraphs={[
-          "Unser Team ist in Naters zu Hause. Von unserem Standort an der Belalpstrasse aus sind wir in wenigen Minuten bei Ihnen — ob im Dorfkern, in den Wohnquartieren oberhalb des Dorfes oder Richtung Blatten und Belalp. Diese Nähe bedeutet für Sie kurze Reaktionszeiten und flexible Termine, auch kurzfristig.",
-          "Gerade bei Umzugsreinigungen in Naters ist das ein Vorteil: Wir kennen die Ansprüche der lokalen Verwaltungen und Vermieter bei der Wohnungsübergabe und reinigen so gründlich, dass die Abnahme reibungslos verläuft. Für Privathaushalte, Eigentümer und Betriebe im Dorf sind wir Ihr fester Ansprechpartner.",
+          "Unser Team ist in Naters zu Hause. Vom Sitz an der Belalpstrasse sind wir in wenigen Minuten im Dorfkern, in den Wohnquartieren am Hang oder unten Richtung Rhonebrücke. Für Sie heisst das: kurze Reaktionszeiten und Termine, die sich auch kurzfristig einrichten lassen.",
+          "Seit 2013 gehören auch Birgisch und Mund zur Gemeinde, dazu Weiler wie Hegdorn, Geimen oder Rischinen und oben Blatten und die Belalp. Dort reinigen wir Einfamilienhäuser, Chalets und Ferienwohnungen — inklusive Endreinigung zwischen zwei Vermietungen und Grundreinigung nach der Wintersaison.",
+          "Im Dorf selbst übernehmen wir vor allem Umzugsreinigungen. Wir kennen die Ansprüche der Verwaltungen und Vermieter in Naters bei der Wohnungsübergabe und reinigen so, dass die Abnahme reibungslos verläuft — und falls doch etwas beanstandet wird, bessern wir dank Abnahmegarantie kostenlos nach.",
         ]}
       />
 
-      <DeServiceLinks title="Was wir in Naters für Sie reinigen" />
+      <DeServiceLinks title="Unsere Reinigungen in Naters, Birgisch und Mund" />
 
-      <ProcessSteps title="In vier Schritten zu Ihrer Reinigung in Naters" />
+      <ProcessSteps title="So läuft Ihre Reinigung in Naters ab" />
 
       <ReviewsSection googleReviews={googleReviews} />
 
       <EinsatzgebietSection />
 
       <CtaBanner
-        title="Reinigung in Naters gesucht?"
-        body="Als lokale Reinigungsfirma mit Sitz in Naters sind wir schnell vor Ort. Fordern Sie jetzt Ihre kostenlose Offerte an."
+        title="Reinigungsfirma aus Naters gesucht?"
+        body="Wir sind im Dorf zu Hause und schnell bei Ihnen — vom Dorfkern bis Blatten und Belalp. Fordern Sie jetzt Ihre kostenlose Offerte an."
       />
 
       <SiteFooter />
