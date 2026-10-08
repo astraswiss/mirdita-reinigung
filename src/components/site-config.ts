@@ -40,19 +40,30 @@ export const SERVICE_LINKS_FR: NavLink[] = [
 
 /** German city landing pages, roughly east to west along the Rhone. */
 export const CITY_LINKS_DE: NavLink[] = [
+  { label: "Fiesch", href: "/reinigung-fiesch" },
+  { label: "Mörel", href: "/reinigung-moerel" },
   { label: "Naters", href: "/reinigung-naters" },
   { label: "Brig-Glis", href: "/reinigung-brig-glis" },
   { label: "Ried-Brig", href: "/reinigung-ried-brig" },
   { label: "Lalden", href: "/reinigung-lalden" },
   { label: "Visp", href: "/reinigung-visp" },
   { label: "Baltschieder", href: "/reinigung-baltschieder" },
+  { label: "Stalden", href: "/reinigung-stalden" },
+  { label: "Saas-Fee", href: "/reinigung-saas-fee" },
+  { label: "Zermatt", href: "/reinigung-zermatt" },
   { label: "Raron", href: "/reinigung-raron" },
   { label: "Steg", href: "/reinigung-steg" },
   { label: "Gampel", href: "/reinigung-gampel" },
   { label: "Leuk", href: "/reinigung-leuk" },
 ];
 
-export const CITY_LINKS_FR: NavLink[] = [{ label: "Sion", href: "/fr/nettoyage-sion" }];
+/** French city landing pages (Valais romand), east to west. */
+export const CITY_LINKS_FR: NavLink[] = [
+  { label: "Sierre", href: "/fr/nettoyage-sierre" },
+  { label: "Sion", href: "/fr/nettoyage-sion" },
+  { label: "Martigny", href: "/fr/nettoyage-martigny" },
+  { label: "Monthey", href: "/fr/nettoyage-monthey" },
+];
 
 export const NAV: NavItem[] = [
   {

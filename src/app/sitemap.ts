@@ -21,7 +21,15 @@ const CITY_ROUTES = [
   "/reinigung-gampel",
   "/reinigung-steg",
   "/reinigung-baltschieder",
+  "/reinigung-stalden",
+  "/reinigung-moerel",
+  "/reinigung-fiesch",
+  "/reinigung-saas-fee",
+  "/reinigung-zermatt",
   "/fr/nettoyage-sion",
+  "/fr/nettoyage-sierre",
+  "/fr/nettoyage-martigny",
+  "/fr/nettoyage-monthey",
 ];
 
 const LEGAL_ROUTES = ["/impressum", "/datenschutz", "/agb"];

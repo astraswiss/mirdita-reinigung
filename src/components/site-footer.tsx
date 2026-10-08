@@ -33,7 +33,12 @@ const FOOTER_FR = {
   contactTitle: "Contact",
   legalTitle: "Informations légales",
   regionsTitle: "Régions",
-  regions: [{ label: "Nettoyage à Sion", href: "/fr/nettoyage-sion" }],
+  regions: [
+    { label: "Nettoyage à Sion", href: "/fr/nettoyage-sion" },
+    { label: "Nettoyage à Sierre", href: "/fr/nettoyage-sierre" },
+    { label: "Nettoyage à Martigny", href: "/fr/nettoyage-martigny" },
+    { label: "Nettoyage à Monthey", href: "/fr/nettoyage-monthey" },
+  ],
   services: SERVICE_LINKS_FR,
   // Legal pages exist only in German; link to them as-is.
   legal: [
