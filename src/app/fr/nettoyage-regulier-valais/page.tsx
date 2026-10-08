@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { FrServicePage } from "@/components/fr/fr-service-page";
-import { PHOTO_BUERO, alternatesFor } from "@/components/site-config";
+import { PHOTO_PRIVAT, alternatesFor } from "@/components/site-config";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/fr/nettoyage-regulier-valais";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: "Un entretien régulier et fiable pour garder vos espaces propres toute l’année.",
     url: PATH,
     locale: "fr_CH",
-    images: [{ url: PHOTO_BUERO, width: 1200, height: 844 }],
+    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
   },
 };
 
@@ -45,9 +45,8 @@ export default async function Page() {
           copropriétés — avec une qualité constante et des horaires adaptés à votre rythme.
         </>
       }
-      image={PHOTO_BUERO}
-      imageAlt="Espaces entretenus régulièrement par Mirdita Reinigung dans le Valais"
-      imagePosition="object-left"
+      image={PHOTO_PRIVAT}
+      imageAlt="Collaboratrice de Mirdita lors du nettoyage régulier d’un logement dans le Valais"
       trust="Qualité constante"
       checklistTitle="Ce qui fait partie du nettoyage régulier"
       checklistIntro="Nous définissons ensemble la fréquence et l’étendue de l’entretien, puis nous nous y tenons — avec la même équipe autant que possible."

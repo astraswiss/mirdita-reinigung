@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { FrServicePage } from "@/components/fr/fr-service-page";
-import { PHOTO_SPEZIAL, alternatesFor } from "@/components/site-config";
+import { PHOTO_HERO, alternatesFor } from "@/components/site-config";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/fr/nettoyage-vitres-valais";
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Vitres, fenêtres et vitrines sans traces, à l’intérieur comme à l’extérieur, dans tout le Valais.",
     url: PATH,
     locale: "fr_CH",
-    images: [{ url: PHOTO_SPEZIAL, width: 1200, height: 844 }],
+    images: [{ url: PHOTO_HERO, width: 1200, height: 1600 }],
   },
 };
 
@@ -46,8 +46,8 @@ export default async function Page() {
           immeubles — en intervention ponctuelle ou en entretien périodique.
         </>
       }
-      image={PHOTO_SPEZIAL}
-      imageAlt="Collaborateur de Mirdita nettoyant une grande surface vitrée dans le Valais"
+      image={PHOTO_HERO}
+      imageAlt="Nettoyage de vitres avec vue sur les montagnes du Valais"
       trust="Intérieur et extérieur"
       checklistTitle="Ce qui fait partie du nettoyage de vitres"
       checklistIntro="Nous nettoyons vos vitres à l’intérieur comme à l’extérieur, avec le matériel adapté à la hauteur et au type de surface."

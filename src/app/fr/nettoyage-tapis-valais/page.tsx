@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { FrServicePage } from "@/components/fr/fr-service-page";
-import { PHOTO_SPEZIAL, alternatesFor } from "@/components/site-config";
+import { PHOTO_PRIVAT, alternatesFor } from "@/components/site-config";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/fr/nettoyage-tapis-valais";
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Nettoyage de tapis et moquettes en profondeur pour un rendu propre et sain, dans tout le Valais.",
     url: PATH,
     locale: "fr_CH",
-    images: [{ url: PHOTO_SPEZIAL, width: 1200, height: 844 }],
+    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
   },
 };
 
@@ -48,8 +48,8 @@ export default async function Page() {
           et sain.
         </>
       }
-      image={PHOTO_SPEZIAL}
-      imageAlt="Nettoyage en profondeur d’un tapis par Mirdita Reinigung dans le Valais"
+      image={PHOTO_PRIVAT}
+      imageAlt="Collaboratrice de Mirdita lors du nettoyage approfondi d’un logement, tapis compris, dans le Valais"
       trust="Nettoyage en profondeur"
       checklistTitle="Ce qui fait partie du nettoyage de tapis"
       checklistIntro="Nous adaptons la méthode à la matière et à l’état de vos tapis, pour un nettoyage en profondeur sans les abîmer."

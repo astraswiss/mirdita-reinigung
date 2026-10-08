@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { FrServicePage } from "@/components/fr/fr-service-page";
-import { PHOTO_BUERO, alternatesFor } from "@/components/site-config";
+import { PHOTO_HERO, alternatesFor } from "@/components/site-config";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/fr/conciergerie-valais";
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Entretien régulier et fiable des parties communes pour PPE, régies et copropriétés du Valais.",
     url: PATH,
     locale: "fr_CH",
-    images: [{ url: PHOTO_BUERO, width: 1200, height: 844 }],
+    images: [{ url: PHOTO_HERO, width: 1200, height: 1600 }],
   },
 };
 
@@ -47,9 +47,9 @@ export default async function Page() {
           immobilières, afin de garder les parties communes propres et accueillantes.
         </>
       }
-      image={PHOTO_BUERO}
-      imageAlt="Entrée d’immeuble entretenue par Mirdita Reinigung dans le Valais"
-      imagePosition="object-left"
+      image={PHOTO_HERO}
+      imagePosition="object-top"
+      imageAlt="Collaborateur de Mirdita entretenant vitres et façade dans le cadre de la conciergerie dans le Valais"
       trust="Service régulier et fiable"
       checklistTitle="Ce qui fait partie de la conciergerie"
       checklistIntro="Nous assurons l’entretien régulier de votre immeuble et un contrôle suivi, pour des espaces communs propres tout au long de l’année."

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Nettoyage d’appartement ponctuel ou régulier, adapté à vos besoins, dans tout le Valais.",
     url: PATH,
     locale: "fr_CH",
-    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 844 }],
+    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
   },
 };
 
@@ -49,7 +49,6 @@ export default async function Page() {
       }
       image={PHOTO_PRIVAT}
       imageAlt="Collaborateur de Mirdita nettoyant un plan de travail dans un appartement en Valais"
-      imagePosition="object-bottom"
       trust="Ponctuel ou régulier"
       checklistTitle="Ce qui fait partie du nettoyage d’appartement"
       checklistIntro="Nous adaptons le nettoyage à votre appartement et à vos priorités. Voici ce que nous prenons en charge le plus souvent."
