@@ -10,8 +10,9 @@ import { LOGO, NAV, ROUTE_ALTERNATES } from "@/components/site-config";
 
 const NAV_FR = [
   { href: "/fr#leistungen", label: "Services" },
-  { href: "/fr#einsatzgebiet", label: "Région" },
-  { href: "/fr#kontakt", label: "Devis" },
+  { href: "/fr#ueber-uns", label: "À propos" },
+  { href: "/fr#bewertungen", label: "Avis" },
+  { href: "/fr#kontakt", label: "Contact" },
 ];
 
 export function SiteHeader() {

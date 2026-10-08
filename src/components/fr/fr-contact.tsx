@@ -5,15 +5,15 @@ import { toast } from "sonner";
 import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
+import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
+import { PHOTO_PUTZEN } from "@/components/site-config";
 
 const TYPES = [
   "Nettoyage fin de bail",
-  "Nettoyage d’appartement",
-  "Nettoyage régulier",
-  "Nettoyage de bureaux",
-  "Nettoyage de vitres",
-  "Nettoyage de fin de chantier",
+  "Nettoyage d’appartement / de maison",
+  "Nettoyage de bureaux & commerces",
+  "Nettoyage spécial",
   "Autre demande",
 ];
 
@@ -67,16 +67,14 @@ export function FrContact({ defaultType }: { defaultType?: string }) {
         id="kontakt"
         className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-6 lg:gap-8 scroll-mt-20"
       >
+        {/* Form */}
         <Reveal className="lg:col-span-3 rounded-[28px] bg-white border border-brand-deep/5 p-8 md:p-10">
           <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
             Contact
           </span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-            Demander un devis gratuit
-          </h2>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">Demander un devis</h2>
           <p className="mt-3 text-brand-deep/65">
-            Décrivez-nous brièvement votre besoin. Nous vous répondons dans les 24 heures. Vous
-            pouvez aussi nous envoyer des photos par WhatsApp pour un devis rapide.
+            Décrivez-nous brièvement votre besoin. Nous vous répondons dans les 24 heures.
           </p>
           <form onSubmit={handleSubmit} className="mt-8 grid sm:grid-cols-2 gap-4">
             <div className="hidden" aria-hidden="true">
@@ -109,7 +107,7 @@ export function FrContact({ defaultType }: { defaultType?: string }) {
                 name="message"
                 rows={4}
                 className="rounded-xl border border-brand-deep/10 p-4 text-sm bg-white text-brand-deep focus:outline-none focus:border-brand-bright resize-none"
-                placeholder="Adresse, date souhaitée, taille du logement ou des locaux …"
+                placeholder="Adresse, date souhaitée, taille de l’objet …"
               />
             </div>
             <button
@@ -123,10 +121,11 @@ export function FrContact({ defaultType }: { defaultType?: string }) {
           </form>
         </Reveal>
 
+        {/* Info card */}
         <aside className="lg:col-span-2 rounded-[28px] bg-brand-deep text-white p-8 md:p-10 flex flex-col">
           <h3 className="text-xl font-bold">Joignables directement</h3>
           <p className="mt-2 text-white/65 text-sm">
-            Vous préférez le téléphone ou WhatsApp ? Aucun problème.
+            Vous préférez le téléphone ou l’e-mail ? Aucun problème.
           </p>
           <ul className="mt-8 space-y-5">
             <InfoLine
@@ -148,8 +147,15 @@ export function FrContact({ defaultType }: { defaultType?: string }) {
               value="info@mirdita.ch"
               href="mailto:info@mirdita.ch"
             />
-            <InfoLine icon={MapPin} label="Région" value="Tout le Valais · Naters" />
+            <InfoLine icon={MapPin} label="Adresse" value="Valais, Suisse" />
           </ul>
+          <div className="hidden lg:block mt-auto pt-8">
+            <Photo
+              src={PHOTO_PUTZEN}
+              alt="Nettoyage de détail Mirdita"
+              className="aspect-[4/3] w-full rounded-2xl border border-white/10"
+            />
+          </div>
         </aside>
       </div>
     </section>

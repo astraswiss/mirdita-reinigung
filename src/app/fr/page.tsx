@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 
 import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { FrContact } from "@/components/fr/fr-contact";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
-import { FrServicesTabs } from "@/components/fr/fr-services-tabs";
+import { FrServices } from "@/components/fr/fr-services";
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_HERO, alternatesFor } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { TrustedBy } from "@/components/trusted-by";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 export const metadata: Metadata = {
@@ -35,86 +36,94 @@ export default async function Page() {
     <div lang="fr" className="min-h-screen bg-brand-light text-brand-deep font-sans antialiased">
       <SiteHeader />
 
-      {/* Hero */}
-      <section className="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className="lg:col-span-7">
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold tracking-wide">
-              <span className="size-1.5 rounded-full bg-brand-bright" />
-              Nettoyage dans tout le Valais
-            </span>
-            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-balance">
-              Entreprise de nettoyage dans le{" "}
-              <span className="text-brand-bright">Canton du Valais</span>.
-            </h1>
-            <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">
-              Mirdita Reinigung est une entreprise de nettoyage professionnelle basée à Naters,
-              active dans tout le Valais — du Haut-Valais au Bas-Valais. Particuliers, entreprises,
-              régies, PPE, bureaux, cabinets médicaux, chantiers, chalets et Airbnb : nous
-              travaillons proprement, avec fiabilité et soin.
-            </p>
+      {/* Hero — asymmetric split */}
+      <section id="top" className="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24 scroll-mt-16">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
+          <div className="lg:col-span-7 flex flex-col">
+            <div className="flex flex-col justify-center lg:flex-1">
+              <div className="flex items-center gap-2 text-sm">
+                <div className="flex text-brand-bright">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="size-4 fill-current" />
+                  ))}
+                </div>
+                <span className="font-semibold text-brand-deep">
+                  {googleReviews.rating.toFixed(1)}/5
+                </span>
+                <span className="text-brand-deep/60">· {googleReviews.total} avis</span>
+              </div>
+              <h1 className="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-balance">
+                Vos pros de la <span className="text-brand-bright">propreté</span> dans le Valais.
+              </h1>
+              <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">
+                Nettoyages de fin de bail, d’appartements et de bureaux — rapides, minutieux et avec
+                garantie de remise. Nous nous occupons de tout.
+              </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#kontakt"
-                className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
-              >
-                Demander un devis
-                <ArrowRight className="size-4" />
-              </a>
-              <a
-                href="#leistungen"
-                className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
-              >
-                Voir les services
-              </a>
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-brand-deep/70">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="size-4 text-brand-bright" />
-                <span>Nettoyage fin de bail avec garantie de remise</span>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="#kontakt"
+                  className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
+                >
+                  Devis gratuit
+                  <ArrowRight className="size-4" />
+                </a>
+                <a
+                  href="#leistungen"
+                  className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
+                >
+                  Voir les services
+                </a>
               </div>
             </div>
+
+            <TrustedBy
+              label="Ces entreprises nous font confiance"
+              align="left"
+              className="mt-12 lg:mt-auto lg:pt-10"
+            />
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 flex">
             <Photo
               src={PHOTO_HERO}
-              alt="Collaborateur de Mirdita Reinigung nettoyant une façade vitrée dans le Valais"
+              alt="Collaborateur de Mirdita nettoyant une façade vitrée avec les montagnes valaisannes en arrière-plan"
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
             />
           </div>
         </div>
       </section>
 
-      <FrServicesTabs />
+      <FrServices />
 
       <FrProcessSteps />
 
       {/* About */}
       <section className="px-5 md:px-10 py-20">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
+        <div
+          id="ueber-uns"
+          className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center scroll-mt-20"
+        >
           <Reveal className="lg:col-span-7">
             <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
               À propos
             </span>
             <h2 className="mt-4 text-2xl md:text-3xl font-bold tracking-tight text-balance">
-              Un travail concret, sans mauvaises surprises.
+              Nous promettons moins — et tenons davantage.
             </h2>
             <p className="mt-4 text-brand-deep/70 leading-relaxed">
-              Nous définissons à l’avance ce qui sera nettoyé, à quel prix et pour quelle date —
-              puis nous nous y tenons. Pour les nettoyages de fin de bail, nous allons plus loin :
-              nous nettoyons votre appartement avant la remise des clés, avec un contrôle final
-              soigné et une garantie de remise. En cas de remarque lors de l’état des lieux, nous
-              repassons sans frais.
+              Beaucoup promettent la propreté. Nous définissons à l’avance et avec précision ce qui
+              sera nettoyé, à quel prix et pour quand. Ensuite, nous nous y tenons — sans
+              renégociation, sans surprises. Pour les nettoyages de fin de bail, nous allons plus
+              loin : avec notre garantie de remise, nous assumons le risque de la restitution de
+              l’appartement. En cas de réclamation, nous repassons gratuitement.
             </p>
           </Reveal>
           <Reveal delay={120} className="lg:col-span-5 grid grid-cols-3 gap-3">
             {[
-              { v: "24 h", l: "Réponse au devis" },
-              { v: "100%", l: "Garantie de remise" },
-              { v: "Valais", l: "Haut au Bas" },
+              { v: "10+", l: "Ans d’expérience" },
+              { v: "500+", l: "Mandats" },
+              { v: "100%", l: "Garantie" },
             ].map((s) => (
               <div
                 key={s.l}

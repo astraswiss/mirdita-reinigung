@@ -3,17 +3,17 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
 const STEPS = [
-  { n: "01", title: "Demande", body: "Vous nous contactez par formulaire, téléphone ou WhatsApp." },
-  { n: "02", title: "Devis", body: "Vous recevez une offre claire et transparente sous 24 h." },
+  { n: "01", title: "Demande", body: "Vous nous contactez par formulaire ou par téléphone." },
+  { n: "02", title: "Devis", body: "Sous 24 h, vous recevez une offre transparente." },
   {
     n: "03",
     title: "Nettoyage",
-    body: "Notre équipe travaille avec soin et dans les délais convenus.",
+    body: "Notre équipe travaille de façon fiable et dans les délais.",
   },
   {
     n: "04",
-    title: "Contrôle",
-    body: "Contrôle final soigné — nous restons jusqu’à ce que tout soit propre.",
+    title: "Remise",
+    body: "Remise garantie — nous restons jusqu’à ce que tout soit parfait.",
   },
 ];
 
