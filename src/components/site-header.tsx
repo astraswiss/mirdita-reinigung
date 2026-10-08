@@ -4,16 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, ArrowRight, Menu, X } from "lucide-react";
+import { Phone, ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 
-import { LOGO, NAV, ROUTE_ALTERNATES } from "@/components/site-config";
-
-const NAV_FR = [
-  { href: "/fr#leistungen", label: "Services" },
-  { href: "/fr#ueber-uns", label: "À propos" },
-  { href: "/fr#bewertungen", label: "Avis" },
-  { href: "/fr#kontakt", label: "Contact" },
-];
+import { LOGO, NAV, NAV_FR, ROUTE_ALTERNATES, type NavItem } from "@/components/site-config";
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -47,12 +40,16 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-brand-deep/70">
-          {nav.map((n) => (
-            <a key={n.href} href={n.href} className="hover:text-brand-deep transition-colors">
-              {n.label}
-            </a>
-          ))}
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-brand-deep/70">
+          {nav.map((n) =>
+            n.children ? (
+              <NavDropdown key={n.href} item={n} />
+            ) : (
+              <a key={n.href} href={n.href} className="hover:text-brand-deep transition-colors">
+                {n.label}
+              </a>
+            ),
+          )}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -72,7 +69,7 @@ export function SiteHeader() {
             <ArrowRight className="size-3.5" />
           </Link>
           <button
-            className="md:hidden p-2 -mr-2 text-brand-deep"
+            className="lg:hidden p-2 -mr-2 text-brand-deep"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={isFr ? "Menu" : "Menü"}
           >
@@ -82,20 +79,93 @@ export function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden -mx-5 md:-mx-10 border-t border-brand-deep/5 px-5 py-4 space-y-3 bg-brand-light">
-          {nav.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              onClick={() => setMobileOpen(false)}
-              className="block py-1.5 text-sm font-medium text-brand-deep/80"
-            >
-              {n.label}
-            </a>
-          ))}
+        <div className="lg:hidden -mx-5 md:-mx-10 border-t border-brand-deep/5 px-5 md:px-10 py-4 space-y-1 bg-brand-light max-h-[calc(100vh-4rem)] overflow-y-auto">
+          {nav.map((n) =>
+            n.children ? (
+              <details key={n.href} className="group">
+                <summary className="flex cursor-pointer list-none items-center justify-between py-1.5 text-sm font-medium text-brand-deep/80 [&::-webkit-details-marker]:hidden">
+                  {n.label}
+                  <ChevronDown className="size-4 transition-transform group-open:rotate-180" />
+                </summary>
+                <div className="mt-1 mb-2 ml-3 grid grid-cols-2 gap-x-4 border-l border-brand-deep/10 pl-3">
+                  {n.children.map((c) => (
+                    <Link
+                      key={c.href}
+                      href={c.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block py-1.5 text-sm text-brand-deep/70"
+                    >
+                      {c.label}
+                    </Link>
+                  ))}
+                  <a
+                    href={n.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="col-span-2 block py-1.5 text-sm font-semibold text-brand-bright"
+                  >
+                    {n.allLabel}
+                  </a>
+                </div>
+              </details>
+            ) : (
+              <a
+                key={n.href}
+                href={n.href}
+                onClick={() => setMobileOpen(false)}
+                className="block py-1.5 text-sm font-medium text-brand-deep/80"
+              >
+                {n.label}
+              </a>
+            ),
+          )}
         </div>
       )}
     </header>
+  );
+}
+
+/**
+ * Desktop dropdown: opens on hover and on keyboard focus (focus-within), so the
+ * child links are plain, crawlable anchors that are always in the HTML.
+ */
+function NavDropdown({ item }: { item: NavItem }) {
+  const children = item.children ?? [];
+  return (
+    <div className="group relative">
+      <a
+        href={item.href}
+        className="inline-flex items-center gap-1 py-5 hover:text-brand-deep transition-colors"
+      >
+        {item.label}
+        <ChevronDown className="size-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
+      </a>
+      <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-1 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+        <div
+          className={`rounded-2xl border border-brand-deep/5 bg-white p-3 shadow-[0_20px_50px_-20px_rgba(0,21,63,0.25)] ${
+            children.length > 5 ? "grid w-[420px] grid-cols-2" : "w-56"
+          }`}
+        >
+          {children.map((c) => (
+            <Link
+              key={c.href}
+              href={c.href}
+              className="block rounded-lg px-3 py-2 text-sm text-brand-deep/75 hover:bg-brand-light hover:text-brand-deep"
+            >
+              {c.label}
+            </Link>
+          ))}
+          <a
+            href={item.href}
+            className={`mt-1 flex items-center gap-1.5 rounded-lg border-t border-brand-deep/5 px-3 pt-3 pb-1 text-sm font-semibold text-brand-bright ${
+              children.length > 5 ? "col-span-2" : ""
+            }`}
+          >
+            {item.allLabel}
+            <ArrowRight className="size-3.5" />
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }
 

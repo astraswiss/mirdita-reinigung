@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { LOGO } from "@/components/site-config";
+import { LOGO, SERVICE_LINKS_DE, SERVICE_LINKS_FR } from "@/components/site-config";
 
 const FOOTER_DE = {
   home: "/",
@@ -17,18 +17,7 @@ const FOOTER_DE = {
     { label: "Reinigung Visp", href: "/reinigung-visp" },
     { label: "Alle Regionen →", href: "/#einsatzgebiet" },
   ],
-  services: [
-    { label: "Umzugsreinigung", href: "/umzugsreinigung" },
-    { label: "Wohnungsreinigung", href: "/wohnungsreinigung" },
-    { label: "Unterhaltsreinigung", href: "/unterhaltsreinigung" },
-    { label: "Fensterreinigung", href: "/fensterreinigung" },
-    { label: "Teppichreinigung", href: "/teppichreinigung" },
-    { label: "Büroreinigung", href: "/bueroreinigung" },
-    { label: "Praxisreinigung", href: "/praxisreinigung" },
-    { label: "Baureinigung", href: "/baureinigung" },
-    { label: "Hauswartung", href: "/hauswartung" },
-    { label: "Grundreinigung", href: "/grundreinigung" },
-  ],
+  services: SERVICE_LINKS_DE,
   legal: [
     { label: "Impressum", href: "/impressum" },
     { label: "Datenschutz", href: "/datenschutz" },
@@ -45,18 +34,7 @@ const FOOTER_FR = {
   legalTitle: "Informations légales",
   regionsTitle: "Régions",
   regions: [{ label: "Nettoyage à Sion", href: "/fr/nettoyage-sion" }],
-  services: [
-    { label: "Nettoyage fin de bail", href: "/fr/nettoyage-fin-de-bail-valais" },
-    { label: "Nettoyage d’appartement", href: "/fr/nettoyage-appartement-valais" },
-    { label: "Nettoyage régulier", href: "/fr/nettoyage-regulier-valais" },
-    { label: "Nettoyage de vitres", href: "/fr/nettoyage-vitres-valais" },
-    { label: "Nettoyage de tapis", href: "/fr/nettoyage-tapis-valais" },
-    { label: "Nettoyage de bureaux", href: "/fr/nettoyage-bureaux-valais" },
-    { label: "Cabinets médicaux", href: "/fr/nettoyage-cabinets-medicaux-valais" },
-    { label: "Fin de chantier", href: "/fr/nettoyage-fin-de-chantier-valais" },
-    { label: "Conciergerie", href: "/fr/conciergerie-valais" },
-    { label: "Nettoyage en profondeur", href: "/fr/nettoyage-en-profondeur-valais" },
-  ],
+  services: SERVICE_LINKS_FR,
   // Legal pages exist only in German; link to them as-is.
   legal: [
     { label: "Impressum", href: "/impressum" },

@@ -7,11 +7,87 @@ export const PHOTO_SPEZIAL = "/spezialreinigung.jpg";
 export const PHOTO_PUTZEN = "/putzen.jpg";
 export const PHOTO_BUERO = "/buero.jpg";
 
-export const NAV = [
-  { href: "/#leistungen", label: "Leistungen" },
+export type NavLink = { href: string; label: string };
+export type NavItem = NavLink & { children?: NavLink[]; allLabel?: string };
+
+/** German service pages — single list for the header dropdown and the footer. */
+export const SERVICE_LINKS_DE: NavLink[] = [
+  { label: "Umzugsreinigung", href: "/umzugsreinigung" },
+  { label: "Wohnungsreinigung", href: "/wohnungsreinigung" },
+  { label: "Unterhaltsreinigung", href: "/unterhaltsreinigung" },
+  { label: "Fensterreinigung", href: "/fensterreinigung" },
+  { label: "Teppichreinigung", href: "/teppichreinigung" },
+  { label: "Büroreinigung", href: "/bueroreinigung" },
+  { label: "Praxisreinigung", href: "/praxisreinigung" },
+  { label: "Baureinigung", href: "/baureinigung" },
+  { label: "Hauswartung", href: "/hauswartung" },
+  { label: "Grundreinigung", href: "/grundreinigung" },
+];
+
+/** French service pages, same order as the German list. */
+export const SERVICE_LINKS_FR: NavLink[] = [
+  { label: "Nettoyage fin de bail", href: "/fr/nettoyage-fin-de-bail-valais" },
+  { label: "Nettoyage d’appartement", href: "/fr/nettoyage-appartement-valais" },
+  { label: "Nettoyage régulier", href: "/fr/nettoyage-regulier-valais" },
+  { label: "Nettoyage de vitres", href: "/fr/nettoyage-vitres-valais" },
+  { label: "Nettoyage de tapis", href: "/fr/nettoyage-tapis-valais" },
+  { label: "Nettoyage de bureaux", href: "/fr/nettoyage-bureaux-valais" },
+  { label: "Cabinets médicaux", href: "/fr/nettoyage-cabinets-medicaux-valais" },
+  { label: "Fin de chantier", href: "/fr/nettoyage-fin-de-chantier-valais" },
+  { label: "Conciergerie", href: "/fr/conciergerie-valais" },
+  { label: "Nettoyage en profondeur", href: "/fr/nettoyage-en-profondeur-valais" },
+];
+
+/** German city landing pages, roughly east to west along the Rhone. */
+export const CITY_LINKS_DE: NavLink[] = [
+  { label: "Naters", href: "/reinigung-naters" },
+  { label: "Brig-Glis", href: "/reinigung-brig-glis" },
+  { label: "Ried-Brig", href: "/reinigung-ried-brig" },
+  { label: "Lalden", href: "/reinigung-lalden" },
+  { label: "Visp", href: "/reinigung-visp" },
+  { label: "Baltschieder", href: "/reinigung-baltschieder" },
+  { label: "Raron", href: "/reinigung-raron" },
+  { label: "Steg", href: "/reinigung-steg" },
+  { label: "Gampel", href: "/reinigung-gampel" },
+  { label: "Leuk", href: "/reinigung-leuk" },
+];
+
+export const CITY_LINKS_FR: NavLink[] = [{ label: "Sion", href: "/fr/nettoyage-sion" }];
+
+export const NAV: NavItem[] = [
+  {
+    href: "/#leistungen",
+    label: "Leistungen",
+    allLabel: "Alle Leistungen",
+    children: SERVICE_LINKS_DE,
+  },
+  {
+    href: "/#einsatzgebiet",
+    label: "Regionen",
+    allLabel: "Ganzes Einsatzgebiet",
+    children: CITY_LINKS_DE,
+  },
   { href: "/#ueber-uns", label: "Über uns" },
   { href: "/#bewertungen", label: "Bewertungen" },
   { href: "/#kontakt", label: "Kontakt" },
+];
+
+export const NAV_FR: NavItem[] = [
+  {
+    href: "/fr#leistungen",
+    label: "Services",
+    allLabel: "Tous les services",
+    children: SERVICE_LINKS_FR,
+  },
+  {
+    href: "/fr#einsatzgebiet",
+    label: "Régions",
+    allLabel: "Toute la région",
+    children: CITY_LINKS_FR,
+  },
+  { href: "/fr#ueber-uns", label: "À propos" },
+  { href: "/fr#bewertungen", label: "Avis" },
+  { href: "/fr#kontakt", label: "Contact" },
 ];
 
 export type ServiceKey = "privat" | "firmen" | "spezial";

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 
@@ -45,29 +45,27 @@ export function EinsatzgebietSection() {
           </p>
         </Reveal>
         <Reveal delay={100} className="flex flex-wrap justify-start md:justify-center gap-3">
-          {CITIES.map((city) => {
-            const chip = (
-              <>
-                <MapPin className="size-3.5 text-brand-bright shrink-0" />
-                {city.name}
-              </>
-            );
-            const base =
-              "inline-flex items-center gap-1.5 rounded-full bg-white border border-brand-deep/10 px-4 py-2 text-sm font-medium text-brand-deep/80";
-            return city.href ? (
+          {CITIES.map((city) =>
+            city.href ? (
               <Link
                 key={city.name}
                 href={city.href}
-                className={`${base} hover:border-brand-bright/40 hover:text-brand-bright transition-colors`}
+                className="inline-flex items-center gap-1.5 rounded-full bg-white border border-brand-bright/30 px-4 py-2 text-sm font-semibold text-brand-deep hover:border-brand-bright hover:text-brand-bright transition-colors"
               >
-                {chip}
+                <MapPin className="size-3.5 text-brand-bright shrink-0" />
+                {city.name}
+                <ArrowRight className="size-3.5 text-brand-bright shrink-0" />
               </Link>
             ) : (
-              <span key={city.name} className={base}>
-                {chip}
+              <span
+                key={city.name}
+                className="inline-flex items-center gap-1.5 rounded-full border border-brand-deep/10 px-4 py-2 text-sm font-medium text-brand-deep/60"
+              >
+                <MapPin className="size-3.5 text-brand-deep/35 shrink-0" />
+                {city.name}
               </span>
-            );
-          })}
+            ),
+          )}
         </Reveal>
       </div>
     </section>
