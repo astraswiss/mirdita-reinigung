@@ -14,6 +14,13 @@ const CITY_ROUTES = [
   "/reinigung-naters",
   "/reinigung-brig-glis",
   "/reinigung-visp",
+  "/reinigung-raron",
+  "/reinigung-leuk",
+  "/reinigung-lalden",
+  "/reinigung-ried-brig",
+  "/reinigung-gampel",
+  "/reinigung-steg",
+  "/reinigung-baltschieder",
   "/fr/nettoyage-sion",
 ];
 

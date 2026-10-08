@@ -15,6 +15,7 @@ const FOOTER_DE = {
     { label: "Reinigung Naters", href: "/reinigung-naters" },
     { label: "Reinigung Brig-Glis", href: "/reinigung-brig-glis" },
     { label: "Reinigung Visp", href: "/reinigung-visp" },
+    { label: "Alle Regionen →", href: "/#einsatzgebiet" },
   ],
   services: [
     { label: "Umzugsreinigung", href: "/umzugsreinigung" },
