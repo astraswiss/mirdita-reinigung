@@ -1,3 +1,6 @@
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
+
 import { unstable_cache } from "next/cache";
 
 export type GoogleReview = {
@@ -114,16 +117,65 @@ async function fetchLiveReviews(): Promise<GoogleReviewsData> {
 // Refresh at most once a day. When the stale entry's background refresh throws
 // (quota cap hit, API error), the cached last-good value is preserved and kept
 // on screen — only a cold cache with a failing fetch falls through to FALLBACK.
-const getCachedReviews = unstable_cache(fetchLiveReviews, ["google-reviews"], {
+// During `next build` every page hits the cold cache at once; share a single
+// API request per build worker instead of one per page. (Kept inside the cached
+// function so each page still registers the daily revalidation.)
+let buildRequest: Promise<GoogleReviewsData> | undefined;
+function fetchLiveReviewsOnce(): Promise<GoogleReviewsData> {
+  if (process.env.NEXT_PHASE !== "phase-production-build") return fetchLiveReviews();
+  return (buildRequest ??= fetchLiveReviews());
+}
+
+const getCachedReviews = unstable_cache(fetchLiveReviewsOnce, ["google-reviews"], {
   revalidate: 60 * 60 * 24,
   tags: ["google-reviews"],
 });
 
-export async function getGoogleReviews(): Promise<GoogleReviewsData> {
+/**
+ * Durable copy of the last successful API response in `.next/cache`, which
+ * Vercel restores between builds — so it survives deploys even when the Data
+ * Cache starts empty. Only read/written at build time.
+ */
+function snapshotFile() {
+  return path.join(process.cwd(), ".next", "cache", "google-reviews.json");
+}
+
+async function loadSnapshot(): Promise<GoogleReviewsData | null> {
   try {
-    return await getCachedReviews();
+    const data = JSON.parse(await readFile(snapshotFile(), "utf8")) as GoogleReviewsData;
+    return typeof data.rating === "number" && Array.isArray(data.reviews) ? data : null;
+  } catch {
+    return null;
+  }
+}
+
+async function saveSnapshot(data: GoogleReviewsData) {
+  try {
+    const file = snapshotFile();
+    await mkdir(path.dirname(file), { recursive: true });
+    await writeFile(file, JSON.stringify(data));
+  } catch {
+    // Best effort only.
+  }
+}
+
+/**
+ * Reviews to render, in order of preference:
+ * 1. the cached / freshly fetched live result,
+ * 2. the snapshot of the last successful response (build time),
+ * 3. at runtime: throw, so an ISR refresh is aborted and the page keeps showing
+ *    its last good version instead of reverting to static data,
+ * 4. at build time with no snapshot at all: the static FALLBACK.
+ */
+export async function getGoogleReviews(): Promise<GoogleReviewsData> {
+  const isBuild = process.env.NEXT_PHASE === "phase-production-build";
+  try {
+    const data = await getCachedReviews();
+    if (isBuild) await saveSnapshot(data);
+    return data;
   } catch (err) {
     console.error(err instanceof Error ? err.message : err);
-    return FALLBACK;
+    if (isBuild) return (await loadSnapshot()) ?? FALLBACK;
+    throw new Error("[google-reviews] Refresh failed; keeping the previously rendered page");
   }
 }
