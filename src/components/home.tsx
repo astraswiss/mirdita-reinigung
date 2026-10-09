@@ -145,45 +145,6 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
 
       <ProcessSteps />
 
-      {/* About */}
-      <section className="px-5 md:px-10 py-20">
-        <div
-          id="ueber-uns"
-          className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center scroll-mt-20"
-        >
-          <Reveal className="lg:col-span-7">
-            <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
-              Über uns
-            </span>
-            <h2 className="mt-4 text-2xl md:text-3xl font-bold tracking-tight text-balance">
-              Wir versprechen weniger — und halten mehr.
-            </h2>
-            <p className="mt-4 text-brand-deep/70 leading-relaxed">
-              Viele versprechen Sauberkeit. Wir definieren vorab präzise, was gereinigt wird, zu
-              welchem Preis und bis wann. Danach halten wir uns daran — ohne Nachverhandlungen, ohne
-              Überraschungen. Bei Umzugsreinigungen gehen wir einen Schritt weiter: Mit unserer
-              Abnahmegarantie tragen wir das Risiko der Wohnungsübergabe. Wird etwas beanstandet,
-              bessern wir kostenlos nach.
-            </p>
-          </Reveal>
-          <Reveal delay={120} className="lg:col-span-5 grid grid-cols-3 gap-3">
-            {[
-              { v: "10+", l: "Jahre Erfahrung" },
-              { v: "500+", l: "Aufträge" },
-              { v: "100%", l: "Garantie" },
-            ].map((s) => (
-              <div
-                key={s.l}
-                className="rounded-2xl bg-white border border-brand-deep/5 p-5 text-center"
-              >
-                <div className="text-2xl md:text-3xl font-bold text-brand-deep">{s.v}</div>
-                <div className="mt-1 text-xs text-brand-deep/60 leading-tight">{s.l}</div>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
       <ReviewsSection googleReviews={googleReviews} />
 
       <EinsatzgebietSection />

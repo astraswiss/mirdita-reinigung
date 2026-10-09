@@ -98,45 +98,6 @@ export default async function Page() {
 
       <FrProcessSteps />
 
-      {/* About */}
-      <section className="px-5 md:px-10 py-20">
-        <div
-          id="ueber-uns"
-          className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center scroll-mt-20"
-        >
-          <Reveal className="lg:col-span-7">
-            <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
-              À propos
-            </span>
-            <h2 className="mt-4 text-2xl md:text-3xl font-bold tracking-tight text-balance">
-              Nous promettons moins — et tenons davantage.
-            </h2>
-            <p className="mt-4 text-brand-deep/70 leading-relaxed">
-              Beaucoup promettent la propreté. Nous définissons à l’avance et avec précision ce qui
-              sera nettoyé, à quel prix et pour quand. Ensuite, nous nous y tenons — sans
-              renégociation, sans surprises. Pour les nettoyages de fin de bail, nous allons plus
-              loin : avec notre garantie de remise, nous assumons le risque de la restitution de
-              l’appartement. En cas de réclamation, nous repassons gratuitement.
-            </p>
-          </Reveal>
-          <Reveal delay={120} className="lg:col-span-5 grid grid-cols-3 gap-3">
-            {[
-              { v: "10+", l: "Ans d’expérience" },
-              { v: "500+", l: "Mandats" },
-              { v: "100%", l: "Garantie" },
-            ].map((s) => (
-              <div
-                key={s.l}
-                className="rounded-2xl bg-white border border-brand-deep/5 p-5 text-center"
-              >
-                <div className="text-2xl md:text-3xl font-bold text-brand-deep">{s.v}</div>
-                <div className="mt-1 text-xs text-brand-deep/60 leading-tight">{s.l}</div>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
       <ReviewsSection
         googleReviews={googleReviews}
         eyebrow="Avis"

@@ -78,7 +78,7 @@ export const NAV: NavItem[] = [
     allLabel: "Ganzes Einsatzgebiet",
     children: CITY_LINKS_DE,
   },
-  { href: "/#ueber-uns", label: "Über uns" },
+  { href: "/ueber-uns", label: "Über uns" },
   { href: "/#bewertungen", label: "Bewertungen" },
   { href: "/#kontakt", label: "Kontakt" },
 ];
@@ -96,7 +96,7 @@ export const NAV_FR: NavItem[] = [
     allLabel: "Toute la région",
     children: CITY_LINKS_FR,
   },
-  { href: "/fr#ueber-uns", label: "À propos" },
+  { href: "/fr/a-propos", label: "À propos" },
   { href: "/fr#bewertungen", label: "Avis" },
   { href: "/fr#kontakt", label: "Contact" },
 ];
@@ -242,6 +242,7 @@ export const ROUTE_ALTERNATES: { de: string; fr: string }[] = [
   { de: "/baureinigung", fr: "/fr/nettoyage-fin-de-chantier-valais" },
   { de: "/hauswartung", fr: "/fr/conciergerie-valais" },
   { de: "/grundreinigung", fr: "/fr/nettoyage-en-profondeur-valais" },
+  { de: "/ueber-uns", fr: "/fr/a-propos" },
 ];
 
 /** hreflang alternates for a page, given either its DE or FR path. */

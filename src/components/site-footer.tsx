@@ -6,6 +6,7 @@ import { LOGO, SERVICE_LINKS_DE, SERVICE_LINKS_FR } from "@/components/site-conf
 const FOOTER_DE = {
   home: "/",
   homeAria: "Mirdita — Startseite",
+  about: { label: "Über uns", href: "/ueber-uns" },
   tagline: "Ihr Partner für Sauberkeit im ganzen Kanton Wallis.",
   servicesTitle: "Leistungen",
   contactTitle: "Kontakt",
@@ -28,6 +29,7 @@ const FOOTER_DE = {
 const FOOTER_FR = {
   home: "/fr",
   homeAria: "Mirdita — Accueil",
+  about: { label: "À propos", href: "/fr/a-propos" },
   tagline: "Votre partenaire pour la propreté dans tout le Canton du Valais.",
   servicesTitle: "Services",
   contactTitle: "Contact",
@@ -66,6 +68,12 @@ export function SiteFooter({ lang = "de" }: { lang?: "de" | "fr" }) {
             />
           </Link>
           <p className="mt-3 text-sm text-brand-deep/55 max-w-xs">{t.tagline}</p>
+          <Link
+            href={t.about.href}
+            className="mt-3 inline-block text-sm font-semibold text-brand-deep/70 hover:text-brand-bright transition-colors"
+          >
+            {t.about.label} →
+          </Link>
         </div>
         <FooterCol
           title={t.servicesTitle}
