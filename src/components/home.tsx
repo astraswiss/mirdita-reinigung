@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
-import { ArrowRight, Check, Mail, MapPin, MessageCircle, Phone, Star } from "lucide-react";
+import { ArrowRight, Mail, MapPin, MessageCircle, Phone, Star } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
 import { TrustedBy } from "@/components/trusted-by";
@@ -11,6 +11,7 @@ import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
+import { ServiceCards } from "@/components/service-cards";
 import { PHOTO_HERO, PHOTO_PUTZEN, SERVICES, type ServiceKey } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -132,51 +133,13 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
             </p>
           </Reveal>
 
-          <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(Object.keys(SERVICES) as ServiceKey[]).map((key, i) => {
-              const s = SERVICES[key];
-              const Icon = s.icon;
-              return (
-                <Reveal key={key} delay={i * 80} className="flex">
-                  <div className="flex w-full flex-col overflow-hidden rounded-[28px] bg-white border border-brand-deep/5 shadow-[0_20px_50px_-30px_rgba(0,21,63,0.2)]">
-                    <Photo
-                      src={s.image}
-                      alt={s.imageAlt}
-                      objectPosition={s.imagePosition}
-                      className="aspect-[16/10] w-full"
-                    />
-                    <div className="flex flex-1 flex-col p-7">
-                      <div className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold">
-                        <Icon className="size-3.5" />
-                        {s.label}
-                      </div>
-                      <h3 className="mt-4 text-xl font-bold tracking-tight">{s.title}</h3>
-                      <p className="mt-3 text-sm text-brand-deep/65 leading-relaxed">
-                        {s.description}
-                      </p>
-                      <ul className="mt-5 space-y-2.5">
-                        {s.items.map((item) => (
-                          <li key={item} className="flex items-start gap-2.5 text-sm">
-                            <span className="size-5 rounded-full bg-brand-bright/15 text-brand-bright grid place-items-center shrink-0 mt-0.5">
-                              <Check className="size-3" strokeWidth={3} />
-                            </span>
-                            <span className="text-brand-deep/85">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <a
-                        href="#kontakt"
-                        className="mt-auto inline-flex w-fit items-center gap-2 pt-6 text-sm font-semibold text-brand-bright transition-all hover:gap-3"
-                      >
-                        Offerte anfordern
-                        <ArrowRight className="size-4" />
-                      </a>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+          <ServiceCards
+            ctaLabel="Offerte anfordern"
+            services={(Object.keys(SERVICES) as ServiceKey[]).map((key) => ({
+              key,
+              ...SERVICES[key],
+            }))}
+          />
         </div>
       </section>
 

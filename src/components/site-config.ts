@@ -107,6 +107,7 @@ export const SERVICES: Record<
   ServiceKey,
   {
     label: string;
+    shortLabel: string;
     icon: typeof HomeIcon;
     title: string;
     description: string;
@@ -118,6 +119,7 @@ export const SERVICES: Record<
 > = {
   privat: {
     label: "Privathaushalt",
+    shortLabel: "Privat",
     icon: HomeIcon,
     title: "Reinigung für Ihr Zuhause",
     description:
@@ -135,6 +137,7 @@ export const SERVICES: Record<
   },
   firmen: {
     label: "Firmen & Gewerbe",
+    shortLabel: "Firmen",
     icon: Building2,
     title: "Sauberkeit für Ihren Betrieb",
     description:
@@ -152,6 +155,7 @@ export const SERVICES: Record<
   },
   spezial: {
     label: "Spezialreinigungen",
+    shortLabel: "Spezial",
     icon: Sparkles,
     title: "Spezielle Anforderungen",
     description:
