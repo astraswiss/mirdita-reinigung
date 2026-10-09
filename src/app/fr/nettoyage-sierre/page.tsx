@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { FrCityPage } from "@/components/fr/fr-city-page";
-import { PHOTO_PRIVAT } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/fr/nettoyage-sierre";
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Nettoyage fin de bail, appartements et bureaux à Sierre — en français et en allemand.",
     url: PATH,
     locale: "fr_CH",
-    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
+    images: regionOgImages(PATH, "fr"),
   },
 };
 
@@ -32,9 +32,6 @@ export default async function Page() {
       schemaDescription="Entreprise de nettoyage active à Sierre : nettoyage fin de bail avec garantie de remise, appartements, villas et bureaux."
       badge="Sierre — Siders"
       intro="À la frontière des langues, Sierre est réputée pour son soleil et ses vignobles. Mirdita Reinigung y intervient pour les nettoyages de fin de bail avec garantie de remise, l’entretien d’appartements et de villas et le nettoyage de bureaux — en français comme en allemand."
-      image={PHOTO_PRIVAT}
-      imagePosition="object-[center_70%]"
-      imageAlt="Collaboratrice de Mirdita nettoyant une cuisine à Sierre"
       proseEyebrow="Entre deux langues"
       proseTitle="Nettoyage à Sierre et environs"
       paragraphs={[

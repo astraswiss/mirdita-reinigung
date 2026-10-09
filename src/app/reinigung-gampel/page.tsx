@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_BUERO } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-gampel";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Gampel — Mirdita Reinigung",
     description: "Umzugs-, Büro- und Baureinigung in Gampel-Bratsch.",
     url: PATH,
-    images: [{ url: PHOTO_BUERO, width: 1280, height: 854 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,9 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Gampel-Bratsch: Umzugs-, Büro- und Baureinigung mit Abnahmegarantie."
       badge="Gampel-Bratsch"
       intro="Am Ausgang des Lötschentals ist Gampel Wohnort, Gewerbestandort und jeden August Festivalgemeinde. Wir reinigen Wohnungen beim Umzug mit Abnahmegarantie, Büros und Betriebe im Unterhalt sowie Neubauten und Umbauten vor dem Bezug."
-      image={PHOTO_BUERO}
-      imagePosition="object-left"
-      imageAlt="Sauberes Büro nach der Reinigung durch Mirdita in Gampel"
       proseEyebrow="Am Tor zum Lötschental"
       proseTitle="Reinigung in Gampel und Bratsch"
       paragraphs={[

@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-const WHATSAPP_NUMBER = "41762027984";
+import { WHATSAPP_URL } from "@/config/site";
 
 const COPY = {
   de: {
@@ -24,7 +24,7 @@ const COPY = {
 export function WhatsappButton() {
   const pathname = usePathname();
   const copy = pathname?.startsWith("/fr") ? COPY.fr : COPY.de;
-  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(copy.message)}`;
+  const href = `${WHATSAPP_URL}?text=${encodeURIComponent(copy.message)}`;
 
   return (
     <a

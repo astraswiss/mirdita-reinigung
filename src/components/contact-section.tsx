@@ -8,6 +8,7 @@ import { trackEvent } from "@/lib/analytics";
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
 import { PHOTO_PUTZEN, SERVICE_LINKS_DE, SERVICE_LINKS_FR } from "@/components/site-config";
+import { BUSINESS, FULL_ADDRESS, WHATSAPP_URL } from "@/config/site";
 
 const COPY = {
   de: {
@@ -27,12 +28,10 @@ const COPY = {
     okTitle: "Anfrage gesendet",
     okBody: "Danke — wir melden uns innert 24 Stunden bei Ihnen.",
     errTitle: "Senden fehlgeschlagen",
-    errBody:
-      "Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch unter +41 76 202 79 84.",
+    errBody: `Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch unter ${BUSINESS.phone}.`,
     cardTitle: "Direkt erreichbar",
     cardBody: "Lieber per Telefon oder E-Mail? Kein Problem.",
     address: "Adresse",
-    addressValue: "Wallis, Schweiz",
     photoAlt: "Mirdita Detailreinigung",
     photos: "Bilder (falls vorhanden)",
     photosAdd: "Fotos hinzufügen",
@@ -58,11 +57,10 @@ const COPY = {
     okTitle: "Demande envoyée",
     okBody: "Merci — nous vous répondons dans les 24 heures.",
     errTitle: "Échec de l’envoi",
-    errBody: "Veuillez réessayer ou nous appeler directement au +41 76 202 79 84.",
+    errBody: `Veuillez réessayer ou nous appeler directement au ${BUSINESS.phone}.`,
     cardTitle: "Joignables directement",
     cardBody: "Vous préférez le téléphone ou l’e-mail ? Aucun problème.",
     address: "Adresse",
-    addressValue: "Valais, Suisse",
     photoAlt: "Nettoyage de détail Mirdita",
     photos: "Photos (si disponibles)",
     photosAdd: "Ajouter des photos",
@@ -291,23 +289,29 @@ export function ContactSection({
             <InfoLine
               icon={Phone}
               label={t.phone}
-              value="+41 76 202 79 84"
-              href="tel:+41762027984"
+              value={BUSINESS.phone}
+              href={BUSINESS.phoneHref}
             />
             <InfoLine
               icon={MessageCircle}
               label="WhatsApp"
-              value="+41 76 202 79 84"
-              href="https://wa.me/41762027984"
+              value={BUSINESS.phone}
+              href={WHATSAPP_URL}
               external
             />
             <InfoLine
               icon={Mail}
               label={t.email}
-              value="info@mirdita.ch"
-              href="mailto:info@mirdita.ch"
+              value={BUSINESS.email}
+              href={`mailto:${BUSINESS.email}`}
             />
-            <InfoLine icon={MapPin} label={t.address} value={t.addressValue} />
+            <InfoLine
+              icon={MapPin}
+              label={t.address}
+              value={FULL_ADDRESS}
+              href={BUSINESS.mapsUrl}
+              external
+            />
           </ul>
           <div className="hidden lg:block mt-auto pt-8">
             <Photo

@@ -7,6 +7,8 @@ import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
 import { FrRelated, type FrRelatedLink } from "@/components/fr/fr-related";
 import { Photo } from "@/components/photo";
+import { regionHero } from "@/config/region-media";
+import { BUSINESS } from "@/config/site";
 import { ProseSection } from "@/components/prose-section";
 import { ReviewsSection } from "@/components/reviews-section";
 import { SiteFooter } from "@/components/site-footer";
@@ -24,9 +26,6 @@ export function FrCityPage({
   schemaDescription,
   badge,
   intro,
-  image,
-  imageAlt,
-  imagePosition,
   proseEyebrow,
   proseTitle,
   paragraphs,
@@ -42,9 +41,6 @@ export function FrCityPage({
   schemaDescription: string;
   badge: string;
   intro: string;
-  image: string;
-  imageAlt: string;
-  imagePosition?: string;
   proseEyebrow: string;
   proseTitle: string;
   paragraphs: string[];
@@ -55,6 +51,8 @@ export function FrCityPage({
   ctaBody: string;
   googleReviews: GoogleReviewsData;
 }) {
+  const hero = regionHero(path, "fr");
+
   return (
     <div lang="fr" className="min-h-screen bg-brand-light text-brand-deep font-sans antialiased">
       <CitySchema
@@ -86,7 +84,7 @@ export function FrCityPage({
                 <ArrowRight className="size-4" />
               </Link>
               <a
-                href="tel:+41762027984"
+                href={BUSINESS.phoneHref}
                 className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
               >
                 <Phone className="size-4" />
@@ -96,10 +94,14 @@ export function FrCityPage({
           </div>
           <div className="lg:col-span-5">
             <Photo
-              src={image}
-              alt={imageAlt}
+              src={hero.src}
+              alt={hero.alt}
+              width={hero.width}
+              height={hero.height}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              priority
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
-              objectPosition={imagePosition}
+              objectPosition={hero.position}
             />
           </div>
         </div>

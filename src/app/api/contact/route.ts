@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+import { BUSINESS } from "@/config/site";
+
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const rateLimitByIp = new Map<string, { count: number; resetAt: number }>();
@@ -96,7 +98,7 @@ export async function POST(request: Request) {
   try {
     const { error } = await resend.emails.send({
       from: process.env.CONTACT_FROM_EMAIL ?? "Mirdita Webseite <onboarding@resend.dev>",
-      to: process.env.CONTACT_TO_EMAIL ?? "info@mirdita.ch",
+      to: process.env.CONTACT_TO_EMAIL ?? BUSINESS.email,
       replyTo: cleanEmail,
       subject: `Neue Anfrage von ${cleanName}${cleanType ? ` – ${cleanType}` : ""}`,
       text: [

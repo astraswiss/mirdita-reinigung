@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { FrCityPage } from "@/components/fr/fr-city-page";
-import { PHOTO_BUERO } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/fr/nettoyage-monthey";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: "Nettoyage fin de bail, bureaux et appartements à Monthey et dans le Chablais.",
     url: PATH,
     locale: "fr_CH",
-    images: [{ url: PHOTO_BUERO, width: 1280, height: 854 }],
+    images: regionOgImages(PATH, "fr"),
   },
 };
 
@@ -31,9 +31,6 @@ export default async function Page() {
       schemaDescription="Entreprise de nettoyage active à Monthey et dans le Chablais valaisan : nettoyage fin de bail, bureaux et appartements."
       badge="Monthey — Chablais valaisan"
       intro="Au pied des Dents du Midi, Monthey est le centre urbain du Chablais valaisan et un pôle industriel important. Nous nettoyons bureaux et locaux d’entreprise, appartements et immeubles, et réalisons des nettoyages de fin de bail avec garantie de remise."
-      image={PHOTO_BUERO}
-      imagePosition="object-left"
-      imageAlt="Bureaux propres après un nettoyage par Mirdita à Monthey"
       proseEyebrow="Au pied des Dents du Midi"
       proseTitle="Nettoyage à Monthey et dans le Chablais"
       paragraphs={[

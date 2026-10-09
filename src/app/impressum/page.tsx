@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { BUSINESS } from "@/config/site";
+
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -27,13 +29,13 @@ export default function Page() {
             <section>
               <h2 className="text-lg font-bold">Anbieter</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
-                Mirdita Reinigung Berisha
+                {BUSINESS.legalName}
                 <br />
                 Einzelunternehmen
                 <br />
-                Belalpstrasse 2
+                {BUSINESS.streetAddress}
                 <br />
-                3904 Naters
+                {BUSINESS.postalCode} {BUSINESS.locality}
                 <br />
                 Schweiz
               </p>
@@ -43,13 +45,13 @@ export default function Page() {
               <h2 className="text-lg font-bold">Kontakt</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Telefon:{" "}
-                <a href="tel:+41762027984" className="text-brand-bright hover:underline">
-                  +41 76 202 79 84
+                <a href={BUSINESS.phoneHref} className="text-brand-bright hover:underline">
+                  {BUSINESS.phone}
                 </a>
                 <br />
                 E-Mail:{" "}
-                <a href="mailto:info@mirdita.ch" className="text-brand-bright hover:underline">
-                  info@mirdita.ch
+                <a href={`mailto:${BUSINESS.email}`} className="text-brand-bright hover:underline">
+                  {BUSINESS.email}
                 </a>
               </p>
             </section>

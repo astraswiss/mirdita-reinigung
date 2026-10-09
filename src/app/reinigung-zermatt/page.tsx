@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_BUERO } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-zermatt";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Zermatt — Mirdita Reinigung",
     description: "Ferienwohnungs-, Chalet- und Büroreinigung in Zermatt.",
     url: PATH,
-    images: [{ url: PHOTO_BUERO, width: 1280, height: 854 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,9 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Zermatt: Endreinigung von Ferienwohnungen und Chalets, Saison-Grundreinigung, Büro- und Umzugsreinigung."
       badge="Am Fuss des Matterhorns"
       intro="Zermatt ist eine der bekanntesten Feriendestinationen der Welt — und Ferienwohnungen, Chalets und Geschäftsräume müssen hier besonders hohen Ansprüchen genügen. Wir übernehmen Endreinigungen zwischen Gästen, die Grundreinigung zum Saisonwechsel, Büroreinigung und Umzugsreinigungen mit Abnahmegarantie."
-      image={PHOTO_BUERO}
-      imagePosition="object-left"
-      imageAlt="Gepflegte Räumlichkeiten nach der Reinigung durch Mirdita in Zermatt"
       proseEyebrow="Autofrei seit 1961"
       proseTitle="Reinigung in Zermatt"
       paragraphs={[

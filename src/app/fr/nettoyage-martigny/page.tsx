@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { FrCityPage } from "@/components/fr/fr-city-page";
-import { PHOTO_SPEZIAL } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/fr/nettoyage-martigny";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: "Nettoyage fin de bail, bureaux et fin de chantier à Martigny.",
     url: PATH,
     locale: "fr_CH",
-    images: [{ url: PHOTO_SPEZIAL, width: 2048, height: 1536 }],
+    images: regionOgImages(PATH, "fr"),
   },
 };
 
@@ -31,8 +31,6 @@ export default async function Page() {
       schemaDescription="Entreprise de nettoyage active à Martigny : nettoyage fin de bail avec garantie de remise, appartements, bureaux et fin de chantier."
       badge="Martigny et environs"
       intro="Carrefour entre le Grand-Saint-Bernard, Chamonix et la plaine du Rhône, Martigny ne cesse de se développer. Nous y réalisons des nettoyages de fin de bail avec garantie de remise, le nettoyage de fin de chantier pour les nouveaux immeubles et l’entretien régulier de bureaux et commerces."
-      image={PHOTO_SPEZIAL}
-      imageAlt="Collaborateur de Mirdita nettoyant une grande surface vitrée à Martigny"
       proseEyebrow="Au carrefour des Alpes"
       proseTitle="Nettoyage à Martigny"
       paragraphs={[

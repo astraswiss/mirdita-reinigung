@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+
 import Link from "next/link";
+
+import { BUSINESS } from "@/config/site";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -32,7 +35,8 @@ export default function Page() {
               <h2 className="text-lg font-bold">1. Geltungsbereich</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für sämtliche Aufträge und
-                Verträge zwischen Mirdita Reinigung Berisha, Belalpstrasse 2, 3904 Naters
+                Verträge zwischen {BUSINESS.legalName}, {BUSINESS.streetAddress},{" "}
+                {BUSINESS.postalCode} {BUSINESS.locality}
                 (&bdquo;Mirdita Reinigung&ldquo;) und ihren Kundinnen und Kunden über Reinigungs-
                 und Unterhaltsdienstleistungen, soweit nicht ausdrücklich schriftlich etwas anderes
                 vereinbart wurde.

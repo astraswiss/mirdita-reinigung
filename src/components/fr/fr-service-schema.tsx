@@ -1,6 +1,5 @@
-import { AREA_SERVED } from "@/components/site-config";
-
-const BASE_URL = "https://mirdita.ch";
+import { AREA_SERVED_JSON_LD, PROVIDER_JSON_LD } from "@/components/site-config";
+import { BUSINESS } from "@/config/site";
 
 /**
  * Service schema for a French service page. Reuses the real Mirdita NAP and
@@ -23,23 +22,9 @@ export function FrServiceSchema({
     description,
     serviceType: name,
     inLanguage: "fr-CH",
-    url: `${BASE_URL}${path}`,
-    areaServed: AREA_SERVED,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Mirdita Reinigung Berisha",
-      telephone: "+41762027984",
-      email: "info@mirdita.ch",
-      url: BASE_URL,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Belalpstrasse 2",
-        postalCode: "3904",
-        addressLocality: "Naters",
-        addressRegion: "Valais",
-        addressCountry: "CH",
-      },
-    },
+    url: `${BUSINESS.url}${path}`,
+    areaServed: AREA_SERVED_JSON_LD,
+    provider: PROVIDER_JSON_LD,
   };
 
   return (

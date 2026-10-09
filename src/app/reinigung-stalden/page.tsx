@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_PUTZEN } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-stalden";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Stalden — Mirdita Reinigung",
     description: "Umzugs-, Wohnungs- und Treppenhausreinigung in Stalden.",
     url: PATH,
-    images: [{ url: PHOTO_PUTZEN, width: 1536, height: 1426 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,9 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Stalden: Umzugs-, Wohnungs- und Treppenhausreinigung mit Abnahmegarantie."
       badge="Tor zu Matter- und Saastal"
       intro="Stalden liegt dort, wo sich die Wege nach Zermatt und Saas-Fee trennen — ein Wohnort mit kurzen Wegen in beide Täler und nach Visp. Wir reinigen Wohnungen beim Auszug mit Abnahmegarantie, pflegen Treppenhäuser von Mehrfamilienhäusern und übernehmen die Grundreinigung von Häusern in Hanglage."
-      image={PHOTO_PUTZEN}
-      imagePosition="object-left"
-      imageAlt="Mirdita Mitarbeiter reinigt eine Küche in Stalden"
       proseEyebrow="Das Brückendorf"
       proseTitle="Reinigung in Stalden"
       paragraphs={[

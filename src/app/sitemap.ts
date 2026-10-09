@@ -1,76 +1,45 @@
 import type { MetadataRoute } from "next";
 
+import { PAGES, REGION_PAGES } from "@/config/pages";
+import { BUSINESS } from "@/config/site";
 import { ROUTE_ALTERNATES } from "@/components/site-config";
 
-const BASE_URL = "https://mirdita.ch";
+const LEGAL_ROUTES = new Set(["/impressum", "/datenschutz", "/agb"]);
 
-// Stable content date. Bump this when pages meaningfully change, so a plain
-// redeploy does not tell search engines every URL was modified.
-const LAST_MODIFIED = new Date("2026-07-08");
-
-// City landing pages. Standalone (no translated counterpart), so no hreflang
-// alternates — a self-referencing canonical is enough.
-const CITY_ROUTES = [
-  "/reinigung-naters",
-  "/reinigung-brig-glis",
-  "/reinigung-visp",
-  "/reinigung-raron",
-  "/reinigung-leuk",
-  "/reinigung-lalden",
-  "/reinigung-ried-brig",
-  "/reinigung-gampel",
-  "/reinigung-steg",
-  "/reinigung-baltschieder",
-  "/reinigung-stalden",
-  "/reinigung-moerel",
-  "/reinigung-fiesch",
-  "/reinigung-saas-fee",
-  "/reinigung-zermatt",
-  "/fr/nettoyage-sion",
-  "/fr/nettoyage-sierre",
-  "/fr/nettoyage-martigny",
-  "/fr/nettoyage-monthey",
-];
-
-const LEGAL_ROUTES = ["/impressum", "/datenschutz", "/agb"];
-
+// Per-page <lastmod> comes from the `updatedAt` field in src/config/pages.ts —
+// the real date the content last changed, never the build date.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = LAST_MODIFIED;
+  const entries = [...PAGES, ...REGION_PAGES];
+  const updatedAt = new Map(entries.map((p) => [p.path, p.updatedAt]));
 
-  // Emit both the German and French URL of every mapped route, each pointing to
-  // its counterpart via hreflang alternates.
-  const pages = ROUTE_ALTERNATES.flatMap((pair) => {
-    const isHome = pair.de === "/";
-    const languages = {
-      "de-CH": `${BASE_URL}${pair.de}`,
-      "fr-CH": `${BASE_URL}${pair.fr}`,
-      "x-default": `${BASE_URL}${pair.de}`,
+  // Fail the build rather than ship a page without a truthful date.
+  for (const pair of ROUTE_ALTERNATES) {
+    for (const path of [pair.de, pair.fr]) {
+      if (!updatedAt.has(path)) throw new Error(`[sitemap] Missing updatedAt for ${path}`);
+    }
+  }
+
+  const url = (path: string) => `${BUSINESS.url}${path}`;
+
+  return entries.map(({ path }) => {
+    const pair = ROUTE_ALTERNATES.find((p) => p.de === path || p.fr === path);
+    const isHome = path === "/" || path === "/fr";
+    const isRegion = REGION_PAGES.some((r) => r.path === path);
+    return {
+      url: url(path),
+      lastModified: updatedAt.get(path),
+      changeFrequency: isHome ? "weekly" : LEGAL_ROUTES.has(path) ? "yearly" : "monthly",
+      priority: isHome ? 1 : LEGAL_ROUTES.has(path) ? 0.3 : isRegion ? 0.7 : 0.8,
+      // City pages are standalone (no translated counterpart): no hreflang.
+      ...(pair && {
+        alternates: {
+          languages: {
+            "de-CH": url(pair.de),
+            "fr-CH": url(pair.fr),
+            "x-default": url(pair.de),
+          },
+        },
+      }),
     };
-    const shared = {
-      lastModified: now,
-      changeFrequency: (isHome ? "weekly" : "monthly") as "weekly" | "monthly",
-      priority: isHome ? 1 : 0.8,
-      alternates: { languages },
-    };
-    return [
-      { url: `${BASE_URL}${pair.de}`, ...shared },
-      { url: `${BASE_URL}${pair.fr}`, ...shared },
-    ];
   });
-
-  const cityPages = CITY_ROUTES.map((path) => ({
-    url: `${BASE_URL}${path}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
-  const legalPages = LEGAL_ROUTES.map((path) => ({
-    url: `${BASE_URL}${path}`,
-    lastModified: now,
-    changeFrequency: "yearly" as const,
-    priority: 0.3,
-  }));
-
-  return [...pages, ...cityPages, ...legalPages];
 }

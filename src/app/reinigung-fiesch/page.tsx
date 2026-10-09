@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_SPEZIAL } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-fiesch";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Fiesch — Mirdita Reinigung",
     description: "Ferienwohnungs- und Chaletreinigung in Fiesch im Goms.",
     url: PATH,
-    images: [{ url: PHOTO_SPEZIAL, width: 2048, height: 1536 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,8 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Fiesch: Endreinigung von Ferienwohnungen und Chalets, Grund-, Fenster- und Umzugsreinigung."
       badge="Fiesch im Goms"
       intro="Als bekanntestes Ferienzentrum im Goms lebt Fiesch vom Wechsel der Gäste. Wir übernehmen die Endreinigung von Ferienwohnungen und Chalets, die Grundreinigung zum Saisonstart und -ende, Fensterreinigung mit Blick ins Rhonetal sowie Umzugsreinigungen mit Abnahmegarantie."
-      image={PHOTO_SPEZIAL}
-      imageAlt="Mirdita Mitarbeiter reinigt eine grosse Glasfläche in Fiesch"
       proseEyebrow="Ferienort im Goms"
       proseTitle="Reinigung in Fiesch"
       paragraphs={[

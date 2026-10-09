@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_PRIVAT } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-raron";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Raron — Mirdita Reinigung",
     description: "Zuverlässige Reinigung in Raron und St. German — mit Abnahmegarantie.",
     url: PATH,
-    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,8 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Raron und St. German: Umzugs-, Wohnungs- und Fensterreinigung mit Abnahmegarantie."
       badge="Raron & St. German"
       intro="Zwischen Burghügel und Rhoneebene verbindet Raron alte Dorfhäuser mit neuen Wohnquartieren. Wir reinigen hier Wohnungen und Einfamilienhäuser beim Auszug, pflegen Fenster und Böden im Unterhalt und sind auch in St. German für Sie da — mit Abnahmegarantie bei jeder Umzugsreinigung."
-      image={PHOTO_PRIVAT}
-      imageAlt="Mirdita Mitarbeiterin bei der Wohnungsreinigung in Raron"
       proseEyebrow="Zwischen Burghügel und Rhone"
       proseTitle="Reinigung in Raron und St. German"
       paragraphs={[

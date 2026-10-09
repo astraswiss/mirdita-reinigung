@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_PRIVAT } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-baltschieder";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Baltschieder — Mirdita Reinigung",
     description: "Wohnungs-, Teppich- und Umzugsreinigung in Baltschieder bei Visp.",
     url: PATH,
-    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,9 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Baltschieder: Wohnungs-, Teppich-, Fenster- und Umzugsreinigung mit Abnahmegarantie."
       badge="Bei Visp"
       intro="Baltschieder ist in den letzten Jahrzehnten zu einem gefragten Wohnort für Familien gewachsen. Wir unterstützen Sie mit regelmässiger Wohnungsreinigung, Teppich- und Polsterpflege, Fensterreinigung und der Umzugsreinigung mit Abnahmegarantie."
-      image={PHOTO_PRIVAT}
-      imagePosition="object-[center_70%]"
-      imageAlt="Mirdita Mitarbeiterin bei der Reinigung einer Küche in Baltschieder"
       proseEyebrow="Wohnen am Taleingang"
       proseTitle="Reinigung in Baltschieder"
       paragraphs={[

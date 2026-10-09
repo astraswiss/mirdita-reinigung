@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_SPEZIAL } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-steg";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Steg & Hohtenn — Mirdita Reinigung",
     description: "Bau-, Gewerbe- und Umzugsreinigung in Steg und Hohtenn.",
     url: PATH,
-    images: [{ url: PHOTO_SPEZIAL, width: 2048, height: 1536 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,9 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Steg-Hohtenn: Bau-, Gewerbe-, Fenster- und Umzugsreinigung mit Abnahmegarantie."
       badge="Steg-Hohtenn"
       intro="Zwischen Rhoneebene und Lötschberg-Südrampe liegt Steg-Hohtenn — ein Ort mit Gewerbe, Bahnanschluss und ruhigen Wohnlagen am Hang. Wir übernehmen Bau- und Gewerbereinigungen, Fensterreinigung und die Umzugsreinigung mit Abnahmegarantie."
-      image={PHOTO_SPEZIAL}
-      imagePosition="object-right"
-      imageAlt="Mirdita Mitarbeiter reinigt eine grosse Glasfläche in Steg"
       proseEyebrow="Ebene und Südrampe"
       proseTitle="Reinigung in Steg und Hohtenn"
       paragraphs={[

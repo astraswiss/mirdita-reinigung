@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, MapPin, Phone } from "lucide-react";
 
-import { CitySchema } from "@/components/city-schema";
-import { ContactSection } from "@/components/contact-section";
-import { DeServiceLinks } from "@/components/de/de-service-links";
-import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
-import { Photo } from "@/components/photo";
-import { ProseSection } from "@/components/prose-section";
-import { ProcessSteps } from "@/components/process-steps";
-import { ReviewsSection } from "@/components/reviews-section";
-import { PHOTO_BUERO } from "@/components/site-config";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { DeCityPage } from "@/components/de/de-city-page";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-brig-glis";
@@ -26,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Brig-Glis — Mirdita Reinigung",
     description: "Zuverlässige Reinigung in Brig-Glis — aus dem benachbarten Naters.",
     url: PATH,
-    images: [{ url: PHOTO_BUERO, width: 1200, height: 844 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -34,84 +23,24 @@ export default async function Page() {
   const googleReviews = await getGoogleReviews();
 
   return (
-    <div className="min-h-screen bg-brand-light text-brand-deep font-sans antialiased">
-      <CitySchema
-        city="Brig-Glis"
-        name="Reinigung in Brig-Glis"
-        description="Professionelle Reinigung in Brig-Glis und Umgebung: Umzugs-, Wohnungs- und Büroreinigung mit Abnahmegarantie."
-        path={PATH}
-      />
-      <SiteHeader />
-
-      <section className="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className="lg:col-span-7">
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-bright/10 text-brand-bright px-3 py-1.5 text-xs font-semibold tracking-wide">
-              <MapPin className="size-3.5" />
-              Im Raum Brig-Glis
-            </span>
-            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-balance">
-              Reinigungsfirma in <span className="text-brand-bright">Brig-Glis</span>.
-            </h1>
-            <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">
-              Brig-Glis liegt gleich neben unserem Sitz in Naters — für uns Heimspiel. Das bedeutet
-              kurze Anfahrtswege und schnelle Termine für Ihre Umzugs-, Wohnungs- oder
-              Büroreinigung. Ob Wohnungsübergabe mit Abnahmegarantie, Geschäftsräume in der
-              Bahnhofstrasse oder wiederkehrende Unterhaltsreinigung: Wir sind zuverlässig zur
-              Stelle.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="#kontakt"
-                className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
-              >
-                Kostenlose Offerte
-                <ArrowRight className="size-4" />
-              </Link>
-              <a
-                href="tel:+41762027984"
-                className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
-              >
-                <Phone className="size-4" />
-                Jetzt anrufen
-              </a>
-            </div>
-          </div>
-          <div className="lg:col-span-5">
-            <Photo
-              src={PHOTO_BUERO}
-              alt="Mirdita Reinigung im Einsatz in Brig-Glis im Wallis"
-              className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
-              objectPosition="object-left"
-            />
-          </div>
-        </div>
-      </section>
-
-      <ProseSection
-        eyebrow="Schnell vor Ort"
-        title="Reinigung in Brig, Glis, Gamsen und Brigerbad"
-        paragraphs={[
-          "Brig-Glis entstand 1972 aus dem Zusammenschluss von Brig, Glis und Brigerbad; auch Gamsen gehört dazu. Vom Stockalperschloss über die Bahnhofstrasse bis zu den Wohnquartieren in Glis ist die grösste Gemeinde des Oberwallis für uns nur eine Brücke von Naters entfernt.",
-          "Rund um Bahnhof und Altstadt reinigen wir Büros, Praxen und Ladenlokale — diskret am frühen Morgen oder nach Geschäftsschluss, damit Ihr Betrieb ungestört bleibt. In Glis und Gamsen, wo viele Mehrfamilienhäuser und Neubauten stehen, übernehmen wir Treppenhausreinigung, Hauswartung und Bauendreinigung.",
-          "Brig ist als Bahnknoten Richtung Simplon, Lötschberg und Zermatt ein Ort mit vielen Zu- und Wegzügen. Für Mieterinnen und Mieter bieten wir die Umzugsreinigung mit Abnahmegarantie an — so wird die Wohnungsübergabe zur reinen Formsache.",
-        ]}
-      />
-
-      <DeServiceLinks title="Was wir in Brig-Glis für Sie reinigen" />
-
-      <ProcessSteps title="Ihre Reinigung in Brig-Glis in vier Schritten" />
-
-      <ReviewsSection googleReviews={googleReviews} />
-
-      <EinsatzgebietSection />
-
-      <ContactSection
-        title="Reinigung in Brig-Glis geplant?"
-        intro="Ob Geschäftsräume an der Bahnhofstrasse, Treppenhaus in Glis oder Wohnungsübergabe: Wir sind aus dem Nachbarort Naters schnell bei Ihnen. Jetzt kostenlose Offerte anfordern."
-      />
-
-      <SiteFooter />
-    </div>
+    <DeCityPage
+      googleReviews={googleReviews}
+      city="Brig-Glis"
+      path={PATH}
+      schemaDescription="Professionelle Reinigung in Brig-Glis und Umgebung: Umzugs-, Wohnungs- und Büroreinigung mit Abnahmegarantie."
+      badge="Im Raum Brig-Glis"
+      intro="Brig-Glis liegt gleich neben unserem Sitz in Naters — für uns Heimspiel. Das bedeutet kurze Anfahrtswege und schnelle Termine für Ihre Umzugs-, Wohnungs- oder Büroreinigung. Ob Wohnungsübergabe mit Abnahmegarantie, Geschäftsräume in der Bahnhofstrasse oder wiederkehrende Unterhaltsreinigung: Wir sind zuverlässig zur Stelle."
+      proseEyebrow="Schnell vor Ort"
+      proseTitle="Reinigung in Brig, Glis, Gamsen und Brigerbad"
+      paragraphs={[
+        "Brig-Glis entstand 1972 aus dem Zusammenschluss von Brig, Glis und Brigerbad; auch Gamsen gehört dazu. Vom Stockalperschloss über die Bahnhofstrasse bis zu den Wohnquartieren in Glis ist die grösste Gemeinde des Oberwallis für uns nur eine Brücke von Naters entfernt.",
+        "Rund um Bahnhof und Altstadt reinigen wir Büros, Praxen und Ladenlokale — diskret am frühen Morgen oder nach Geschäftsschluss, damit Ihr Betrieb ungestört bleibt. In Glis und Gamsen, wo viele Mehrfamilienhäuser und Neubauten stehen, übernehmen wir Treppenhausreinigung, Hauswartung und Bauendreinigung.",
+        "Brig ist als Bahnknoten Richtung Simplon, Lötschberg und Zermatt ein Ort mit vielen Zu- und Wegzügen. Für Mieterinnen und Mieter bieten wir die Umzugsreinigung mit Abnahmegarantie an — so wird die Wohnungsübergabe zur reinen Formsache.",
+      ]}
+      servicesTitle="Was wir in Brig-Glis für Sie reinigen"
+      processTitle="Ihre Reinigung in Brig-Glis in vier Schritten"
+      ctaTitle="Reinigung in Brig-Glis geplant?"
+      ctaBody="Ob Geschäftsräume an der Bahnhofstrasse, Treppenhaus in Glis oder Wohnungsübergabe: Wir sind aus dem Nachbarort Naters schnell bei Ihnen. Jetzt kostenlose Offerte anfordern."
+    />
   );
 }

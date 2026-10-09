@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_PRIVAT } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-saas-fee";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Saas-Fee — Mirdita Reinigung",
     description: "Ferienwohnungs-, Chalet- und Grundreinigung in Saas-Fee.",
     url: PATH,
-    images: [{ url: PHOTO_PRIVAT, width: 1200, height: 1600 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,9 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Saas-Fee: Endreinigung von Ferienwohnungen und Chalets, Saison-Grundreinigung und Umzugsreinigung."
       badge="Im autofreien Saas-Fee"
       intro="Im autofreien Gletscherdorf Saas-Fee folgt ein Gast dem nächsten. Wir sorgen dafür, dass Ihre Ferienwohnung oder Ihr Chalet jedes Mal einladend sauber ist — mit Endreinigung zwischen den Aufenthalten, Grundreinigung zum Saisonwechsel und Umzugsreinigung mit Abnahmegarantie."
-      image={PHOTO_PRIVAT}
-      imagePosition="object-[center_70%]"
-      imageAlt="Mirdita Mitarbeiterin bei der Reinigung einer Ferienwohnung in Saas-Fee"
       proseEyebrow="Gletscherdorf ohne Autos"
       proseTitle="Reinigung in Saas-Fee"
       paragraphs={[

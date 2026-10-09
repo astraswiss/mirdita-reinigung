@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { BUSINESS, FULL_ADDRESS } from "@/config/site";
 import { LOGO, SERVICE_LINKS_DE, SERVICE_LINKS_FR } from "@/components/site-config";
 
 const FOOTER_DE = {
@@ -85,9 +86,9 @@ export function SiteFooter({ lang = "de" }: { lang?: "de" | "fr" }) {
         <FooterCol
           title={t.contactTitle}
           links={[
-            { label: "+41 76 202 79 84", href: "tel:+41762027984" },
-            { label: "info@mirdita.ch", href: "mailto:info@mirdita.ch" },
-            { label: "Belalpstrasse 2, 3904 Naters" },
+            { label: BUSINESS.phone, href: BUSINESS.phoneHref },
+            { label: BUSINESS.email, href: `mailto:${BUSINESS.email}` },
+            { label: FULL_ADDRESS, href: BUSINESS.mapsUrl },
           ]}
         />
         <FooterCol title={t.legalTitle} links={t.legal} />

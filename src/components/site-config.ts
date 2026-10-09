@@ -1,5 +1,7 @@
 import { Building2, Home as HomeIcon, Sparkles } from "lucide-react";
 
+import { BUSINESS, POSTAL_ADDRESS_JSON_LD } from "@/config/site";
+
 export const LOGO = "/mirdita-logo.svg";
 export const PHOTO_HERO = "/hero.jpg";
 export const PHOTO_PRIVAT = "/Privatkunden.jpeg";
@@ -179,49 +181,47 @@ export const STEPS = [
   { n: "04", title: "Abnahme", body: "Garantierte Übergabe — wir bleiben bis alles stimmt." },
 ];
 
-export const AREA_SERVED = [
-  "Kanton Wallis",
-  "Canton du Valais",
-  "Naters",
-  "Brig-Glis",
-  "Visp",
-  "Sion",
-  "Sierre",
-  "Martigny",
-  "Monthey",
-  "Crans-Montana",
-  "Zermatt",
-  "Saas-Fee",
-  "Verbier",
-];
-
 // Explicit site-name signal for Google's SERP "site name" feature, so it uses
 // "Mirdita Reinigung" instead of guessing (it had cached "Mirdita Reinigungen").
 export const WEBSITE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Mirdita Reinigung",
-  alternateName: "Mirdita Reinigung Berisha",
-  url: "https://mirdita.ch",
+  name: BUSINESS.name,
+  alternateName: BUSINESS.legalName,
+  url: BUSINESS.url,
 };
 
+/** Every place that has its own landing page. */
+export const AREA_SERVED_JSON_LD = [...CITY_LINKS_DE, ...CITY_LINKS_FR].map((c) => ({
+  "@type": "City",
+  name: c.label,
+}));
+
+/** Business reference used as `provider` in per-page Service schemas. */
+export const PROVIDER_JSON_LD = {
+  "@type": "HousekeepingService",
+  "@id": `${BUSINESS.url}/#business`,
+  name: BUSINESS.name,
+  telephone: BUSINESS.phoneE164,
+  email: BUSINESS.email,
+  url: BUSINESS.url,
+  address: POSTAL_ADDRESS_JSON_LD,
+};
+
+/** Main business entity. NAP comes from src/config/site.ts only. */
 export const LOCAL_BUSINESS_JSON_LD = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Mirdita Reinigung Berisha",
-  image: "https://mirdita.ch/hero.jpg",
-  url: "https://mirdita.ch",
-  telephone: "+41762027984",
-  email: "info@mirdita.ch",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Belalpstrasse 2",
-    postalCode: "3904",
-    addressLocality: "Naters",
-    addressRegion: "Wallis",
-    addressCountry: "CH",
-  },
-  areaServed: AREA_SERVED,
+  "@type": "HousekeepingService",
+  "@id": `${BUSINESS.url}/#business`,
+  name: BUSINESS.name,
+  legalName: BUSINESS.legalName,
+  image: `${BUSINESS.url}/hero.jpg`,
+  url: BUSINESS.url,
+  telephone: BUSINESS.phoneE164,
+  email: BUSINESS.email,
+  address: POSTAL_ADDRESS_JSON_LD,
+  hasMap: BUSINESS.mapsUrl,
+  areaServed: AREA_SERVED_JSON_LD,
 };
 
 /**

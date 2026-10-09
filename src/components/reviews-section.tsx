@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { Star } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
+import { BUSINESS } from "@/config/site";
 import type { GoogleReview, GoogleReviewsData } from "@/lib/google-reviews";
 
 function GoogleLogo({ className = "" }: { className?: string }) {
@@ -167,7 +168,7 @@ export function ReviewsSection({
                 ))}
               </div>
               <a
-                href="https://www.google.com/maps/place/Mirdita+Reinigung,+Belalpstrasse+2,+3904+Naters/@0,0,22z/data=!4m2!3m1!1s0x42c5237190cbda61:0xdc13d84cf19fc3d0"
+                href={BUSINESS.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-0.5 flex items-center gap-1.5 text-xs text-brand-deep/60 hover:text-brand-bright transition-colors"

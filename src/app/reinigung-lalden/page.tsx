@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_PUTZEN } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-lalden";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Lalden — Mirdita Reinigung",
     description: "Wohnungs- und Umzugsreinigung in Lalden — schnell aus Naters vor Ort.",
     url: PATH,
-    images: [{ url: PHOTO_PUTZEN, width: 1536, height: 1426 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,9 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Lalden: Wohnungs-, Umzugs- und Unterhaltsreinigung mit Abnahmegarantie."
       badge="Zwischen Brig und Visp"
       intro="Lalden ist ruhig gelegen und doch mitten im Oberwallis — ideal für alle, die in Brig oder Visp arbeiten. Wir nehmen Ihnen die Reinigung ab: regelmässige Wohnungspflege für Berufstätige, Umzugsreinigung mit Abnahmegarantie und gründliche Fensterreinigung."
-      image={PHOTO_PUTZEN}
-      imagePosition="object-left"
-      imageAlt="Mirdita Mitarbeiter reinigt eine Küche in Lalden"
       proseEyebrow="Ruhig wohnen, sauber übergeben"
       proseTitle="Ihre Reinigung in Lalden"
       paragraphs={[

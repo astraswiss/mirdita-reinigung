@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { DeCityPage } from "@/components/de/de-city-page";
-import { PHOTO_HERO } from "@/components/site-config";
+import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/reinigung-moerel";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Reinigungsfirma in Mörel-Filet — Mirdita Reinigung",
     description: "Ferienwohnungs-, Umzugs- und Fensterreinigung in Mörel-Filet.",
     url: PATH,
-    images: [{ url: PHOTO_HERO, width: 1200, height: 1600 }],
+    images: regionOgImages(PATH, "de"),
   },
 };
 
@@ -30,9 +30,6 @@ export default async function Page() {
       schemaDescription="Professionelle Reinigung in Mörel-Filet: Ferienwohnungs-, Umzugs- und Fensterreinigung mit Abnahmegarantie."
       badge="Mörel-Filet"
       intro="Mörel ist das Tor zur Aletsch Arena: Von hier fahren die Seilbahnen auf die autofreie Riederalp. Wir reinigen Wohnungen und Häuser im Tal, übernehmen die Endreinigung von Ferienwohnungen und sorgen bei jeder Umzugsreinigung mit unserer Abnahmegarantie für eine sorgenfreie Übergabe."
-      image={PHOTO_HERO}
-      imagePosition="object-top"
-      imageAlt="Mirdita Mitarbeiter reinigt eine Glasfront mit Bergsicht in Mörel"
       proseEyebrow="Am Fuss der Aletsch Arena"
       proseTitle="Reinigung in Mörel und Filet"
       paragraphs={[

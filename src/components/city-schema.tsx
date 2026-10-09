@@ -1,4 +1,5 @@
-const BASE_URL = "https://mirdita.ch";
+import { PROVIDER_JSON_LD } from "@/components/site-config";
+import { BUSINESS } from "@/config/site";
 
 /**
  * Local Service schema for a city landing page. Uses the real Mirdita NAP and
@@ -25,23 +26,9 @@ export function CitySchema({
     description,
     serviceType: "Reinigung",
     inLanguage,
-    url: `${BASE_URL}${path}`,
+    url: `${BUSINESS.url}${path}`,
     areaServed: { "@type": "City", name: city },
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Mirdita Reinigung Berisha",
-      telephone: "+41762027984",
-      email: "info@mirdita.ch",
-      url: BASE_URL,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Belalpstrasse 2",
-        postalCode: "3904",
-        addressLocality: "Naters",
-        addressRegion: "Wallis",
-        addressCountry: "CH",
-      },
-    },
+    provider: PROVIDER_JSON_LD,
   };
 
   return (

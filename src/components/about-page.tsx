@@ -19,6 +19,7 @@ import { ReviewsSection } from "@/components/reviews-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TrustedBy } from "@/components/trusted-by";
+import { ADDRESS_LINE } from "@/config/site";
 import type { GoogleReviewsData } from "@/lib/google-reviews";
 
 export const OWNER = {
@@ -39,7 +40,7 @@ const COPY = {
     intro:
       "Mirdita Reinigung ist Ihr Reinigungsunternehmen mit Sitz in Naters. Bei uns haben Sie vom ersten Anruf bis zur Abnahme einen persönlichen Ansprechpartner — und jeder Auftrag wird so sorgfältig erledigt, als wäre es unser eigenes Zuhause.",
     ownerRole: "Inhaber & Geschäftsführer",
-    seat: "Sitz: Belalpstrasse 2, 3904 Naters",
+    seat: `Sitz: ${ADDRESS_LINE}`,
     ctaPrimary: "Kostenlose Offerte",
     ctaPrimaryHref: "#kontakt",
     photoAlt: "Mergim Berisha, Inhaber und Geschäftsführer von Mirdita Reinigung",
@@ -114,7 +115,7 @@ const COPY = {
     intro:
       "Mirdita Reinigung est votre entreprise de nettoyage basée à Naters. Du premier appel à la remise, vous avez un interlocuteur personnel — et chaque mandat est réalisé avec le même soin que si c’était chez nous.",
     ownerRole: "Propriétaire & directeur",
-    seat: "Siège : Belalpstrasse 2, 3904 Naters",
+    seat: `Siège : ${ADDRESS_LINE}`,
     ctaPrimary: "Demander un devis",
     ctaPrimaryHref: "#kontakt",
     photoAlt: "Mergim Berisha, propriétaire et directeur de Mirdita Reinigung",

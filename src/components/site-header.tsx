@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BUSINESS } from "@/config/site";
 import { Phone, ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 
 import { LOGO, NAV, NAV_FR, ROUTE_ALTERNATES, type NavItem } from "@/components/site-config";
@@ -71,11 +72,11 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <LangSwitch deHref={pair.de} frHref={pair.fr} isFr={isFr} />
           <a
-            href="tel:+41762027984"
+            href={BUSINESS.phoneHref}
             className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-brand-deep/80 hover:text-brand-deep border border-brand-deep/10 rounded-full px-3 py-2"
           >
             <Phone className="size-3.5" />
-            <span className="hidden lg:inline">+41 76 202 79 84</span>
+            <span className="hidden lg:inline">{BUSINESS.phone}</span>
           </a>
           <Link
             href={ctaHref}

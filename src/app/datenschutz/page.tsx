@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { BUSINESS } from "@/config/site";
+
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -32,11 +34,12 @@ export default function Page() {
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Verantwortlich für die Datenverarbeitung auf dieser Website ist:
                 <br />
-                Mirdita Reinigung Berisha, Belalpstrasse 2, 3904 Naters, Schweiz
+                {BUSINESS.legalName}, {BUSINESS.streetAddress}, {BUSINESS.postalCode}{" "}
+                {BUSINESS.locality}, Schweiz
                 <br />
                 E-Mail:{" "}
-                <a href="mailto:info@mirdita.ch" className="text-brand-bright hover:underline">
-                  info@mirdita.ch
+                <a href={`mailto:${BUSINESS.email}`} className="text-brand-bright hover:underline">
+                  {BUSINESS.email}
                 </a>
               </p>
             </section>
@@ -141,12 +144,12 @@ export default function Page() {
               <h2 className="text-lg font-bold">9. Kontakt für Datenschutzfragen</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Bei Fragen zum Datenschutz erreichen Sie uns unter{" "}
-                <a href="mailto:info@mirdita.ch" className="text-brand-bright hover:underline">
-                  info@mirdita.ch
+                <a href={`mailto:${BUSINESS.email}`} className="text-brand-bright hover:underline">
+                  {BUSINESS.email}
                 </a>{" "}
                 oder telefonisch unter{" "}
-                <a href="tel:+41762027984" className="text-brand-bright hover:underline">
-                  +41 76 202 79 84
+                <a href={BUSINESS.phoneHref} className="text-brand-bright hover:underline">
+                  {BUSINESS.phone}
                 </a>
                 .
               </p>
