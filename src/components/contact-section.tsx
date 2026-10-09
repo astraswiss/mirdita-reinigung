@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { toast } from "sonner";
-import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowRight, ImagePlus, Mail, MapPin, MessageCircle, Phone, X } from "lucide-react";
 
 import { trackEvent } from "@/lib/analytics";
 import { Photo } from "@/components/photo";
@@ -34,6 +34,12 @@ const COPY = {
     address: "Adresse",
     addressValue: "Wallis, Schweiz",
     photoAlt: "Mirdita Detailreinigung",
+    photos: "Bilder (falls vorhanden)",
+    photosAdd: "Fotos hinzufügen",
+    photosHint: "Bis zu 5 Fotos — hilft uns, schneller eine genaue Offerte zu erstellen.",
+    photosMax: "Maximal 5 Fotos pro Anfrage.",
+    photosFailed: "Ein Foto konnte nicht gelesen werden. Bitte als JPG oder PNG versuchen.",
+    photoRemove: "Foto entfernen",
   },
   fr: {
     eyebrow: "Contact",
@@ -58,8 +64,47 @@ const COPY = {
     address: "Adresse",
     addressValue: "Valais, Suisse",
     photoAlt: "Nettoyage de détail Mirdita",
+    photos: "Photos (si disponibles)",
+    photosAdd: "Ajouter des photos",
+    photosHint: "Jusqu’à 5 photos — cela nous aide à établir plus vite un devis précis.",
+    photosMax: "5 photos au maximum par demande.",
+    photosFailed: "Une photo n’a pas pu être lue. Veuillez essayer en JPG ou PNG.",
+    photoRemove: "Retirer la photo",
   },
 };
+
+const MAX_PHOTOS = 5;
+const MAX_EDGE = 1600;
+// 5 photos × ~600 KB (≈ 800 KB as base64) keeps a request near 4 MB at most,
+// below Vercel's ~4.5 MB body limit.
+const MAX_PHOTO_BYTES = 600 * 1024;
+
+type Photo = { name: string; data: string; preview: string };
+
+/**
+ * Downscales a picked image in the browser to a JPEG of at most ~600 KB: starts
+ * at 1600 px / quality 0.72 and steps quality, then size, down until it fits.
+ */
+async function compressImage(file: File): Promise<Photo> {
+  const bitmap = await createImageBitmap(file);
+  const canvas = document.createElement("canvas");
+  let edge = MAX_EDGE;
+  let quality = 0.72;
+  let dataUrl = "";
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const scale = Math.min(1, edge / Math.max(bitmap.width, bitmap.height));
+    canvas.width = Math.round(bitmap.width * scale);
+    canvas.height = Math.round(bitmap.height * scale);
+    canvas.getContext("2d")?.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    dataUrl = canvas.toDataURL("image/jpeg", quality);
+    if ((dataUrl.length - dataUrl.indexOf(",") - 1) * 0.75 <= MAX_PHOTO_BYTES) break;
+    if (quality > 0.5) quality -= 0.1;
+    else edge = Math.round(edge * 0.8);
+  }
+  bitmap.close();
+  const base = file.name.replace(/\.[^.]+$/, "") || "foto";
+  return { name: `${base}.jpg`, data: dataUrl.split(",")[1], preview: dataUrl };
+}
 
 /**
  * Quote form + direct-contact card, used at the bottom of the homepages and of
@@ -80,6 +125,24 @@ export function ContactSection({
 }) {
   const t = COPY[lang];
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+
+  async function handlePhotos(e: ChangeEvent<HTMLInputElement>) {
+    const input = e.currentTarget;
+    const files = Array.from(input.files ?? []);
+    input.value = "";
+    const room = MAX_PHOTOS - photos.length;
+    if (files.length > room) toast.error(t.photosMax);
+    const added: Photo[] = [];
+    for (const file of files.slice(0, Math.max(0, room))) {
+      try {
+        added.push(await compressImage(file));
+      } catch {
+        toast.error(t.photosFailed);
+      }
+    }
+    setPhotos((current) => [...current, ...added].slice(0, MAX_PHOTOS));
+  }
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -99,12 +162,14 @@ export function ContactSection({
           message: data.get("message"),
           website: data.get("website"),
           page: window.location.pathname,
+          photos: photos.map(({ name, data }) => ({ name, data })),
         }),
       });
 
       if (!res.ok) throw new Error("request_failed");
 
       form.reset();
+      setPhotos([]);
       trackEvent("generate_lead", { method: "contact_form" });
       toast.success(t.okTitle, { description: t.okBody });
     } catch {
@@ -168,6 +233,44 @@ export function ContactSection({
                 className="rounded-xl border border-brand-deep/10 p-4 text-sm bg-white text-brand-deep focus:outline-none focus:border-brand-bright resize-none"
                 placeholder={t.placeholder}
               />
+            </div>
+            <div className="sm:col-span-2 flex flex-col gap-1.5">
+              <span className="text-xs font-semibold text-brand-deep/70">{t.photos}</span>
+              <div className="flex flex-wrap gap-2">
+                {photos.map((photo, i) => (
+                  <div
+                    key={`${photo.name}-${i}`}
+                    className="relative size-20 overflow-hidden rounded-xl border border-brand-deep/10"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={photo.preview} alt="" className="size-full object-cover" />
+                    <button
+                      type="button"
+                      onClick={() => setPhotos((cur) => cur.filter((_, j) => j !== i))}
+                      aria-label={t.photoRemove}
+                      className="absolute right-1 top-1 grid size-6 place-items-center rounded-full bg-brand-deep/80 text-white"
+                    >
+                      <X className="size-3.5" />
+                    </button>
+                  </div>
+                ))}
+                {photos.length < MAX_PHOTOS && (
+                  <label className="flex size-20 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-brand-deep/20 bg-brand-light text-brand-deep/60 transition-colors hover:border-brand-bright hover:text-brand-bright">
+                    <ImagePlus className="size-5" />
+                    <span className="text-[10px] font-semibold leading-tight text-center px-1">
+                      {t.photosAdd}
+                    </span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={handlePhotos}
+                      className="sr-only"
+                    />
+                  </label>
+                )}
+              </div>
+              <span className="text-xs text-brand-deep/50">{t.photosHint}</span>
             </div>
             <button
               type="submit"

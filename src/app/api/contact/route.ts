@@ -28,6 +28,31 @@ function sanitize(value: unknown): string {
   return typeof value === "string" ? value.replace(/[\r\n]+/g, " ").trim() : "";
 }
 
+const MAX_PHOTOS = 5;
+const MAX_PHOTO_BYTES = 2 * 1024 * 1024;
+
+/** Validates the browser-compressed photos (JPEG, base64) sent by the form. */
+function parsePhotos(value: unknown): { filename: string; content: string }[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .slice(0, MAX_PHOTOS)
+    .filter(
+      (p): p is { name: string; data: string } =>
+        !!p &&
+        typeof p.data === "string" &&
+        /^[A-Za-z0-9+/=]+$/.test(p.data) &&
+        p.data.length * 0.75 <= MAX_PHOTO_BYTES,
+    )
+    .map((p, i) => ({
+      filename: `foto-${i + 1}-${
+        sanitize(p.name)
+          .replace(/[^\w.-]+/g, "_")
+          .slice(0, 60) || "bild.jpg"
+      }`,
+      content: p.data,
+    }));
+}
+
 export async function POST(request: Request) {
   if (isRateLimited(getClientIp(request))) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
@@ -39,7 +64,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   }
 
-  const { name, email, phone, type, message, website, page } = body as Record<string, unknown>;
+  const { name, email, phone, type, message, website, page, photos } = body as Record<
+    string,
+    unknown
+  >;
 
   // Honeypot: real users never fill this hidden field. Pretend success without sending.
   if (sanitize(website)) {
@@ -59,6 +87,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "not_configured" }, { status: 500 });
   }
 
+  const attachments = parsePhotos(photos);
+
   const resend = new Resend(apiKey);
   const cleanPhone = sanitize(phone);
   const cleanType = sanitize(type);
@@ -75,10 +105,12 @@ export async function POST(request: Request) {
         `Telefon: ${cleanPhone || "-"}`,
         `Art der Reinigung: ${cleanType || "-"}`,
         `Seite: ${sanitize(page) || "-"}`,
+        `Fotos: ${attachments.length ? `${attachments.length} (im Anhang)` : "-"}`,
         "",
         "Nachricht:",
         typeof message === "string" && message.trim() ? message.trim() : "-",
       ].join("\n"),
+      attachments,
     });
 
     if (error) {
