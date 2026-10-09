@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 
-import { CtaBanner } from "@/components/cta-banner";
+import { ContactSection } from "@/components/contact-section";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
@@ -62,7 +62,7 @@ export default async function Page() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/#kontakt"
+                href="#kontakt"
                 className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
               >
                 Kostenlose Offerte
@@ -129,9 +129,10 @@ export default async function Page() {
 
       <EinsatzgebietSection />
 
-      <CtaBanner
+      <ContactSection
         title="Termin im Bauablauf? Wir richten uns danach."
-        body="Fordern Sie eine kostenlose Offerte für Ihre Bau- oder Bauendreinigung an — wir planen flexibel rund um Ihren Bauzeitplan."
+        intro="Fordern Sie eine kostenlose Offerte für Ihre Bau- oder Bauendreinigung an — wir planen flexibel rund um Ihren Bauzeitplan."
+        defaultType="Baureinigung"
       />
 
       <SiteFooter />

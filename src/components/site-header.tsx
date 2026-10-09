@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,6 +16,22 @@ export function SiteHeader() {
   // Language switcher targets: map the current route to its counterpart.
   const pair =
     ROUTE_ALTERNATES.find((p) => p.de === pathname || p.fr === pathname) ?? ROUTE_ALTERNATES[0];
+
+  // "Offerte"/"Kontakt" links point at the homepage form (/#kontakt). Pages that
+  // carry their own form scroll to it instead of leaving the page. Capture
+  // phase, so it runs before Next's <Link> navigation.
+  useEffect(() => {
+    function onClick(e: MouseEvent) {
+      const link = (e.target as Element | null)?.closest?.('a[href$="#kontakt"]');
+      const form = document.getElementById("kontakt");
+      if (!link || !form) return;
+      e.preventDefault();
+      setMobileOpen(false);
+      form.scrollIntoView({ behavior: "smooth" });
+    }
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, []);
 
   const nav = isFr ? NAV_FR : NAV;
   const homeHref = isFr ? "/fr" : "/";

@@ -1,62 +1,21 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { toast } from "sonner";
-import { ArrowRight, Mail, MapPin, MessageCircle, Phone, Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 
-import { trackEvent } from "@/lib/analytics";
 import { TrustedBy } from "@/components/trusted-by";
+import { ContactSection } from "@/components/contact-section";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
 import { ServiceCards } from "@/components/service-cards";
-import { PHOTO_HERO, PHOTO_PUTZEN, SERVICES, type ServiceKey } from "@/components/site-config";
+import { PHOTO_HERO, SERVICES, type ServiceKey } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { GoogleReviewsData } from "@/lib/google-reviews";
 
 export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
-    setIsSubmitting(true);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.get("name"),
-          email: data.get("email"),
-          phone: data.get("phone"),
-          type: data.get("type"),
-          message: data.get("message"),
-          website: data.get("website"),
-        }),
-      });
-
-      if (!res.ok) throw new Error("request_failed");
-
-      form.reset();
-      trackEvent("generate_lead", { method: "contact_form" });
-      toast.success("Anfrage gesendet", {
-        description: "Danke — wir melden uns innert 24 Stunden bei Ihnen.",
-      });
-    } catch {
-      toast.error("Senden fehlgeschlagen", {
-        description:
-          "Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch unter +41 76 202 79 84.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
   return (
     <div className="min-h-screen bg-brand-light text-brand-deep font-sans antialiased">
       <SiteHeader />
@@ -149,180 +108,9 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
 
       <EinsatzgebietSection />
 
-      {/* Contact */}
-      <section className="px-5 md:px-10 py-20">
-        <div
-          id="kontakt"
-          className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-6 lg:gap-8 scroll-mt-20"
-        >
-          {/* Form */}
-          <Reveal className="lg:col-span-3 rounded-[28px] bg-white border border-brand-deep/5 p-8 md:p-10">
-            <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
-              Kontakt
-            </span>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-              Offerte anfordern
-            </h2>
-            <p className="mt-3 text-brand-deep/65">
-              Erzählen Sie uns kurz von Ihrem Anliegen. Wir melden uns innert 24 Stunden.
-            </p>
-            <form onSubmit={handleSubmit} className="mt-8 grid sm:grid-cols-2 gap-4">
-              <div className="hidden" aria-hidden="true">
-                <label>
-                  Website
-                  <input type="text" name="website" tabIndex={-1} autoComplete="off" />
-                </label>
-              </div>
-              <Field label="Name" name="name" required />
-              <Field label="E-Mail" name="email" type="email" required />
-              <Field label="Telefon" name="phone" />
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-brand-deep/70">
-                  Art der Reinigung
-                </label>
-                <select
-                  name="type"
-                  defaultValue=""
-                  className="h-12 rounded-xl border border-brand-deep/10 px-4 text-sm bg-white text-brand-deep focus:outline-none focus:border-brand-bright"
-                >
-                  <option value="" disabled>
-                    Bitte wählen…
-                  </option>
-                  <option>Umzugsreinigung</option>
-                  <option>Wohnungs-/Hausreinigung</option>
-                  <option>Büro- & Gewerbereinigung</option>
-                  <option>Spezialreinigung</option>
-                  <option>Etwas anderes</option>
-                </select>
-              </div>
-              <div className="sm:col-span-2 flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-brand-deep/70">Nachricht</label>
-                <textarea
-                  name="message"
-                  rows={4}
-                  className="rounded-xl border border-brand-deep/10 p-4 text-sm bg-white text-brand-deep focus:outline-none focus:border-brand-bright resize-none"
-                  placeholder="Adresse, gewünschter Termin, Grösse des Objekts …"
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="sm:col-span-2 inline-flex justify-center items-center gap-2 bg-brand-bright text-white rounded-full px-6 py-3.5 font-semibold hover:brightness-110 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Senden…" : "Anfrage senden"}
-                <ArrowRight className="size-4" />
-              </button>
-            </form>
-          </Reveal>
-
-          {/* Info card */}
-          <aside className="lg:col-span-2 rounded-[28px] bg-brand-deep text-white p-8 md:p-10 flex flex-col">
-            <h3 className="text-xl font-bold">Direkt erreichbar</h3>
-            <p className="mt-2 text-white/65 text-sm">
-              Lieber per Telefon oder E-Mail? Kein Problem.
-            </p>
-            <ul className="mt-8 space-y-5">
-              <InfoLine
-                icon={Phone}
-                label="Telefon"
-                value="+41 76 202 79 84"
-                href="tel:+41762027984"
-              />
-              <InfoLine
-                icon={MessageCircle}
-                label="WhatsApp"
-                value="+41 76 202 79 84"
-                href="https://wa.me/41762027984"
-                external
-              />
-              <InfoLine
-                icon={Mail}
-                label="E-Mail"
-                value="info@mirdita.ch"
-                href="mailto:info@mirdita.ch"
-              />
-              <InfoLine icon={MapPin} label="Adresse" value="Wallis, Schweiz" />
-            </ul>
-            <div className="hidden lg:block mt-auto pt-8">
-              <Photo
-                src={PHOTO_PUTZEN}
-                alt="Mirdita Detailreinigung"
-                className="aspect-[4/3] w-full rounded-2xl border border-white/10"
-              />
-            </div>
-          </aside>
-        </div>
-      </section>
+      <ContactSection />
 
       <SiteFooter />
     </div>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  required = false,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-}) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-semibold text-brand-deep/70">
-        {label}
-        {required && <span className="text-brand-bright"> *</span>}
-      </label>
-      <input
-        type={type}
-        name={name}
-        required={required}
-        className="h-12 rounded-xl border border-brand-deep/10 px-4 text-sm bg-white text-brand-deep focus:outline-none focus:border-brand-bright"
-      />
-    </div>
-  );
-}
-
-function InfoLine({
-  icon: Icon,
-  label,
-  value,
-  href,
-  external,
-}: {
-  icon: typeof Phone;
-  label: string;
-  value: string;
-  href?: string;
-  external?: boolean;
-}) {
-  const content = (
-    <>
-      <span className="size-10 rounded-xl bg-white/10 grid place-items-center shrink-0">
-        <Icon className="size-4" />
-      </span>
-      <span className="flex flex-col">
-        <span className="text-[11px] uppercase tracking-widest text-white/50">{label}</span>
-        <span className="font-semibold">{value}</span>
-      </span>
-    </>
-  );
-  return (
-    <li>
-      {href ? (
-        <a
-          href={href}
-          className="flex items-center gap-3 hover:text-brand-bright transition-colors"
-          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        >
-          {content}
-        </a>
-      ) : (
-        <div className="flex items-center gap-3">{content}</div>
-      )}
-    </li>
   );
 }

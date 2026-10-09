@@ -2,13 +2,14 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 
-import { CtaBanner } from "@/components/cta-banner";
+import { ContactSection } from "@/components/contact-section";
 import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
 import { FrServiceSchema } from "@/components/fr/fr-service-schema";
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
+import { SERVICE_LINKS_FR } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { GoogleReviewsData } from "@/lib/google-reviews";
@@ -16,7 +17,7 @@ import type { GoogleReviewsData } from "@/lib/google-reviews";
 /**
  * French service page — a 1:1 structural mirror of the German service pages
  * (hero → "was ist enthalten" card → process steps → reviews → Einsatzgebiet →
- * CtaBanner). Content is passed in per page; the layout is identical so the two
+ * contact form). Content is passed in per page; the layout is identical so the two
  * language versions stay coherent.
  */
 export function FrServicePage({
@@ -74,7 +75,7 @@ export function FrServicePage({
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/fr#kontakt"
+                href="#kontakt"
                 className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
               >
                 Demander un devis
@@ -143,11 +144,11 @@ export function FrServicePage({
 
       <FrAreaSection />
 
-      <CtaBanner
+      <ContactSection
+        lang="fr"
         title={ctaTitle}
-        body={ctaBody}
-        ctaLabel="Demander un devis"
-        ctaHref="/fr#kontakt"
+        intro={ctaBody}
+        defaultType={SERVICE_LINKS_FR.find((l) => l.href === schema.path)?.label}
       />
 
       <SiteFooter lang="fr" />

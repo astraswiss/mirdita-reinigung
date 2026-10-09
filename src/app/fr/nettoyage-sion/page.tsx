@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 
 import { CitySchema } from "@/components/city-schema";
-import { CtaBanner } from "@/components/cta-banner";
+import { ContactSection } from "@/components/contact-section";
 import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
 import { FrRelated } from "@/components/fr/fr-related";
@@ -64,7 +64,7 @@ export default async function Page() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/fr#kontakt"
+                href="#kontakt"
                 className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
               >
                 Demander un devis
@@ -146,11 +146,10 @@ export default async function Page() {
 
       <FrAreaSection />
 
-      <CtaBanner
+      <ContactSection
+        lang="fr"
         title="Un devis pour un nettoyage à Sion ?"
-        body="Décrivez-nous votre besoin ou envoyez des photos par WhatsApp — nous vous répondons sous 24 heures avec une offre claire."
-        ctaLabel="Demander un devis"
-        ctaHref="/fr#kontakt"
+        intro="Décrivez-nous votre besoin ou envoyez des photos par WhatsApp — nous vous répondons sous 24 heures avec une offre claire."
       />
 
       <SiteFooter lang="fr" />

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 
 import { CitySchema } from "@/components/city-schema";
-import { CtaBanner } from "@/components/cta-banner";
+import { ContactSection } from "@/components/contact-section";
 import { DeServiceLinks } from "@/components/de/de-service-links";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
@@ -61,7 +61,7 @@ export default async function Page() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/#kontakt"
+                href="#kontakt"
                 className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
               >
                 Kostenlose Offerte
@@ -104,9 +104,9 @@ export default async function Page() {
 
       <EinsatzgebietSection />
 
-      <CtaBanner
+      <ContactSection
         title="Reinigungsfirma aus Naters gesucht?"
-        body="Wir sind im Dorf zu Hause und schnell bei Ihnen — vom Dorfkern bis Blatten und Belalp. Fordern Sie jetzt Ihre kostenlose Offerte an."
+        intro="Wir sind im Dorf zu Hause und schnell bei Ihnen — vom Dorfkern bis Blatten und Belalp. Fordern Sie jetzt Ihre kostenlose Offerte an."
       />
 
       <SiteFooter />

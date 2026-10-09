@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   }
 
-  const { name, email, phone, type, message, website } = body as Record<string, unknown>;
+  const { name, email, phone, type, message, website, page } = body as Record<string, unknown>;
 
   // Honeypot: real users never fill this hidden field. Pretend success without sending.
   if (sanitize(website)) {
@@ -74,6 +74,7 @@ export async function POST(request: Request) {
         `E-Mail: ${cleanEmail}`,
         `Telefon: ${cleanPhone || "-"}`,
         `Art der Reinigung: ${cleanType || "-"}`,
+        `Seite: ${sanitize(page) || "-"}`,
         "",
         "Nachricht:",
         typeof message === "string" && message.trim() ? message.trim() : "-",

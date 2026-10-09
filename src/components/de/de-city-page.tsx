@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 
 import { CitySchema } from "@/components/city-schema";
-import { CtaBanner } from "@/components/cta-banner";
+import { ContactSection } from "@/components/contact-section";
 import { DeServiceLinks } from "@/components/de/de-service-links";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
@@ -16,7 +16,7 @@ import type { GoogleReviewsData } from "@/lib/google-reviews";
 /**
  * German city landing page — same layout as /reinigung-naters, -brig-glis and
  * -visp (hero → local prose → service links → process → reviews →
- * Einsatzgebiet → CtaBanner). All copy is passed in per city so every page
+ * Einsatzgebiet → contact form). All copy is passed in per city so every page
  * carries its own, locally specific content rather than a swapped place name.
  */
 export function DeCityPage({
@@ -77,7 +77,7 @@ export function DeCityPage({
             <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">{intro}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/#kontakt"
+                href="#kontakt"
                 className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
               >
                 Kostenlose Offerte
@@ -113,7 +113,7 @@ export function DeCityPage({
 
       <EinsatzgebietSection />
 
-      <CtaBanner title={ctaTitle} body={ctaBody} />
+      <ContactSection title={ctaTitle} intro={ctaBody} />
 
       <SiteFooter />
     </div>

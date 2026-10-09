@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { ArrowRight, Star } from "lucide-react";
 
+import { ContactSection } from "@/components/contact-section";
 import { FrAreaSection } from "@/components/fr/fr-area-section";
-import { FrContact } from "@/components/fr/fr-contact";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
 import { FrServices } from "@/components/fr/fr-services";
 import { Photo } from "@/components/photo";
@@ -107,7 +107,7 @@ export default async function Page() {
 
       <FrAreaSection />
 
-      <FrContact />
+      <ContactSection lang="fr" />
 
       <SiteFooter lang="fr" />
     </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 
 import { CitySchema } from "@/components/city-schema";
-import { CtaBanner } from "@/components/cta-banner";
+import { ContactSection } from "@/components/contact-section";
 import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
 import { FrRelated, type FrRelatedLink } from "@/components/fr/fr-related";
@@ -15,7 +15,7 @@ import type { GoogleReviewsData } from "@/lib/google-reviews";
 
 /**
  * French city landing page — same layout as /fr/nettoyage-sion (hero → local
- * prose → related services → process → reviews → région → CtaBanner). All copy
+ * prose → related services → process → reviews → région → contact form). All copy
  * is passed in per city so every page carries its own local content.
  */
 export function FrCityPage({
@@ -79,7 +79,7 @@ export function FrCityPage({
             <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">{intro}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/fr#kontakt"
+                href="#kontakt"
                 className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
               >
                 Demander un devis
@@ -120,12 +120,7 @@ export function FrCityPage({
 
       <FrAreaSection />
 
-      <CtaBanner
-        title={ctaTitle}
-        body={ctaBody}
-        ctaLabel="Demander un devis"
-        ctaHref="/fr#kontakt"
-      />
+      <ContactSection lang="fr" title={ctaTitle} intro={ctaBody} />
 
       <SiteFooter lang="fr" />
     </div>

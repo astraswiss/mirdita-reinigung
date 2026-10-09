@@ -11,7 +11,7 @@ import {
   Star,
 } from "lucide-react";
 
-import { CtaBanner } from "@/components/cta-banner";
+import { ContactSection } from "@/components/contact-section";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { Reveal } from "@/components/reveal";
@@ -41,7 +41,7 @@ const COPY = {
     ownerRole: "Inhaber & Geschäftsführer",
     seat: "Sitz: Belalpstrasse 2, 3904 Naters",
     ctaPrimary: "Kostenlose Offerte",
-    ctaPrimaryHref: "/#kontakt",
+    ctaPrimaryHref: "#kontakt",
     photoAlt: "Mergim Berisha, Inhaber und Geschäftsführer von Mirdita Reinigung",
     quote:
       "Unser wichtigstes Ziel ist, dass Sie rundum glücklich sind. Ein Auftrag ist für uns erst dann erledigt, wenn Sie mit dem Ergebnis voll und ganz zufrieden sind.",
@@ -103,7 +103,6 @@ const COPY = {
     ctaTitle: "Lernen wir uns kennen",
     ctaBody:
       "Erzählen Sie uns von Ihrem Anliegen — Mergim Berisha meldet sich persönlich innert 24 Stunden mit einer Offerte.",
-    ctaLabel: "Kostenlose Offerte",
   },
   fr: {
     eyebrow: "À propos",
@@ -117,7 +116,7 @@ const COPY = {
     ownerRole: "Propriétaire & directeur",
     seat: "Siège : Belalpstrasse 2, 3904 Naters",
     ctaPrimary: "Demander un devis",
-    ctaPrimaryHref: "/fr#kontakt",
+    ctaPrimaryHref: "#kontakt",
     photoAlt: "Mergim Berisha, propriétaire et directeur de Mirdita Reinigung",
     quote:
       "Notre objectif principal, c’est que vous soyez pleinement satisfait. Pour nous, un mandat n’est terminé que lorsque le résultat vous rend vraiment heureux.",
@@ -179,7 +178,6 @@ const COPY = {
     ctaTitle: "Faisons connaissance",
     ctaBody:
       "Parlez-nous de votre besoin — Mergim Berisha vous répond personnellement sous 24 heures avec un devis.",
-    ctaLabel: "Demander un devis",
   },
 } as const;
 
@@ -362,12 +360,7 @@ export function AboutPage({
 
       {lang === "fr" ? <FrAreaSection /> : <EinsatzgebietSection />}
 
-      <CtaBanner
-        title={t.ctaTitle}
-        body={t.ctaBody}
-        ctaLabel={t.ctaLabel}
-        ctaHref={t.ctaPrimaryHref}
-      />
+      <ContactSection lang={lang} title={t.ctaTitle} intro={t.ctaBody} />
 
       <SiteFooter lang={lang} />
     </div>
