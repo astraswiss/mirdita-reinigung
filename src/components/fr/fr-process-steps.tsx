@@ -8,7 +8,7 @@ const STEPS = [
   {
     n: "03",
     title: "Nettoyage",
-    body: "Notre équipe travaille de façon fiable et dans les délais.",
+    body: "Nous travaillons de façon fiable et dans les délais.",
   },
   {
     n: "04",

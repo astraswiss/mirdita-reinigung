@@ -39,7 +39,7 @@ export default async function Page() {
       proseTitle="Nettoyage à Sierre et environs"
       paragraphs={[
         "Sierre — Siders en allemand — se trouve sur la frontière linguistique du Valais. Entourée de vignobles et réputée pour son ensoleillement, la ville abrite le Château de Villa et son Musée du vin, ainsi que la Fondation Rilke : le poète a vécu ses dernières années à Muzot, tout près.",
-        "Notre équipe, basée dans le Haut-Valais, parle allemand et français. C’est un vrai avantage dans la région de Sierre, où régies, propriétaires et locataires travaillent souvent dans les deux langues. Nous réalisons les nettoyages de fin de bail avec garantie de remise : en cas de remarque lors de l’état des lieux, nous repassons sans frais.",
+        "Basés dans le Haut-Valais, nous parlons allemand et français. C’est un vrai avantage dans la région de Sierre, où régies, propriétaires et locataires travaillent souvent dans les deux langues. Nous réalisons les nettoyages de fin de bail avec garantie de remise : en cas de remarque lors de l’état des lieux, nous repassons sans frais.",
         "Pour les villas et maisons des coteaux, nous proposons le nettoyage en profondeur et le nettoyage des vitres ; pour les commerces et bureaux du centre-ville, un entretien régulier en dehors des heures d’ouverture.",
       ]}
       servicesTitle="Nos services à Sierre"

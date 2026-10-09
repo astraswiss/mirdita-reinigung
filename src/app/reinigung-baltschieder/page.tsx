@@ -37,7 +37,7 @@ export default async function Page() {
       proseTitle="Reinigung in Baltschieder"
       paragraphs={[
         "Baltschieder liegt auf der rechten Rhoneseite, rund zwei Kilometer von Visp entfernt, dort wo das Baltschiedertal in die Ebene mündet. Das Tal selbst ist nur zu Fuss erreichbar und gehört zum UNESCO-Welterbe Swiss Alps Jungfrau-Aletsch.",
-        "Das Dorf ist stark gewachsen; viele Familien wohnen hier in Einfamilienhäusern und neueren Mehrfamilienhäusern. Im Familienalltag bleibt der Putz oft liegen — mit unserer Unterhaltsreinigung kommt ein festes Team in Ihrem Rhythmus. Teppiche und Polster reinigen wir in der Tiefe, damit Allergene und Flecken verschwinden.",
+        "Das Dorf ist stark gewachsen; viele Familien wohnen hier in Einfamilienhäusern und neueren Mehrfamilienhäusern. Im Familienalltag bleibt der Putz oft liegen — mit unserer Unterhaltsreinigung kommen wir regelmässig in Ihrem Rhythmus. Teppiche und Polster reinigen wir in der Tiefe, damit Allergene und Flecken verschwinden.",
         "Ziehen Sie innerhalb von Baltschieder oder weg aus dem Dorf, übernehmen wir die Umzugsreinigung mit Abnahmegarantie. Von Naters aus sind wir in kurzer Zeit vor Ort.",
       ]}
       servicesTitle="Was wir in Baltschieder für Sie reinigen"

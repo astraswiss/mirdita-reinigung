@@ -49,7 +49,7 @@ export default async function Page() {
       imageAlt="Collaboratrice de Mirdita lors du nettoyage régulier d’un logement dans le Valais"
       trust="Qualité constante"
       checklistTitle="Ce qui fait partie du nettoyage régulier"
-      checklistIntro="Nous définissons ensemble la fréquence et l’étendue de l’entretien, puis nous nous y tenons — avec la même équipe autant que possible."
+      checklistIntro="Nous définissons ensemble la fréquence et l’étendue de l’entretien, puis nous nous y tenons — avec un interlocuteur fixe."
       items={[
         "Nettoyage hebdomadaire selon vos besoins",
         "Nettoyage mensuel ou par intervalle défini",

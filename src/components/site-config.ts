@@ -175,7 +175,7 @@ export const SERVICES: Record<
 export const STEPS = [
   { n: "01", title: "Anfrage", body: "Sie kontaktieren uns per Formular oder Telefon." },
   { n: "02", title: "Offerte", body: "Innert 24 h erhalten Sie ein transparentes Angebot." },
-  { n: "03", title: "Reinigung", body: "Unser Team arbeitet zuverlässig und termingerecht." },
+  { n: "03", title: "Reinigung", body: "Wir arbeiten zuverlässig und termingerecht." },
   { n: "04", title: "Abnahme", body: "Garantierte Übergabe — wir bleiben bis alles stimmt." },
 ];
 

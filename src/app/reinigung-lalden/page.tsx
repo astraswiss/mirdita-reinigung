@@ -37,7 +37,7 @@ export default async function Page() {
       proseTitle="Ihre Reinigung in Lalden"
       paragraphs={[
         "Lalden liegt am nördlichen Rand der Rhoneebene, gegenüber von Visp und mit diesem seit dem Mittelalter über eine Brücke verbunden. Um den alten Dorfkern sind in den letzten Jahrzehnten viele neue Wohnhäuser entstanden — Lalden ist heute ein beliebter Wohnort für Familien und Pendler.",
-        "Wer täglich nach Brig, Visp oder weiter pendelt, hat wenig Zeit für den Hausputz. Genau dafür bieten wir die Unterhaltsreinigung an: in einem festen Rhythmus, mit demselben Team und gleichbleibender Qualität. Für Mietwohnungen übernehmen wir zudem die Umzugsreinigung inklusive Abnahmegarantie.",
+        "Wer täglich nach Brig, Visp oder weiter pendelt, hat wenig Zeit für den Hausputz. Genau dafür bieten wir die Unterhaltsreinigung an: in einem festen Rhythmus, mit einem festen Ansprechpartner und gleichbleibender Qualität. Für Mietwohnungen übernehmen wir zudem die Umzugsreinigung inklusive Abnahmegarantie.",
         "Von Naters aus sind wir in wenigen Minuten in Lalden. Das macht uns flexibel — etwa wenn die Wohnungsübergabe kurzfristig vorgezogen wird oder nach einer Renovation schnell gereinigt werden muss.",
       ]}
       servicesTitle="Unsere Leistungen für Lalden"

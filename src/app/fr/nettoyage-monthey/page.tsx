@@ -38,7 +38,7 @@ export default async function Page() {
       proseTitle="Nettoyage à Monthey et dans le Chablais"
       paragraphs={[
         "Chef-lieu de district et troisième commune du Valais par sa population, Monthey est la porte d’entrée du val d’Illiez. La ville est connue pour son carnaval, l’un des plus grands de Suisse romande, et pour son site chimique qui accueille plusieurs entreprises internationales.",
-        "Ce tissu économique génère de nombreux besoins : bureaux, vestiaires, sanitaires et salles de réunion doivent être entretenus de façon fiable. Nous proposons un nettoyage régulier, planifié selon vos horaires et réalisé par une équipe fixe.",
+        "Ce tissu économique génère de nombreux besoins : bureaux, vestiaires, sanitaires et salles de réunion doivent être entretenus de façon fiable. Nous proposons un nettoyage régulier, planifié selon vos horaires, avec un interlocuteur fixe.",
         "Monthey attire aussi beaucoup de nouveaux habitants. Pour les locataires qui quittent leur logement, notre nettoyage de fin de bail inclut une garantie de remise ; pour les régies et PPE, nous assurons l’entretien des parties communes.",
       ]}
       servicesTitle="Nos services à Monthey"
@@ -51,7 +51,7 @@ export default async function Page() {
         {
           href: "/fr/nettoyage-regulier-valais",
           label: "Nettoyage régulier",
-          desc: "Une équipe fixe, une qualité constante.",
+          desc: "Un rythme fixe, une qualité constante.",
         },
         {
           href: "/fr/nettoyage-fin-de-bail-valais",

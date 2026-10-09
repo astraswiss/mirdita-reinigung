@@ -90,7 +90,7 @@ export default async function Page() {
         eyebrow="Lokal verankert"
         title="Ihre Reinigungsfirma direkt in Naters"
         paragraphs={[
-          "Unser Team ist in Naters zu Hause. Vom Sitz an der Belalpstrasse sind wir in wenigen Minuten im Dorfkern, in den Wohnquartieren am Hang oder unten Richtung Rhonebrücke. Für Sie heisst das: kurze Reaktionszeiten und Termine, die sich auch kurzfristig einrichten lassen.",
+          "Wir sind in Naters zu Hause. Vom Sitz an der Belalpstrasse sind wir in wenigen Minuten im Dorfkern, in den Wohnquartieren am Hang oder unten Richtung Rhonebrücke. Für Sie heisst das: kurze Reaktionszeiten und Termine, die sich auch kurzfristig einrichten lassen.",
           "Seit 2013 gehören auch Birgisch und Mund zur Gemeinde, dazu Weiler wie Hegdorn, Geimen oder Rischinen und oben Blatten und die Belalp. Dort reinigen wir Einfamilienhäuser, Chalets und Ferienwohnungen — inklusive Endreinigung zwischen zwei Vermietungen und Grundreinigung nach der Wintersaison.",
           "Im Dorf selbst übernehmen wir vor allem Umzugsreinigungen. Wir kennen die Ansprüche der Verwaltungen und Vermieter in Naters bei der Wohnungsübergabe und reinigen so, dass die Abnahme reibungslos verläuft — und falls doch etwas beanstandet wird, bessern wir dank Abnahmegarantie kostenlos nach.",
         ]}
