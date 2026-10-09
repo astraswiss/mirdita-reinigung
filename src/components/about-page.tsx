@@ -37,14 +37,14 @@ const COPY = {
       </>
     ),
     intro:
-      "Mirdita Reinigung ist ein Walliser Familienbetrieb mit Sitz in Naters. Hinter jedem Auftrag steht ein persönlicher Ansprechpartner — und ein Team, das so reinigt, als wäre es das eigene Zuhause.",
+      "Mirdita Reinigung ist Ihr Reinigungsunternehmen mit Sitz in Naters. Bei uns haben Sie vom ersten Anruf bis zur Abnahme einen persönlichen Ansprechpartner — und jeder Auftrag wird so sorgfältig erledigt, als wäre es unser eigenes Zuhause.",
     ownerRole: "Inhaber & Geschäftsführer",
     seat: "Sitz: Belalpstrasse 2, 3904 Naters",
     ctaPrimary: "Kostenlose Offerte",
     ctaPrimaryHref: "/#kontakt",
     photoAlt: "Mergim Berisha, Inhaber und Geschäftsführer von Mirdita Reinigung",
     quote:
-      "Ich verspreche nur, was wir auch halten können — und dann halten wir es. Darauf können sich unsere Kundinnen und Kunden verlassen, vom Studio bis zum Bürogebäude.",
+      "Unser wichtigstes Ziel ist, dass Sie rundum glücklich sind. Ein Auftrag ist für uns erst dann erledigt, wenn Sie mit dem Ergebnis voll und ganz zufrieden sind.",
     valuesEyebrow: "So arbeiten wir",
     valuesTitle: "Worauf Sie sich verlassen können",
     values: [
@@ -113,14 +113,14 @@ const COPY = {
       </>
     ),
     intro:
-      "Mirdita Reinigung est une entreprise familiale valaisanne basée à Naters. Derrière chaque mandat, il y a un interlocuteur personnel — et une équipe qui nettoie comme si c’était chez elle.",
+      "Mirdita Reinigung est votre entreprise de nettoyage basée à Naters. Du premier appel à la remise, vous avez un interlocuteur personnel — et chaque mandat est réalisé avec le même soin que si c’était chez nous.",
     ownerRole: "Propriétaire & directeur",
     seat: "Siège : Belalpstrasse 2, 3904 Naters",
     ctaPrimary: "Demander un devis",
     ctaPrimaryHref: "/fr#kontakt",
     photoAlt: "Mergim Berisha, propriétaire et directeur de Mirdita Reinigung",
     quote:
-      "Je ne promets que ce que nous pouvons tenir — et ensuite, nous le tenons. Nos clients peuvent compter là-dessus, du studio à l’immeuble de bureaux.",
+      "Notre objectif principal, c’est que vous soyez pleinement satisfait. Pour nous, un mandat n’est terminé que lorsque le résultat vous rend vraiment heureux.",
     valuesEyebrow: "Notre façon de travailler",
     valuesTitle: "Ce sur quoi vous pouvez compter",
     values: [

@@ -7,7 +7,7 @@ import { getGoogleReviews } from "@/lib/google-reviews";
 export const metadata: Metadata = {
   title: "À propos — Mirdita Reinigung, entreprise de nettoyage à Naters",
   description:
-    "Découvrez Mirdita Reinigung : entreprise familiale valaisanne basée à Naters, dirigée par Mergim Berisha. Prix fixe, garantie de remise, assurée et joignable personnellement.",
+    "Découvrez Mirdita Reinigung : entreprise de nettoyage basée à Naters, dirigée par Mergim Berisha. Prix fixe, garantie de remise, assurée et joignable personnellement.",
   alternates: alternatesFor("/fr/a-propos"),
   openGraph: {
     title: "À propos — Mirdita Reinigung",
