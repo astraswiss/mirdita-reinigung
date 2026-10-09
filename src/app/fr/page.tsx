@@ -13,6 +13,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TrustedBy } from "@/components/trusted-by";
 import { getGoogleReviews } from "@/lib/google-reviews";
+import { cta } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Mirdita Reinigung — Entreprise de nettoyage dans le Valais",
@@ -63,6 +64,7 @@ export default async function Page() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#kontakt"
+                  {...cta("offerte_hero", "hero")}
                   className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
                 >
                   Devis gratuit
@@ -70,6 +72,7 @@ export default async function Page() {
                 </a>
                 <a
                   href="#leistungen"
+                  {...cta("leistungen_hero", "hero")}
                   className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
                 >
                   Voir les services

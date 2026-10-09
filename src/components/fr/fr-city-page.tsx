@@ -14,6 +14,7 @@ import { ReviewsSection } from "@/components/reviews-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { GoogleReviewsData } from "@/lib/google-reviews";
+import { cta } from "@/lib/analytics";
 
 /**
  * French city landing page — same layout as /fr/nettoyage-sion (hero → local
@@ -78,6 +79,7 @@ export function FrCityPage({
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="#kontakt"
+                {...cta("offerte_hero", "hero")}
                 className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
               >
                 Demander un devis
@@ -85,6 +87,7 @@ export function FrCityPage({
               </Link>
               <a
                 href={BUSINESS.phoneHref}
+                {...cta("phone_hero", "hero")}
                 className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
               >
                 <Phone className="size-4" />

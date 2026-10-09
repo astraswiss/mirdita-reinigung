@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BUSINESS } from "@/config/site";
 import { Phone, ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 
 import { LOGO, NAV, NAV_FR, ROUTE_ALTERNATES, type NavItem } from "@/components/site-config";
+import { BUSINESS } from "@/config/site";
+import { cta } from "@/lib/analytics";
+
+// The "Kontakt"/"Contact" menu entry is the one nav link tracked as a CTA.
+const navCta = (href: string) => (href.endsWith("#kontakt") ? cta("kontakt_header", "header") : {});
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -62,7 +66,12 @@ export function SiteHeader() {
             n.children ? (
               <NavDropdown key={n.href} item={n} />
             ) : (
-              <a key={n.href} href={n.href} className="hover:text-brand-deep transition-colors">
+              <a
+                key={n.href}
+                href={n.href}
+                {...navCta(n.href)}
+                className="hover:text-brand-deep transition-colors"
+              >
                 {n.label}
               </a>
             ),
@@ -73,6 +82,7 @@ export function SiteHeader() {
           <LangSwitch deHref={pair.de} frHref={pair.fr} isFr={isFr} />
           <a
             href={BUSINESS.phoneHref}
+            {...cta("phone_header", "header")}
             className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-brand-deep/80 hover:text-brand-deep border border-brand-deep/10 rounded-full px-3 py-2"
           >
             <Phone className="size-3.5" />
@@ -80,6 +90,7 @@ export function SiteHeader() {
           </a>
           <Link
             href={ctaHref}
+            {...cta("offerte_header", "header")}
             className="inline-flex items-center gap-2 bg-brand-bright text-white text-sm font-semibold rounded-full px-4 py-2.5 hover:brightness-110 transition-all"
           >
             {ctaLabel}
@@ -128,6 +139,7 @@ export function SiteHeader() {
               <a
                 key={n.href}
                 href={n.href}
+                {...navCta(n.href)}
                 onClick={() => setMobileOpen(false)}
                 className="block py-1.5 text-sm font-medium text-brand-deep/80"
               >

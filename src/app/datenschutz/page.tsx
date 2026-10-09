@@ -4,6 +4,7 @@ import { BUSINESS } from "@/config/site";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { cta } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Datenschutz | Mirdita Reinigung Berisha",
@@ -38,7 +39,11 @@ export default function Page() {
                 {BUSINESS.locality}, Schweiz
                 <br />
                 E-Mail:{" "}
-                <a href={`mailto:${BUSINESS.email}`} className="text-brand-bright hover:underline">
+                <a
+                  href={`mailto:${BUSINESS.email}`}
+                  {...cta("email_legal", "legal_page")}
+                  className="text-brand-bright hover:underline"
+                >
                   {BUSINESS.email}
                 </a>
               </p>
@@ -144,11 +149,19 @@ export default function Page() {
               <h2 className="text-lg font-bold">9. Kontakt für Datenschutzfragen</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Bei Fragen zum Datenschutz erreichen Sie uns unter{" "}
-                <a href={`mailto:${BUSINESS.email}`} className="text-brand-bright hover:underline">
+                <a
+                  href={`mailto:${BUSINESS.email}`}
+                  {...cta("email_legal", "legal_page")}
+                  className="text-brand-bright hover:underline"
+                >
                   {BUSINESS.email}
                 </a>{" "}
                 oder telefonisch unter{" "}
-                <a href={BUSINESS.phoneHref} className="text-brand-bright hover:underline">
+                <a
+                  href={BUSINESS.phoneHref}
+                  {...cta("phone_legal", "legal_page")}
+                  className="text-brand-bright hover:underline"
+                >
                   {BUSINESS.phone}
                 </a>
                 .

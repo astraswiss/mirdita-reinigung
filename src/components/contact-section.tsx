@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { toast } from "sonner";
 import { ArrowRight, ImagePlus, Mail, MapPin, MessageCircle, Phone, X } from "lucide-react";
 
-import { trackEvent } from "@/lib/analytics";
+import { cta, trackLead, type CtaAttributes } from "@/lib/analytics";
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
 import { PHOTO_PUTZEN, SERVICE_LINKS_DE, SERVICE_LINKS_FR } from "@/components/site-config";
@@ -123,6 +123,8 @@ export function ContactSection({
 }) {
   const t = COPY[lang];
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // Synchronous lock: guarantees one request (and at most one lead) per submit.
+  const submitting = useRef(false);
   const [photos, setPhotos] = useState<Photo[]>([]);
 
   async function handlePhotos(e: ChangeEvent<HTMLInputElement>) {
@@ -144,6 +146,8 @@ export function ContactSection({
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting.current) return;
+    submitting.current = true;
     const form = e.currentTarget;
     const data = new FormData(form);
 
@@ -168,12 +172,15 @@ export function ContactSection({
 
       form.reset();
       setPhotos([]);
-      trackEvent("generate_lead", { method: "contact_form" });
+      // Only real submissions count: a filled honeypot means a bot, which the
+      // API silently accepts without sending anything.
+      if (!data.get("website")) trackLead("offerte_formular");
       toast.success(t.okTitle, { description: t.okBody });
     } catch {
       toast.error(t.errTitle, { description: t.errBody });
     } finally {
       setIsSubmitting(false);
+      submitting.current = false;
     }
   }
 
@@ -291,12 +298,14 @@ export function ContactSection({
               label={t.phone}
               value={BUSINESS.phone}
               href={BUSINESS.phoneHref}
+              tracking={cta("phone_contact_card", "contact_card")}
             />
             <InfoLine
               icon={MessageCircle}
               label="WhatsApp"
               value={BUSINESS.phone}
               href={WHATSAPP_URL}
+              tracking={cta("whatsapp_contact_card", "contact_card")}
               external
             />
             <InfoLine
@@ -304,12 +313,14 @@ export function ContactSection({
               label={t.email}
               value={BUSINESS.email}
               href={`mailto:${BUSINESS.email}`}
+              tracking={cta("email_contact_card", "contact_card")}
             />
             <InfoLine
               icon={MapPin}
               label={t.address}
               value={FULL_ADDRESS}
               href={BUSINESS.mapsUrl}
+              tracking={cta("maps_contact_card", "contact_card")}
               external
             />
           </ul>
@@ -363,12 +374,14 @@ function InfoLine({
   value,
   href,
   external,
+  tracking,
 }: {
   icon: typeof Phone;
   label: string;
   value: string;
   href?: string;
   external?: boolean;
+  tracking?: CtaAttributes;
 }) {
   const content = (
     <>
@@ -386,6 +399,7 @@ function InfoLine({
       {href ? (
         <a
           href={href}
+          {...tracking}
           className="flex items-center gap-3 hover:text-brand-bright transition-colors"
           {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         >

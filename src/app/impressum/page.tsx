@@ -4,6 +4,7 @@ import { BUSINESS } from "@/config/site";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { cta } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Impressum | Mirdita Reinigung Berisha",
@@ -45,12 +46,20 @@ export default function Page() {
               <h2 className="text-lg font-bold">Kontakt</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Telefon:{" "}
-                <a href={BUSINESS.phoneHref} className="text-brand-bright hover:underline">
+                <a
+                  href={BUSINESS.phoneHref}
+                  {...cta("phone_legal", "legal_page")}
+                  className="text-brand-bright hover:underline"
+                >
                   {BUSINESS.phone}
                 </a>
                 <br />
                 E-Mail:{" "}
-                <a href={`mailto:${BUSINESS.email}`} className="text-brand-bright hover:underline">
+                <a
+                  href={`mailto:${BUSINESS.email}`}
+                  {...cta("email_legal", "legal_page")}
+                  className="text-brand-bright hover:underline"
+                >
                   {BUSINESS.email}
                 </a>
               </p>

@@ -14,6 +14,7 @@ import { PHOTO_HERO, SERVICES, type ServiceKey } from "@/components/site-config"
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { GoogleReviewsData } from "@/lib/google-reviews";
+import { cta } from "@/lib/analytics";
 
 export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
   return (
@@ -48,6 +49,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#kontakt"
+                  {...cta("offerte_hero", "hero")}
                   className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
                 >
                   Kostenlose Offerte
@@ -55,6 +57,7 @@ export function Home({ googleReviews }: { googleReviews: GoogleReviewsData }) {
                 </a>
                 <a
                   href="#leistungen"
+                  {...cta("leistungen_hero", "hero")}
                   className="inline-flex items-center gap-2 bg-white text-brand-deep rounded-full px-6 py-3.5 font-semibold border border-brand-deep/10 hover:border-brand-deep/30 transition-all"
                 >
                   Leistungen ansehen

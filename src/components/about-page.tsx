@@ -21,6 +21,7 @@ import { SiteHeader } from "@/components/site-header";
 import { TrustedBy } from "@/components/trusted-by";
 import { ADDRESS_LINE } from "@/config/site";
 import type { GoogleReviewsData } from "@/lib/google-reviews";
+import { cta } from "@/lib/analytics";
 
 export const OWNER = {
   name: "Mergim Berisha",
@@ -231,6 +232,7 @@ export function AboutPage({
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
               <Link
                 href={t.ctaPrimaryHref}
+                {...cta("offerte_hero", "hero")}
                 className="inline-flex items-center gap-2 bg-brand-deep text-white rounded-full px-6 py-3.5 font-semibold hover:bg-brand-deep/90 transition-all"
               >
                 {t.ctaPrimary}

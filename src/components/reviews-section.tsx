@@ -5,6 +5,7 @@ import { Star } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 import { BUSINESS } from "@/config/site";
+import { cta } from "@/lib/analytics";
 import type { GoogleReview, GoogleReviewsData } from "@/lib/google-reviews";
 
 function GoogleLogo({ className = "" }: { className?: string }) {
@@ -169,6 +170,7 @@ export function ReviewsSection({
               </div>
               <a
                 href={BUSINESS.mapsUrl}
+                {...cta("maps_reviews", "reviews")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-0.5 flex items-center gap-1.5 text-xs text-brand-deep/60 hover:text-brand-bright transition-colors"

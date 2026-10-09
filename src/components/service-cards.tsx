@@ -5,12 +5,15 @@ import { ArrowRight, Check, type LucideIcon } from "lucide-react";
 
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
+import { cta, type CtaName } from "@/lib/analytics";
 
 export type ServiceCard = {
   key: string;
   label: string;
   /** Short pill label for the phone category switcher. */
   shortLabel: string;
+  /** Analytics name of the card's quote button. */
+  ctaName: CtaName;
   icon: LucideIcon;
   title: string;
   description: string;
@@ -121,6 +124,7 @@ export function ServiceCards({
                     </ul>
                     <a
                       href="#kontakt"
+                      {...cta(s.ctaName, "service_cards")}
                       className="mt-auto inline-flex w-fit items-center gap-2 pt-6 text-sm font-semibold text-brand-bright transition-all hover:gap-3"
                     >
                       {ctaLabel}

@@ -2,16 +2,16 @@
 
 import { useEffect } from "react";
 
-import { trackEvent } from "@/lib/analytics";
+import { trackCtaClick } from "@/lib/analytics";
 
 /**
- * Site-wide interaction tracking. A single delegated click listener catches
- * every relevant link anywhere on the site (header, footer, contact cards,
- * city and service pages) so we don't have to wire each link individually:
- *   - phone / e-mail / WhatsApp links  -> `contact_click`
- *   - "Offerte" / "Devis" CTAs (links to #kontakt) -> `cta_click`
- * Form submissions are tracked separately (as `generate_lead`) from their
- * submit handlers, since those should only count on a successful send.
+ * Site-wide CTA tracking. A single delegated click listener sends `cta_click`
+ * for every element marked with `{...cta(name, location)}` (see
+ * src/lib/analytics.ts). Safety net: an unmarked phone / e-mail / WhatsApp link
+ * is still tracked as `<method>_other` (location "unknown") and logs a warning
+ * in development so it can be given a proper name.
+ * Form submissions are tracked separately (`generate_lead`) from the submit
+ * handler, and only after the server accepted the request.
  */
 function contactMethod(href: string): "phone" | "email" | "whatsapp" | null {
   if (href.startsWith("tel:")) return "phone";
@@ -24,20 +24,20 @@ export function AnalyticsEvents() {
   useEffect(() => {
     function onClick(event: MouseEvent) {
       const target = event.target as HTMLElement | null;
-      const anchor = target?.closest("a");
-      if (!anchor) return;
 
-      const href = anchor.getAttribute("href") ?? "";
-
-      const method = contactMethod(href);
-      if (method) {
-        trackEvent("contact_click", { method });
+      const tagged = target?.closest<HTMLElement>("[data-cta]");
+      if (tagged) {
+        trackCtaClick(tagged.dataset.cta ?? "unknown", tagged.dataset.ctaLocation ?? "unknown");
         return;
       }
 
-      // Quote CTAs everywhere point at the contact section (#kontakt).
-      if (href.includes("#kontakt")) {
-        trackEvent("cta_click", { target: "contact", label: anchor.textContent?.trim() || "" });
+      const href = target?.closest("a")?.getAttribute("href") ?? "";
+      const method = contactMethod(href);
+      if (method) {
+        if (process.env.NODE_ENV !== "production") {
+          console.warn(`[analytics] Untagged ${method} link (${href}) — add {...cta(...)}`);
+        }
+        trackCtaClick(`${method}_other`, "unknown");
       }
     }
 

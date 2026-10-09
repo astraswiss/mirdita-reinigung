@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 
 import { WHATSAPP_URL } from "@/config/site";
+import { cta } from "@/lib/analytics";
 
 const COPY = {
   de: {
@@ -18,8 +19,8 @@ const COPY = {
 /**
  * Floating WhatsApp button, fixed bottom-right on every page. The pre-filled
  * message and label follow the current language (French under /fr, German
- * otherwise). It links to wa.me, so the existing AnalyticsEvents listener
- * already tracks clicks as a `contact_click` (method: whatsapp) conversion.
+ * otherwise). It is tagged with cta(), so the AnalyticsEvents listener
+ * tracks clicks as `cta_click` (cta_name: whatsapp_floating).
  */
 export function WhatsappButton() {
   const pathname = usePathname();
@@ -29,6 +30,7 @@ export function WhatsappButton() {
   return (
     <a
       href={href}
+      {...cta("whatsapp_floating", "floating_button")}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={copy.label}

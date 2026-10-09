@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { BUSINESS, FULL_ADDRESS } from "@/config/site";
 import { LOGO, SERVICE_LINKS_DE, SERVICE_LINKS_FR } from "@/components/site-config";
+import { cta, type CtaAttributes } from "@/lib/analytics";
 
 const FOOTER_DE = {
   home: "/",
@@ -71,6 +72,7 @@ export function SiteFooter({ lang = "de" }: { lang?: "de" | "fr" }) {
           <p className="mt-3 text-sm text-brand-deep/55 max-w-xs">{t.tagline}</p>
           <Link
             href={t.about.href}
+            {...cta("about_footer", "footer")}
             className="mt-3 inline-block text-sm font-semibold text-brand-deep/70 hover:text-brand-bright transition-colors"
           >
             {t.about.label} →
@@ -86,9 +88,21 @@ export function SiteFooter({ lang = "de" }: { lang?: "de" | "fr" }) {
         <FooterCol
           title={t.contactTitle}
           links={[
-            { label: BUSINESS.phone, href: BUSINESS.phoneHref },
-            { label: BUSINESS.email, href: `mailto:${BUSINESS.email}` },
-            { label: FULL_ADDRESS, href: BUSINESS.mapsUrl },
+            {
+              label: BUSINESS.phone,
+              href: BUSINESS.phoneHref,
+              tracking: cta("phone_footer", "footer"),
+            },
+            {
+              label: BUSINESS.email,
+              href: `mailto:${BUSINESS.email}`,
+              tracking: cta("email_footer", "footer"),
+            },
+            {
+              label: FULL_ADDRESS,
+              href: BUSINESS.mapsUrl,
+              tracking: cta("maps_footer", "footer"),
+            },
           ]}
         />
         <FooterCol title={t.legalTitle} links={t.legal} />
@@ -110,7 +124,7 @@ function FooterCol({
   columns = 1,
 }: {
   title: string;
-  links: { label: string; href?: string }[];
+  links: { label: string; href?: string; tracking?: CtaAttributes }[];
   className?: string;
   columns?: 1 | 2;
 }) {
@@ -129,11 +143,19 @@ function FooterCol({
         {links.map((l) => (
           <li key={l.label}>
             {l.href?.startsWith("/") ? (
-              <Link href={l.href} className="hover:text-brand-bright transition-colors">
+              <Link
+                href={l.href}
+                {...l.tracking}
+                className="hover:text-brand-bright transition-colors"
+              >
                 {l.label}
               </Link>
             ) : l.href ? (
-              <a href={l.href} className="hover:text-brand-bright transition-colors">
+              <a
+                href={l.href}
+                {...l.tracking}
+                className="hover:text-brand-bright transition-colors"
+              >
                 {l.label}
               </a>
             ) : (

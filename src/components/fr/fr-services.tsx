@@ -11,6 +11,7 @@ const SERVICES: ServiceCard[] = [
     key: "particuliers",
     label: "Particuliers",
     shortLabel: "Particuliers",
+    ctaName: "offerte_card_privat",
     icon: HomeIcon,
     title: "Le nettoyage de votre logement",
     description:
@@ -30,6 +31,7 @@ const SERVICES: ServiceCard[] = [
     key: "entreprises",
     label: "Entreprises & commerces",
     shortLabel: "Entreprises",
+    ctaName: "offerte_card_firmen",
     icon: Building2,
     title: "La propreté de votre entreprise",
     description:
@@ -49,6 +51,7 @@ const SERVICES: ServiceCard[] = [
     key: "special",
     label: "Nettoyages spéciaux",
     shortLabel: "Spéciaux",
+    ctaName: "offerte_card_spezial",
     icon: Sparkles,
     title: "Exigences particulières",
     description:

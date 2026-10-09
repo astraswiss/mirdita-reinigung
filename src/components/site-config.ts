@@ -1,6 +1,7 @@
 import { Building2, Home as HomeIcon, Sparkles } from "lucide-react";
 
 import { BUSINESS, POSTAL_ADDRESS_JSON_LD } from "@/config/site";
+import type { CtaName } from "@/lib/analytics";
 
 export const LOGO = "/mirdita-logo.svg";
 export const PHOTO_HERO = "/hero.jpg";
@@ -110,6 +111,7 @@ export const SERVICES: Record<
   {
     label: string;
     shortLabel: string;
+    ctaName: CtaName;
     icon: typeof HomeIcon;
     title: string;
     description: string;
@@ -122,6 +124,7 @@ export const SERVICES: Record<
   privat: {
     label: "Privathaushalt",
     shortLabel: "Privat",
+    ctaName: "offerte_card_privat",
     icon: HomeIcon,
     title: "Reinigung für Ihr Zuhause",
     description:
@@ -140,6 +143,7 @@ export const SERVICES: Record<
   firmen: {
     label: "Firmen & Gewerbe",
     shortLabel: "Firmen",
+    ctaName: "offerte_card_firmen",
     icon: Building2,
     title: "Sauberkeit für Ihren Betrieb",
     description:
@@ -158,6 +162,7 @@ export const SERVICES: Record<
   spezial: {
     label: "Spezialreinigungen",
     shortLabel: "Spezial",
+    ctaName: "offerte_card_spezial",
     icon: Sparkles,
     title: "Spezielle Anforderungen",
     description:
