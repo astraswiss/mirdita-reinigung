@@ -21,14 +21,13 @@ export type RegionPage = PageEntry & {
 };
 
 export const PAGES: PageEntry[] = [
-  { path: "/", updatedAt: "2026-10-09" },
-  { path: "/fr", updatedAt: "2026-10-09" },
+  { path: "/", updatedAt: "2026-10-12" },
+  { path: "/fr", updatedAt: "2026-10-12" },
   { path: "/umzugsreinigung", updatedAt: "2026-10-09" },
-  { path: "/wohnungsreinigung", updatedAt: "2026-10-09" },
+  { path: "/wohnungsreinigung", updatedAt: "2026-10-12" },
   { path: "/unterhaltsreinigung", updatedAt: "2026-10-09" },
   { path: "/fensterreinigung", updatedAt: "2026-10-09" },
-  { path: "/teppichreinigung", updatedAt: "2026-10-09" },
-  { path: "/bueroreinigung", updatedAt: "2026-10-09" },
+  { path: "/bueroreinigung", updatedAt: "2026-10-12" },
   { path: "/praxisreinigung", updatedAt: "2026-10-09" },
   { path: "/baureinigung", updatedAt: "2026-10-09" },
   { path: "/hauswartung", updatedAt: "2026-10-09" },
@@ -37,7 +36,6 @@ export const PAGES: PageEntry[] = [
   { path: "/fr/nettoyage-appartement-valais", updatedAt: "2026-10-08" },
   { path: "/fr/nettoyage-regulier-valais", updatedAt: "2026-10-09" },
   { path: "/fr/nettoyage-vitres-valais", updatedAt: "2026-10-08" },
-  { path: "/fr/nettoyage-tapis-valais", updatedAt: "2026-10-08" },
   { path: "/fr/nettoyage-bureaux-valais", updatedAt: "2026-07-08" },
   { path: "/fr/nettoyage-cabinets-medicaux-valais", updatedAt: "2026-07-08" },
   { path: "/fr/nettoyage-fin-de-chantier-valais", updatedAt: "2026-07-08" },
@@ -79,7 +77,7 @@ export const REGION_PAGES: RegionPage[] = [
   },
   {
     path: "/reinigung-baltschieder",
-    updatedAt: "2026-10-09",
+    updatedAt: "2026-10-12",
     photo: "kitchenFront",
     photoPosition: "object-[center_70%]",
   },
@@ -91,13 +89,13 @@ export const REGION_PAGES: RegionPage[] = [
   },
   {
     path: "/reinigung-saas-fee",
-    updatedAt: "2026-10-09",
+    updatedAt: "2026-10-12",
     photo: "kitchenFront",
     photoPosition: "object-[center_70%]",
   },
   {
     path: "/reinigung-zermatt",
-    updatedAt: "2026-10-09",
+    updatedAt: "2026-10-12",
     photo: "office",
     photoPosition: "object-left",
   },
@@ -121,7 +119,7 @@ export const REGION_PAGES: RegionPage[] = [
     photo: "glass",
     photoPosition: "object-top",
   },
-  { path: "/reinigung-fiesch", updatedAt: "2026-10-09", photo: "construction" },
+  { path: "/reinigung-fiesch", updatedAt: "2026-10-12", photo: "construction" },
   {
     path: "/fr/nettoyage-sierre",
     updatedAt: "2026-10-09",
@@ -137,7 +135,7 @@ export const REGION_PAGES: RegionPage[] = [
   { path: "/fr/nettoyage-martigny", updatedAt: "2026-10-09", photo: "construction" },
   {
     path: "/fr/nettoyage-monthey",
-    updatedAt: "2026-10-09",
+    updatedAt: "2026-10-12",
     photo: "office",
     photoPosition: "object-left",
   },

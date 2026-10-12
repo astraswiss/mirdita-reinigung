@@ -32,7 +32,7 @@ const ITEMS = [
   "Küche: Arbeitsflächen, Geräte & Schränke aussen",
   "Bad & WC gründlich inkl. Armaturen",
   "Wohn- & Schlafräume: Staub, Oberflächen, Böden",
-  "Parkett, Fliesen & Teppich schonend gepflegt",
+  "Parkett & Fliesen schonend gepflegt",
   "Fenster von innen & Fensterbänke",
   "Treppenhaus bei Ein- & Mehrfamilienhäusern",
 ];

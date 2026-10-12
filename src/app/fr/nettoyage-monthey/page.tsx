@@ -66,9 +66,9 @@ export default async function Page() {
           desc: "Entretien des immeubles pour régies et PPE.",
         },
         {
-          href: "/fr/nettoyage-tapis-valais",
-          label: "Nettoyage de tapis",
-          desc: "Tapis et moquettes nettoyés en profondeur.",
+          href: "/fr/nettoyage-vitres-valais",
+          label: "Nettoyage de vitres",
+          desc: "Vitrines, fenêtres et surfaces vitrées sans traces.",
         },
       ]}
       processTitle="Votre nettoyage à Monthey, étape par étape"

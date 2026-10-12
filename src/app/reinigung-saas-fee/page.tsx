@@ -35,7 +35,7 @@ export default async function Page() {
       paragraphs={[
         "Saas-Fee liegt zuhinterst im Saastal, umgeben von Viertausendern und Gletschern. Seit den 1950er-Jahren ist das Dorf autofrei — Gäste und Material kommen über das Parkhaus am Dorfeingang und mit Elektrofahrzeugen weiter. Wir planen unsere Einsätze entsprechend ein.",
         "Ein Grossteil der Wohnungen sind Ferienwohnungen und Chalets. Für Eigentümer und Vermieter übernehmen wir die Endreinigung zwischen den Gästen, das Beziehen der Betten nach Absprache und die Kontrolle auf Schäden oder fehlendes Inventar.",
-        "Zwischen Winter- und Sommersaison ist Zeit für die Grundreinigung: Fenster, Teppiche, Polster und Böden werden gründlich aufgefrischt. Für Saisonangestellte und Einheimische bieten wir zudem die Umzugsreinigung mit Abnahmegarantie an.",
+        "Zwischen Winter- und Sommersaison ist Zeit für die Grundreinigung: Fenster, Storen, Böden und Nasszellen werden gründlich aufgefrischt. Für Saisonangestellte und Einheimische bieten wir zudem die Umzugsreinigung mit Abnahmegarantie an.",
       ]}
       servicesTitle="Unsere Leistungen in Saas-Fee"
       processTitle="So läuft Ihre Reinigung in Saas-Fee ab"

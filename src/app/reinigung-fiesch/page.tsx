@@ -35,7 +35,7 @@ export default async function Page() {
       paragraphs={[
         "Fiesch liegt auf rund 1'100 Metern im Goms und gehört zur Aletsch Arena. Von hier führt die Luftseilbahn über die Fiescheralp aufs Eggishorn mit Blick auf den Grossen Aletschgletscher, Teil des UNESCO-Welterbes Jungfrau-Aletsch.",
         "Für Vermieter von Ferienwohnungen und Chalets zählt vor allem eines: dass die Wohnung beim nächsten Gast perfekt ist. Wir reinigen zwischen den Aufenthalten nach Ihrer Checkliste — Küche, Bad, Betten, Böden — und melden uns, wenn etwas auffällt.",
-        "Vor und nach der Saison übernehmen wir die Grundreinigung inklusive Fenster, Storen und Teppiche. Und für Einheimische und Saisonangestellte, die umziehen, gilt bei der Umzugsreinigung unsere Abnahmegarantie.",
+        "Vor und nach der Saison übernehmen wir die Grundreinigung inklusive Fenster, Storen und Böden. Und für Einheimische und Saisonangestellte, die umziehen, gilt bei der Umzugsreinigung unsere Abnahmegarantie.",
       ]}
       servicesTitle="Was wir in Fiesch für Sie reinigen"
       processTitle="In vier Schritten zur sauberen Ferienwohnung in Fiesch"

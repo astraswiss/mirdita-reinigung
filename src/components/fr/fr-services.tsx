@@ -21,7 +21,6 @@ const SERVICES: ServiceCard[] = [
       "Nettoyage d’appartement et de maison",
       "Entretien régulier et nettoyage de printemps",
       "Fenêtres, stores et volets roulants",
-      "Entretien de tapis et rembourrages",
     ],
     image: PHOTO_PRIVAT,
     imageAlt: "Collaborateur de Mirdita nettoyant un plan de travail de cuisine",
@@ -58,7 +57,6 @@ const SERVICES: ServiceCard[] = [
       "Pour tout ce qui va au-delà du nettoyage classique. Nous apportons l’équipement adapté et l’expérience nécessaire.",
     items: [
       "Nettoyage de façades et de surfaces vitrées",
-      "Nettoyage en profondeur de tapis et rembourrages",
       "Désinfection et neutralisation des odeurs",
       "Entretien des sols en pierre et du parquet",
       "Nettoyage après dégâts d’eau et d’incendie",

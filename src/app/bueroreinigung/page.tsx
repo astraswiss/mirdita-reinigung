@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const ITEMS = [
   "Arbeitsplätze, Schreibtische & Bildschirme",
   "Sanitäranlagen & Teeküchen täglich frisch",
-  "Boden- & Teppichpflege je nach Belag",
+  "Bodenpflege je nach Belag",
   "Empfang & Eingangsbereich repräsentativ",
   "Abfallentsorgung & Recycling",
   "Glasflächen, Türen & Trennwände",
