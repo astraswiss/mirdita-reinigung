@@ -3,7 +3,13 @@
  * per language describing what is actually visible — never rebuilt with a
  * place name, since these photos were not taken in the places they appear on.
  */
-export type GenericPhotoKey = "glass" | "kitchenFront" | "office" | "construction" | "worktop";
+export type GenericPhotoKey =
+  | "glass"
+  | "kitchenFront"
+  | "office"
+  | "officeReception"
+  | "construction"
+  | "worktop";
 
 export const GENERIC_PHOTOS: Record<
   GenericPhotoKey,
@@ -34,6 +40,15 @@ export const GENERIC_PHOTOS: Record<
     alt: {
       de: "Helles Büro mit Schreibtischen und Bürostühlen",
       fr: "Bureau lumineux avec postes de travail",
+    },
+  },
+  officeReception: {
+    src: "/buero-empfang.jpg",
+    width: 1086,
+    height: 1448,
+    alt: {
+      de: "Moderner Büroempfang mit Theke, Arbeitsplätzen und Pendelleuchten",
+      fr: "Accueil de bureau moderne avec comptoir, postes de travail et suspensions",
     },
   },
   construction: {

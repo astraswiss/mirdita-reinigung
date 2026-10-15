@@ -4,7 +4,8 @@ import { Building2, Home as HomeIcon, Sparkles } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 import { ServiceCards, type ServiceCard } from "@/components/service-cards";
-import { PHOTO_BUERO, PHOTO_PRIVAT, PHOTO_SPEZIAL } from "@/components/site-config";
+import { PHOTO_PRIVAT, PHOTO_SPEZIAL } from "@/components/site-config";
+import { GENERIC_PHOTOS } from "@/config/images";
 
 const SERVICES: ServiceCard[] = [
   {
@@ -48,9 +49,9 @@ const SERVICES: ServiceCard[] = [
       },
       "Abonnements d’entretien réguliers",
     ],
-    image: PHOTO_BUERO,
-    imageAlt: "Bureau moderne après un nettoyage professionnel",
-    imagePosition: "object-left",
+    image: GENERIC_PHOTOS.officeReception.src,
+    imageAlt: GENERIC_PHOTOS.officeReception.alt.fr,
+    imagePosition: "object-[50%_62%]",
   },
   {
     key: "special",

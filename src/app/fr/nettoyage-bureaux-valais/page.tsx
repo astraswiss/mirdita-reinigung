@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { FrServicePage } from "@/components/fr/fr-service-page";
 import { PHOTO_BUERO, alternatesFor } from "@/components/site-config";
+import { GENERIC_PHOTOS } from "@/config/images";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 const PATH = "/fr/nettoyage-bureaux-valais";
@@ -47,9 +48,9 @@ export default async function Page() {
           structures du Valais.
         </>
       }
-      image={PHOTO_BUERO}
-      imageAlt="Bureau moderne après le nettoyage par Mirdita Reinigung dans le Valais"
-      imagePosition="object-left"
+      image={GENERIC_PHOTOS.officeReception.src}
+      imageAlt={GENERIC_PHOTOS.officeReception.alt.fr}
+      imagePosition="object-center"
       trust="Contrats récurrents"
       checklistTitle="Ce qui fait partie du nettoyage de bureaux"
       checklistIntro="Nous adaptons l’étendue et la fréquence à votre entreprise, avec des contrats récurrents et des horaires flexibles."

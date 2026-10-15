@@ -36,7 +36,7 @@ export const PAGES: PageEntry[] = [
   { path: "/fr/nettoyage-appartement-valais", updatedAt: "2026-10-08" },
   { path: "/fr/nettoyage-regulier-valais", updatedAt: "2026-10-09" },
   { path: "/fr/nettoyage-vitres-valais", updatedAt: "2026-10-08" },
-  { path: "/fr/nettoyage-bureaux-valais", updatedAt: "2026-07-08" },
+  { path: "/fr/nettoyage-bureaux-valais", updatedAt: "2026-10-15" },
   { path: "/fr/nettoyage-cabinets-medicaux-valais", updatedAt: "2026-10-15" },
   { path: "/fr/nettoyage-fin-de-chantier-valais", updatedAt: "2026-10-15" },
   { path: "/fr/conciergerie-valais", updatedAt: "2026-10-08" },

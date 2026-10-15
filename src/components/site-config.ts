@@ -1,5 +1,6 @@
 import { Building2, Home as HomeIcon, Sparkles } from "lucide-react";
 
+import { GENERIC_PHOTOS } from "@/config/images";
 import { BUSINESS, POSTAL_ADDRESS_JSON_LD } from "@/config/site";
 import type { CtaName } from "@/lib/analytics";
 
@@ -152,9 +153,9 @@ export const SERVICES: Record<
       { label: "Baureinigung & Bauendreinigung", href: "/baureinigung" },
       "Regelmässige Wartungsabos",
     ],
-    image: PHOTO_BUERO,
-    imageAlt: "Modernes Büro nach professioneller Reinigung",
-    imagePosition: "object-left",
+    image: GENERIC_PHOTOS.officeReception.src,
+    imageAlt: GENERIC_PHOTOS.officeReception.alt.de,
+    imagePosition: "object-[50%_62%]",
   },
   spezial: {
     label: "Spezialreinigungen",

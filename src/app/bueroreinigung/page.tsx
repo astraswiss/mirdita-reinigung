@@ -5,6 +5,7 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { ContactSection } from "@/components/contact-section";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
+import { GENERIC_PHOTOS } from "@/config/images";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
 import { PROSE_LINK } from "@/components/service-sections";
@@ -93,10 +94,14 @@ export default async function Page() {
 
           <div className="lg:col-span-5">
             <Photo
-              src={PHOTO_BUERO}
-              alt="Modernes Büro nach der professionellen Reinigung durch Mirdita"
+              src={GENERIC_PHOTOS.officeReception.src}
+              alt={GENERIC_PHOTOS.officeReception.alt.de}
+              width={GENERIC_PHOTOS.officeReception.width}
+              height={GENERIC_PHOTOS.officeReception.height}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              priority
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
-              objectPosition="object-left"
+              objectPosition="object-center"
             />
           </div>
         </div>
