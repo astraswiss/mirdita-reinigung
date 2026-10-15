@@ -4,7 +4,14 @@ import { PAGES, REGION_PAGES } from "@/config/pages";
 import { BUSINESS } from "@/config/site";
 import { ROUTE_ALTERNATES } from "@/components/site-config";
 
-const LEGAL_ROUTES = new Set(["/impressum", "/datenschutz", "/agb"]);
+const LEGAL_ROUTES = new Set([
+  "/impressum",
+  "/datenschutz",
+  "/agb",
+  "/fr/mentions-legales",
+  "/fr/protection-des-donnees",
+  "/fr/cgv",
+]);
 
 // Per-page <lastmod> comes from the `updatedAt` field in src/config/pages.ts —
 // the real date the content last changed, never the build date.

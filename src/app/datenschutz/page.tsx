@@ -4,15 +4,14 @@ import { BUSINESS } from "@/config/site";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { alternatesFor } from "@/components/site-config";
 import { cta } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Datenschutz | Mirdita Reinigung Berisha",
   description:
     "Datenschutzerklärung der Mirdita Reinigung Berisha: welche Daten wir über das Kontaktformular erheben und wie wir sie verwenden.",
-  alternates: {
-    canonical: "/datenschutz",
-  },
+  alternates: alternatesFor("/datenschutz"),
 };
 
 export default function Page() {

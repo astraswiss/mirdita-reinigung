@@ -4,14 +4,13 @@ import { BUSINESS } from "@/config/site";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { alternatesFor } from "@/components/site-config";
 import { cta } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Impressum | Mirdita Reinigung Berisha",
   description: "Impressum und rechtliche Angaben der Mirdita Reinigung Berisha in Naters, Wallis.",
-  alternates: {
-    canonical: "/impressum",
-  },
+  alternates: alternatesFor("/impressum"),
 };
 
 export default function Page() {

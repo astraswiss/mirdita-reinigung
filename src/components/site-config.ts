@@ -245,6 +245,9 @@ export const ROUTE_ALTERNATES: { de: string; fr: string }[] = [
   { de: "/hauswartung", fr: "/fr/conciergerie-valais" },
   { de: "/grundreinigung", fr: "/fr/nettoyage-en-profondeur-valais" },
   { de: "/ueber-uns", fr: "/fr/a-propos" },
+  { de: "/impressum", fr: "/fr/mentions-legales" },
+  { de: "/datenschutz", fr: "/fr/protection-des-donnees" },
+  { de: "/agb", fr: "/fr/cgv" },
 ];
 
 /** hreflang alternates for a page, given either its DE or FR path. */

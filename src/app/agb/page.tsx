@@ -6,14 +6,13 @@ import { BUSINESS } from "@/config/site";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { alternatesFor } from "@/components/site-config";
 
 export const metadata: Metadata = {
   title: "AGB | Mirdita Reinigung Berisha",
   description:
     "Allgemeine Geschäftsbedingungen der Mirdita Reinigung Berisha für Reinigungsdienstleistungen im Wallis.",
-  alternates: {
-    canonical: "/agb",
-  },
+  alternates: alternatesFor("/agb"),
 };
 
 export default function Page() {

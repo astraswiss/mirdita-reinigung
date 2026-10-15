@@ -46,6 +46,9 @@ export const PAGES: PageEntry[] = [
   { path: "/impressum", updatedAt: "2026-10-15" },
   { path: "/datenschutz", updatedAt: "2026-07-17" },
   { path: "/agb", updatedAt: "2026-06-12" },
+  { path: "/fr/mentions-legales", updatedAt: "2026-10-15" },
+  { path: "/fr/protection-des-donnees", updatedAt: "2026-10-15" },
+  { path: "/fr/cgv", updatedAt: "2026-10-15" },
 ];
 
 /** City/region landing pages (German and French). */

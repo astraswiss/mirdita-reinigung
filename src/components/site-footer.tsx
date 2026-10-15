@@ -44,11 +44,10 @@ const FOOTER_FR = {
     { label: "Nettoyage à Monthey", href: "/fr/nettoyage-monthey" },
   ],
   services: SERVICE_LINKS_FR,
-  // Legal pages exist only in German; link to them as-is.
   legal: [
-    { label: "Impressum", href: "/impressum" },
-    { label: "Protection des données", href: "/datenschutz" },
-    { label: "CGV", href: "/agb" },
+    { label: "Mentions légales", href: "/fr/mentions-legales" },
+    { label: "Protection des données", href: "/fr/protection-des-donnees" },
+    { label: "CGV", href: "/fr/cgv" },
   ],
 };
 
