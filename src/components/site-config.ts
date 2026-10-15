@@ -155,7 +155,7 @@ export const SERVICES: Record<
     ],
     image: GENERIC_PHOTOS.officeReception.src,
     imageAlt: GENERIC_PHOTOS.officeReception.alt.de,
-    imagePosition: "object-[50%_78%]",
+    imagePosition: "object-[50%_62%] scale-[1.2] origin-[60%_60%]",
   },
   spezial: {
     label: "Spezialreinigungen",
