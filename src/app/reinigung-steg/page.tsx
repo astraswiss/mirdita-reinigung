@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { DeCityPage } from "@/components/de/de-city-page";
+import { PROSE_LINK } from "@/components/service-sections";
 import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
@@ -34,7 +36,15 @@ export default async function Page() {
       proseTitle="Reinigung in Steg und Hohtenn"
       paragraphs={[
         "Die Gemeinde Steg-Hohtenn im Bezirk Westlich Raron entstand 2009 aus dem Zusammenschluss von Steg und Hohtenn. Steg liegt am Eingang zum Lötschental und teilt sich mit Gampel den Bahnhof Gampel-Steg; Hohtenn liegt höher an der Lötschberg-Südrampe, bekannt durch den gleichnamigen Höhenweg.",
-        "In Steg treffen Wohnquartiere auf Gewerbe- und Industrieflächen. Für Betriebe bieten wir die regelmässige Unterhaltsreinigung von Büros, Garderoben und Sanitärräumen an — und nach Bau- oder Umbauarbeiten die Bauendreinigung, damit die Räume ohne Verzögerung genutzt werden können.",
+        <>
+          In Steg treffen Wohnquartiere auf Gewerbe- und Industrieflächen. Für Betriebe bieten wir
+          die regelmässige Unterhaltsreinigung von Büros, Garderoben und Sanitärräumen an — und nach
+          Bau- oder Umbauarbeiten die{" "}
+          <Link href="/baureinigung" className={PROSE_LINK}>
+            Bauendreinigung
+          </Link>
+          , damit die Räume ohne Verzögerung genutzt werden können.
+        </>,
         "In Hohtenn reinigen wir Häuser in Hanglage, Fenster mit Weitsicht und Ferienwohnungen. Wer in Steg-Hohtenn umzieht, profitiert von unserer Umzugsreinigung mit Abnahmegarantie.",
       ]}
       servicesTitle="Was wir in Steg-Hohtenn für Sie reinigen"

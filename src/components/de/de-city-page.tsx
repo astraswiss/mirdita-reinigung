@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 
@@ -44,7 +45,7 @@ export function DeCityPage({
   intro: string;
   proseEyebrow: string;
   proseTitle: string;
-  paragraphs: string[];
+  paragraphs: ReactNode[];
   servicesTitle: string;
   processTitle: string;
   ctaTitle: string;

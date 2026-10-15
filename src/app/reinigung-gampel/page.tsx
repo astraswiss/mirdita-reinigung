@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { DeCityPage } from "@/components/de/de-city-page";
+import { PROSE_LINK } from "@/components/service-sections";
 import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
@@ -34,7 +36,15 @@ export default async function Page() {
       proseTitle="Reinigung in Gampel und Bratsch"
       paragraphs={[
         "Seit 2009 bilden Gampel und Bratsch die Gemeinde Gampel-Bratsch im Bezirk Leuk. Gampel liegt an der Lonza, dort wo das Lötschental ins Rhonetal mündet — und ist landesweit bekannt für das Open Air Gampel, eines der grössten Musikfestivals der Schweiz.",
-        "Im Dorf und in der Ebene wird rege gebaut und umgebaut. Wir übernehmen die Baureinigung und Bauendreinigung, damit neue Wohnungen und Gewerberäume termingerecht und bezugsbereit übergeben werden können. Für Betriebe vor Ort reinigen wir Büros, Werkstatt-Nebenräume und Sanitäranlagen im Unterhalt.",
+        <>
+          Im Dorf und in der Ebene wird rege gebaut und umgebaut. Wir übernehmen die{" "}
+          <Link href="/baureinigung" className={PROSE_LINK}>
+            Baureinigung und Bauendreinigung
+          </Link>
+          , damit neue Wohnungen und Gewerberäume termingerecht und bezugsbereit übergeben werden
+          können. Für Betriebe vor Ort reinigen wir Büros, Werkstatt-Nebenräume und Sanitäranlagen
+          im Unterhalt.
+        </>,
         "Für Mieter und Eigentümer in Gampel und Bratsch bieten wir die Umzugsreinigung mit Abnahmegarantie an: Wird bei der Wohnungsübergabe etwas beanstandet, bessern wir kostenlos nach.",
       ]}
       servicesTitle="Was wir in Gampel-Bratsch für Sie reinigen"

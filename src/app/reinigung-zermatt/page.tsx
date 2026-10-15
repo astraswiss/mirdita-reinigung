@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { DeCityPage } from "@/components/de/de-city-page";
+import { PROSE_LINK } from "@/components/service-sections";
 import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
@@ -35,7 +37,15 @@ export default async function Page() {
       paragraphs={[
         "Zermatt ist offiziell seit 1961 autofrei. Wer anreist, lässt das Auto in Täsch und fährt mit dem Shuttlezug ins Dorf; im Ort selbst verkehren Elektrotaxis und -busse. Wir planen unsere Einsätze so, dass wir mit dem ganzen Material pünktlich bei Ihnen sind.",
         "Für Vermieter von Ferienwohnungen und Chalets reinigen wir zwischen den Aufenthalten nach Ihrem Standard — vom Wäschewechsel nach Absprache bis zur Kontrolle von Küche und Inventar. Vor Saisonbeginn und nach Saisonende übernehmen wir die Grundreinigung inklusive Fenster, Storen und Böden.",
-        "Für Geschäfte, Büros und Praxen im Dorf bieten wir die regelmässige Unterhaltsreinigung ausserhalb der Öffnungszeiten an. Und wer in Zermatt eine Wohnung abgibt — Einheimische wie Saisonangestellte —, erhält bei der Umzugsreinigung unsere Abnahmegarantie.",
+        <>
+          Für Geschäfte, Büros und{" "}
+          <Link href="/praxisreinigung" className={PROSE_LINK}>
+            Praxen
+          </Link>{" "}
+          im Dorf bieten wir die regelmässige Unterhaltsreinigung ausserhalb der Öffnungszeiten an.
+          Und wer in Zermatt eine Wohnung abgibt — Einheimische wie Saisonangestellte —, erhält bei
+          der Umzugsreinigung unsere Abnahmegarantie.
+        </>,
       ]}
       servicesTitle="Was wir in Zermatt für Sie reinigen"
       processTitle="In vier Schritten zur Reinigung in Zermatt"

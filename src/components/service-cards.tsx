@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { ArrowRight, Check, type LucideIcon } from "lucide-react";
 
 import { Photo } from "@/components/photo";
@@ -17,7 +18,8 @@ export type ServiceCard = {
   icon: LucideIcon;
   title: string;
   description: string;
-  items: string[];
+  /** Plain text, or { label, href } to link the item to its service page. */
+  items: (string | { label: string; href: string })[];
   image: string;
   imageAlt: string;
   imagePosition?: string;
@@ -114,11 +116,23 @@ export function ServiceCards({
                     </p>
                     <ul className="mt-5 space-y-2.5">
                       {s.items.map((item) => (
-                        <li key={item} className="flex items-start gap-2.5 text-sm">
+                        <li
+                          key={typeof item === "string" ? item : item.label}
+                          className="flex items-start gap-2.5 text-sm"
+                        >
                           <span className="size-5 rounded-full bg-brand-bright/15 text-brand-bright grid place-items-center shrink-0 mt-0.5">
                             <Check className="size-3" strokeWidth={3} />
                           </span>
-                          <span className="text-brand-deep/85">{item}</span>
+                          {typeof item === "string" ? (
+                            <span className="text-brand-deep/85">{item}</span>
+                          ) : (
+                            <Link
+                              href={item.href}
+                              className="text-brand-deep/85 underline decoration-brand-bright/40 underline-offset-2 hover:text-brand-bright"
+                            >
+                              {item.label}
+                            </Link>
+                          )}
                         </li>
                       ))}
                     </ul>

@@ -34,6 +34,8 @@ export default function Page() {
                 <br />
                 Einzelunternehmen
                 <br />
+                UID: {BUSINESS.uid}
+                <br />
                 {BUSINESS.streetAddress}
                 <br />
                 {BUSINESS.postalCode} {BUSINESS.locality}

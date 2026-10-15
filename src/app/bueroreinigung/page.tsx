@@ -7,6 +7,7 @@ import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
 import { Reveal } from "@/components/reveal";
+import { PROSE_LINK } from "@/components/service-sections";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_BUERO, alternatesFor } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
@@ -15,12 +16,12 @@ import { getGoogleReviews } from "@/lib/google-reviews";
 import { cta } from "@/lib/analytics";
 
 export const metadata: Metadata = {
-  title: "Büro- & Praxisreinigung im Wallis | Mirdita",
+  title: "Büroreinigung im Wallis – diskret & zuverlässig | Mirdita",
   description:
     "Diskrete Büroreinigung im Wallis ausserhalb Ihrer Geschäftszeiten — zuverlässig, nach Schweizer Standard und mit fixem Reinigungsplan.",
   alternates: alternatesFor("/bueroreinigung"),
   openGraph: {
-    title: "Büro- & Praxisreinigung im Wallis",
+    title: "Büroreinigung im Wallis",
     description:
       "Wir reinigen Ihre Geschäftsräume diskret ausserhalb der Öffnungszeiten — nach fixem Plan.",
     url: "/bueroreinigung",
@@ -53,12 +54,15 @@ export default async function Page() {
               Büroreinigung
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-balance">
-              Büro- & <span className="text-brand-bright">Praxisreinigung</span> im Wallis.
+              Professionelle <span className="text-brand-bright">Büroreinigung</span> im Wallis.
             </h1>
             <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">
-              Ihre Räume sind Ihre Visitenkarte. Wir reinigen Büros, Praxen und Geschäftsräume
-              diskret ausserhalb Ihrer Öffnungszeiten — mit fixem Plan, geschultem Personal und nach
-              Schweizer Standard.
+              Ihre Räume sind Ihre Visitenkarte. Wir reinigen Büros,{" "}
+              <Link href="/praxisreinigung" className={PROSE_LINK}>
+                Praxen
+              </Link>{" "}
+              und Geschäftsräume diskret ausserhalb Ihrer Öffnungszeiten — mit fixem Plan,
+              geschultem Personal und nach Schweizer Standard.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">

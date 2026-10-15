@@ -113,7 +113,7 @@ export const SERVICES: Record<
     icon: typeof HomeIcon;
     title: string;
     description: string;
-    items: string[];
+    items: (string | { label: string; href: string })[];
     image: string;
     imageAlt: string;
     imagePosition?: string;
@@ -146,10 +146,10 @@ export const SERVICES: Record<
     description:
       "Repräsentative Räume sind Ihre Visitenkarte. Wir reinigen diskret ausserhalb Ihrer Geschäftszeiten — zuverlässig und nach Schweizer Standard.",
     items: [
-      "Büro- & Praxisreinigung",
+      { label: "Büro- & Praxisreinigung", href: "/praxisreinigung" },
       "Ladenlokale & Showrooms",
       "Fitness- & Wellnessbereiche",
-      "Baureinigung & Bauendreinigung",
+      { label: "Baureinigung & Bauendreinigung", href: "/baureinigung" },
       "Regelmässige Wartungsabos",
     ],
     image: PHOTO_BUERO,
@@ -216,6 +216,8 @@ export const LOCAL_BUSINESS_JSON_LD = {
   "@id": `${BUSINESS.url}/#business`,
   name: BUSINESS.name,
   legalName: BUSINESS.legalName,
+  // The UID is not a VAT number (that would be "CHE-… MWST"), so taxID, not vatID.
+  taxID: BUSINESS.uid,
   image: `${BUSINESS.url}/hero.jpg`,
   url: BUSINESS.url,
   telephone: BUSINESS.phoneE164,

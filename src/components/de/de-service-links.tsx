@@ -40,18 +40,26 @@ const SERVICES = [
  * Grid of the main German service pages, used on city landing pages for
  * internal linking. Title is passed in so each city page phrases it locally.
  */
-export function DeServiceLinks({ title }: { title: string }) {
+export function DeServiceLinks({
+  title,
+  eyebrow = "Unsere Leistungen",
+  services = SERVICES,
+}: {
+  title: string;
+  eyebrow?: string;
+  services?: { href: string; label: string; desc: string }[];
+}) {
   return (
     <section className="px-5 md:px-10 py-16">
       <div className="max-w-7xl mx-auto">
         <Reveal className="mb-8">
           <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-bright">
-            Unsere Leistungen
+            {eyebrow}
           </span>
           <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">{title}</h2>
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {SERVICES.map((s, i) => (
+          {services.map((s, i) => (
             <Reveal key={s.href} delay={i * 70}>
               <Link
                 href={s.href}

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { DeCityPage } from "@/components/de/de-city-page";
+import { PROSE_LINK } from "@/components/service-sections";
 import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
@@ -34,7 +36,19 @@ export default async function Page() {
       proseTitle="Reinigung in Brig, Glis, Gamsen und Brigerbad"
       paragraphs={[
         "Brig-Glis entstand 1972 aus dem Zusammenschluss von Brig, Glis und Brigerbad; auch Gamsen gehört dazu. Vom Stockalperschloss über die Bahnhofstrasse bis zu den Wohnquartieren in Glis ist die grösste Gemeinde des Oberwallis für uns nur eine Brücke von Naters entfernt.",
-        "Rund um Bahnhof und Altstadt reinigen wir Büros, Praxen und Ladenlokale — diskret am frühen Morgen oder nach Geschäftsschluss, damit Ihr Betrieb ungestört bleibt. In Glis und Gamsen, wo viele Mehrfamilienhäuser und Neubauten stehen, übernehmen wir Treppenhausreinigung, Hauswartung und Bauendreinigung.",
+        <>
+          Rund um Bahnhof und Altstadt reinigen wir Büros,{" "}
+          <Link href="/praxisreinigung" className={PROSE_LINK}>
+            Praxen
+          </Link>{" "}
+          und Ladenlokale — diskret am frühen Morgen oder nach Geschäftsschluss, damit Ihr Betrieb
+          ungestört bleibt. In Glis und Gamsen, wo viele Mehrfamilienhäuser und Neubauten stehen,
+          übernehmen wir Treppenhausreinigung, Hauswartung und{" "}
+          <Link href="/baureinigung" className={PROSE_LINK}>
+            Bauendreinigung
+          </Link>
+          .
+        </>,
         "Brig ist als Bahnknoten Richtung Simplon, Lötschberg und Zermatt ein Ort mit vielen Zu- und Wegzügen. Für Mieterinnen und Mieter bieten wir die Umzugsreinigung mit Abnahmegarantie an — so wird die Wohnungsübergabe zur reinen Formsache.",
       ]}
       servicesTitle="Was wir in Brig-Glis für Sie reinigen"

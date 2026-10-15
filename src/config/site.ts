@@ -6,6 +6,8 @@
 export const BUSINESS = {
   name: "Mirdita Reinigung",
   legalName: "Mirdita Reinigung Berisha",
+  /** Swiss enterprise identification number (UID). */
+  uid: "CHE-217.785.310",
   streetAddress: "Belalpstrasse 2",
   postalCode: "3904",
   locality: "Naters",

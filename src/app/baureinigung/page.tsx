@@ -1,40 +1,152 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { ArrowRight, Clock, ShieldCheck, Star } from "lucide-react";
 
 import { ContactSection } from "@/components/contact-section";
+import { DeServiceLinks } from "@/components/de/de-service-links";
 import { EinsatzgebietSection } from "@/components/einsatzgebiet-section";
 import { Photo } from "@/components/photo";
 import { ProcessSteps } from "@/components/process-steps";
+import { ProseSection } from "@/components/prose-section";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
-import { PHOTO_SPEZIAL, alternatesFor } from "@/components/site-config";
+import {
+  AudienceSection,
+  ChecklistGroups,
+  FaqSection,
+  PROSE_LINK,
+} from "@/components/service-sections";
+import { alternatesFor } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { GENERIC_PHOTOS } from "@/config/images";
 import { getGoogleReviews } from "@/lib/google-reviews";
 import { cta } from "@/lib/analytics";
 
+const PHOTO = GENERIC_PHOTOS.construction;
+
 export const metadata: Metadata = {
-  title: "Baureinigung & Bauendreinigung im Wallis | Mirdita",
+  title: "Baureinigung & Bauendreinigung Oberwallis | Mirdita",
   description:
-    "Bauendreinigung im Wallis: termingerecht bezugsfertig — von der Grobreinigung bis zur Feinreinigung für Bauherrschaft, Architekten und Verwaltungen.",
+    "Baureinigung im Oberwallis: Grob- und Feinreinigung nach Neubau, Umbau oder Renovation in Brig, Visp und Naters. Verbindliche Offerte innert 24 Stunden.",
   alternates: alternatesFor("/baureinigung"),
   openGraph: {
-    title: "Baureinigung & Bauendreinigung im Wallis",
+    title: "Baureinigung & Bauendreinigung im Oberwallis",
     description:
-      "Von der Grobreinigung bis zur Feinreinigung — wir übergeben Ihre Liegenschaft termingerecht bezugsfertig.",
+      "Grob- und Feinreinigung nach Neubau, Umbau oder Renovation — termingerecht bezugsfertig in Brig, Visp, Naters und im ganzen Oberwallis.",
     url: "/baureinigung",
-    images: [{ url: PHOTO_SPEZIAL, width: 2048, height: 1536 }],
+    images: [{ url: PHOTO.src, width: PHOTO.width, height: PHOTO.height }],
   },
 };
 
-const ITEMS = [
-  "Grobreinigung: Bauschutt, Folien & Klebereste",
-  "Feinreinigung aller Räume bis ins Detail",
-  "Fenster & Rahmen inkl. Schleif- & Farbspuren",
-  "Böden: Versiegelungsreste & Verschmutzungen",
-  "Sanitär & Küche bezugsfertig aufbereitet",
-  "Termingerechte Übergabe an Bauherrschaft",
+const CHECKLIST = [
+  {
+    title: "Grobreinigung nach Bauabschluss",
+    items: [
+      "Bauschutt-Reste, Folien, Verpackungen & Klebebänder entfernen",
+      "Kleine Rückstände direkt entsorgen",
+      "Groben Baustaub von Böden, Treppen & Fensterbänken aufnehmen",
+      "Zement-, Mörtel- & Gipsspritzer anlösen und entfernen",
+    ],
+  },
+  {
+    title: "Feinreinigung vor der Übergabe",
+    items: [
+      "Fenster inkl. Rahmen, Falze & Fensterbänke, ohne Schleif- & Farbspuren",
+      "Böden materialgerecht: Versiegelungsreste & Verschmutzungen",
+      "Sanitär: Lavabos, Duschen, WC & Armaturen bezugsfertig",
+      "Küche: Fronten, Schubladen & Geräte innen und aussen",
+      "Feinstaub auf Türen, Zargen, Steckdosen, Schaltern & Heizkörpern",
+      "Storen & Rollläden von Baustaub befreit",
+    ],
+  },
+];
+
+const AUDIENCE = [
+  {
+    title: "Bauherren & Private",
+    body: "Sie ziehen in Ihr neues Zuhause ein oder haben renoviert? Wir sorgen dafür, dass Sie in saubere Räume einziehen — ohne Baustaub in Schränken, Fugen und Fensterrahmen.",
+  },
+  {
+    title: "Architekten & Bauleitung",
+    body: "Wir richten uns nach Ihrem Bauzeitplan und reinigen in Etappen, damit Abnahmen und Übergaben an die Bauherrschaft pünktlich stattfinden können.",
+  },
+  {
+    title: "Generalunternehmen",
+    body: "Mehrere Wohnungen oder ein ganzes Objekt? Wir planen die Reinigung pro Einheit und übergeben Wohnung für Wohnung bezugsfertig.",
+  },
+  {
+    title: "Hausverwaltungen",
+    body: "Nach Sanierungen oder Umbauten im Bestand bereiten wir Wohnungen und Allgemeinflächen für die Neuvermietung vor.",
+  },
+];
+
+const STEPS = [
+  {
+    n: "01",
+    title: "Anfrage & Besichtigung",
+    body: "Sie schildern uns das Objekt — in den meisten Fällen schauen wir es uns vor Ort an.",
+  },
+  {
+    n: "02",
+    title: "Offerte innert 24 h",
+    body: "Sie erhalten eine verbindliche Offerte mit festem Preis inkl. Material.",
+  },
+  {
+    n: "03",
+    title: "Grob- & Feinreinigung",
+    body: "Wir reinigen in den vereinbarten Etappen, abgestimmt auf Ihren Bauzeitplan.",
+  },
+  {
+    n: "04",
+    title: "Abnahme",
+    body: "Gemeinsame Kontrolle — wir bessern nach, bis alles stimmt.",
+  },
+];
+
+const FAQ = [
+  {
+    q: "Was ist der Unterschied zwischen Grob- und Feinreinigung?",
+    a: "Die Grobreinigung erfolgt direkt nach Abschluss der Hauptarbeiten: Wir entfernen Folien, Verpackungen, Bauschutt-Reste und den groben Baustaub. Die Feinreinigung folgt kurz vor der Übergabe und macht alle Oberflächen, Fenster, Böden, Küche und Sanitär bezugsfertig.",
+  },
+  {
+    q: "Wann sollte ich die Bauendreinigung einplanen?",
+    a: "Sobald der Übergabetermin feststeht. Die Feinreinigung findet statt, wenn alle Handwerkerarbeiten abgeschlossen sind. Melden Sie sich frühzeitig, dann reservieren wir den Termin passend zu Ihrem Bauzeitplan.",
+  },
+  {
+    q: "Reinigen Sie auch nach einem Umbau oder einer Renovation?",
+    a: "Ja. Wir reinigen nach Neubauten ebenso wie nach Umbauten, Sanierungen und Renovationen — von der einzelnen Wohnung bis zum ganzen Objekt.",
+  },
+  {
+    q: "Wie wird der Preis berechnet?",
+    a: "In den meisten Fällen besichtigen wir das Objekt vorab — oder auf Ihren Wunsch. Danach erhalten Sie innert 24 Stunden eine verbindliche Offerte mit festem Preis inkl. Material und klar definiertem Leistungsumfang.",
+  },
+  {
+    q: "Was passiert mit Bauschutt und Abfällen?",
+    a: "Kleine Rückstände wie Folien, Verpackungen und Bauschutt-Reste entfernen und entsorgen wir im Rahmen der Grobreinigung. Wie mit grösseren Mengen umgegangen wird, halten wir vorab in der Offerte fest.",
+  },
+  {
+    q: "Sind Sie versichert?",
+    a: "Ja. Mirdita Reinigung ist betriebshaftpflichtversichert — Ihr Objekt ist während unserer Arbeit abgesichert.",
+  },
+];
+
+const RELATED = [
+  {
+    href: "/grundreinigung",
+    label: "Grundreinigung",
+    desc: "Intensive Tiefenreinigung, wenn ein Objekt mehr als die übliche Reinigung braucht.",
+  },
+  {
+    href: "/fensterreinigung",
+    label: "Fensterreinigung",
+    desc: "Fenster, Glasflächen und Storen streifenfrei — auch nach dem Bau.",
+  },
+  {
+    href: "/hauswartung",
+    label: "Hauswartung",
+    desc: "Regelmässige Pflege von Treppenhaus und Allgemeinflächen nach dem Bezug.",
+  },
 ];
 
 export default async function Page() {
@@ -53,12 +165,14 @@ export default async function Page() {
               Baureinigung
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-balance">
-              Baureinigung & <span className="text-brand-bright">Bauendreinigung</span> im Wallis.
+              Baureinigung & <span className="text-brand-bright">Bauendreinigung</span> im
+              Oberwallis.
             </h1>
             <p className="mt-6 text-lg text-brand-deep/65 max-w-xl leading-relaxed">
-              Nach dem letzten Pinselstrich beginnt unsere Arbeit. Wir entfernen Bauschutt,
+              Nach dem letzten Pinselstrich beginnt unsere Arbeit. Wir entfernen Bauschutt-Reste,
               Schleifstaub, Farb- und Kleberreste und übergeben Ihre Liegenschaft termingerecht
-              bezugsfertig — egal ob Neubau, Umbau oder Sanierung.
+              bezugsfertig — ob Neubau, Umbau oder Renovation in Brig-Glis, Visp, Naters oder im
+              ganzen Oberwallis.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -84,13 +198,25 @@ export default async function Page() {
                 <ShieldCheck className="size-4 text-brand-bright" />
                 <span>Termingerecht nach Bauzeitplan</span>
               </div>
+              <div className="flex items-center gap-2">
+                <Clock className="size-4 text-brand-bright" />
+                <span>Offerte innert 24 Stunden</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Star className="size-4 text-brand-bright" />
+                <span>{googleReviews.rating.toFixed(1)}/5 auf Google</span>
+              </div>
             </div>
           </div>
 
           <div className="lg:col-span-5">
             <Photo
-              src={PHOTO_SPEZIAL}
-              alt="Baustelle eines Einfamilienhauses im Wallis vor der Bauendreinigung"
+              src={PHOTO.src}
+              alt={PHOTO.alt.de}
+              width={PHOTO.width}
+              height={PHOTO.height}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              priority
               className="aspect-[4/5] w-full rounded-[28px] shadow-[0_30px_60px_-30px_rgba(0,21,63,0.35)]"
             />
           </div>
@@ -108,33 +234,94 @@ export default async function Page() {
               Das gehört zur Bauendreinigung
             </h2>
             <p className="mt-4 text-brand-deep/65 leading-relaxed max-w-2xl">
-              Von der ersten Grobreinigung direkt nach Bauabschluss bis zur Feinreinigung vor der
-              Schlüsselübergabe — wir übernehmen alle Etappen und halten den vereinbarten Termin
-              ein.
+              Eine Bauendreinigung besteht aus zwei Etappen: der Grobreinigung direkt nach den
+              Hauptarbeiten und der Feinreinigung kurz vor der Schlüsselübergabe. Wir übernehmen
+              beide — einzeln oder als Paket — und halten den vereinbarten Termin ein.
             </p>
-            <ul className="mt-8 grid sm:grid-cols-2 gap-4">
-              {ITEMS.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm">
-                  <span className="size-5 rounded-full bg-brand-bright/15 text-brand-bright grid place-items-center shrink-0 mt-0.5">
-                    <Check className="size-3" strokeWidth={3} />
-                  </span>
-                  <span className="text-brand-deep/85">{item}</span>
-                </li>
-              ))}
-            </ul>
+            <ChecklistGroups groups={CHECKLIST} />
           </Reveal>
         </div>
       </section>
 
-      <ProcessSteps title="In vier Schritten zur bezugsfertigen Liegenschaft" />
+      <AudienceSection
+        eyebrow="Für wen"
+        title="Für wen wir Baureinigungen übernehmen"
+        intro="Ob Einfamilienhaus, Mehrfamilienhaus oder Gewerbefläche: Wir passen Umfang und Ablauf an Ihr Projekt an."
+        items={AUDIENCE}
+      />
+
+      <ProcessSteps title="So läuft Ihre Baureinigung ab" steps={STEPS} />
+
+      <ProseSection
+        eyebrow="Einsatzgebiet"
+        title="Baureinigung in Brig-Glis, Naters, Visp und im ganzen Oberwallis"
+        paragraphs={[
+          <>
+            Von unserem Sitz in Naters aus sind wir schnell auf Ihrer Baustelle — in{" "}
+            <Link href="/reinigung-brig-glis" className={PROSE_LINK}>
+              Brig-Glis
+            </Link>
+            ,{" "}
+            <Link href="/reinigung-naters" className={PROSE_LINK}>
+              Naters
+            </Link>
+            ,{" "}
+            <Link href="/reinigung-visp" className={PROSE_LINK}>
+              Visp
+            </Link>{" "}
+            und im ganzen Oberwallis, von{" "}
+            <Link href="/reinigung-fiesch" className={PROSE_LINK}>
+              Fiesch
+            </Link>{" "}
+            bis{" "}
+            <Link href="/reinigung-leuk" className={PROSE_LINK}>
+              Leuk
+            </Link>
+            . Kurze Wege bedeuten für Sie: Verschiebt sich der Bauzeitplan, können wir eine Etappe
+            auch kurzfristig neu einplanen.
+          </>,
+          <>
+            In wachsenden Gemeinden wie{" "}
+            <Link href="/reinigung-gampel" className={PROSE_LINK}>
+              Gampel
+            </Link>
+            ,{" "}
+            <Link href="/reinigung-steg" className={PROSE_LINK}>
+              Steg
+            </Link>{" "}
+            oder{" "}
+            <Link href="/reinigung-baltschieder" className={PROSE_LINK}>
+              Baltschieder
+            </Link>{" "}
+            entstehen laufend neue Wohnungen und Gewerberäume. In Ferienorten wie{" "}
+            <Link href="/reinigung-zermatt" className={PROSE_LINK}>
+              Zermatt
+            </Link>{" "}
+            und{" "}
+            <Link href="/reinigung-saas-fee" className={PROSE_LINK}>
+              Saas-Fee
+            </Link>{" "}
+            reinigen wir Chalets und Ferienwohnungen nach dem Umbau, damit sie rechtzeitig zum
+            Saisonstart bereit sind.
+          </>,
+        ]}
+      />
+
+      <DeServiceLinks
+        eyebrow="Passende Leistungen"
+        title="Nach dem Bau: weitere Reinigungen"
+        services={RELATED}
+      />
 
       <ReviewsSection googleReviews={googleReviews} />
+
+      <FaqSection eyebrow="Häufige Fragen" title="Fragen zur Baureinigung" items={FAQ} />
 
       <EinsatzgebietSection />
 
       <ContactSection
         title="Termin im Bauablauf? Wir richten uns danach."
-        intro="Fordern Sie eine kostenlose Offerte für Ihre Bau- oder Bauendreinigung an — wir planen flexibel rund um Ihren Bauzeitplan."
+        intro="Fordern Sie eine kostenlose Offerte für Ihre Bau- oder Bauendreinigung an — wir planen flexibel rund um Ihren Bauzeitplan und melden uns innert 24 Stunden."
         defaultType="Baureinigung"
       />
 

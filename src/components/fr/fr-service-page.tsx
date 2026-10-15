@@ -5,10 +5,19 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { ContactSection } from "@/components/contact-section";
 import { FrAreaSection } from "@/components/fr/fr-area-section";
 import { FrProcessSteps } from "@/components/fr/fr-process-steps";
+import { FrRelated, type FrRelatedLink } from "@/components/fr/fr-related";
 import { FrServiceSchema } from "@/components/fr/fr-service-schema";
 import { Photo } from "@/components/photo";
+import { ProseSection } from "@/components/prose-section";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
+import {
+  AudienceSection,
+  ChecklistGroups,
+  FaqSection,
+  type ChecklistGroup,
+  type FaqItem,
+} from "@/components/service-sections";
 import { SERVICE_LINKS_FR } from "@/components/site-config";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -19,7 +28,9 @@ import { cta } from "@/lib/analytics";
  * French service page — a 1:1 structural mirror of the German service pages
  * (hero → "was ist enthalten" card → process steps → reviews → Einsatzgebiet →
  * contact form). Content is passed in per page; the layout is identical so the two
- * language versions stay coherent.
+ * language versions stay coherent. The optional long-form props (checklist
+ * groups, audience, prose, steps, area, related, FAQ) mirror the expanded
+ * German pages where those exist (e.g. Baureinigung, Praxisreinigung).
  */
 export function FrServicePage({
   schema,
@@ -34,6 +45,13 @@ export function FrServicePage({
   checklistTitle,
   checklistIntro,
   items,
+  checklistGroups,
+  audience,
+  prose,
+  steps,
+  area,
+  related,
+  faq,
   processTitle,
   ctaTitle,
   ctaBody,
@@ -50,7 +68,19 @@ export function FrServicePage({
   checklistEyebrow?: string;
   checklistTitle: string;
   checklistIntro: string;
-  items: string[];
+  items?: string[];
+  checklistGroups?: ChecklistGroup[];
+  audience?: {
+    eyebrow: string;
+    title: string;
+    intro?: string;
+    items: { title: string; body: string }[];
+  };
+  prose?: { eyebrow: string; title: string; paragraphs: ReactNode[] };
+  steps?: { n: string; title: string; body: string }[];
+  area?: { eyebrow: string; title: string; paragraphs: ReactNode[] };
+  related?: { title: string; links: FrRelatedLink[] };
+  faq?: { eyebrow: string; title: string; items: FaqItem[] };
   processTitle: string;
   ctaTitle: string;
   ctaBody: string;
@@ -122,21 +152,32 @@ export function FrServicePage({
             </span>
             <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">{checklistTitle}</h2>
             <p className="mt-4 text-brand-deep/65 leading-relaxed max-w-2xl">{checklistIntro}</p>
-            <ul className="mt-8 grid sm:grid-cols-2 gap-4">
-              {items.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm">
-                  <span className="size-5 rounded-full bg-brand-bright/15 text-brand-bright grid place-items-center shrink-0 mt-0.5">
-                    <Check className="size-3" strokeWidth={3} />
-                  </span>
-                  <span className="text-brand-deep/85">{item}</span>
-                </li>
-              ))}
-            </ul>
+            {checklistGroups && <ChecklistGroups groups={checklistGroups} />}
+            {items && (
+              <ul className="mt-8 grid sm:grid-cols-2 gap-4">
+                {items.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <span className="size-5 rounded-full bg-brand-bright/15 text-brand-bright grid place-items-center shrink-0 mt-0.5">
+                      <Check className="size-3" strokeWidth={3} />
+                    </span>
+                    <span className="text-brand-deep/85">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </Reveal>
         </div>
       </section>
 
-      <FrProcessSteps title={processTitle} />
+      {audience && <AudienceSection {...audience} />}
+
+      {prose && <ProseSection {...prose} />}
+
+      <FrProcessSteps title={processTitle} steps={steps} />
+
+      {area && <ProseSection {...area} />}
+
+      {related && <FrRelated title={related.title} links={related.links} />}
 
       <ReviewsSection
         googleReviews={googleReviews}
@@ -144,6 +185,8 @@ export function FrServicePage({
         title="Ce que disent nos clients"
         reviewsLabel="avis"
       />
+
+      {faq && <FaqSection {...faq} />}
 
       <FrAreaSection />
 

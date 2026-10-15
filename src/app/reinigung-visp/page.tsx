@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { DeCityPage } from "@/components/de/de-city-page";
+import { PROSE_LINK } from "@/components/service-sections";
 import { regionOgImages } from "@/config/region-media";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
@@ -35,7 +37,15 @@ export default async function Page() {
       paragraphs={[
         "Visp ist Verkehrsknoten des Oberwallis und Umsteigeort Richtung Zermatt und Saas-Fee. Mit dem Lonza-Werk, dem grössten Arbeitgeber der Region, ist die Gemeinde in den letzten Jahren stark gewachsen — und mit ihr die Zahl der Wohnungen, Büros und Gewerbeflächen.",
         "Viele ziehen für die Arbeit nach Visp oder innerhalb der Region um. Entsprechend häufig übernehmen wir hier Umzugsreinigungen mit Abnahmegarantie, vom Studio in Bahnhofsnähe bis zum Einfamilienhaus in Eyholz. Neue Wohnungen reinigen wir nach Bauabschluss bezugsfertig.",
-        "Für Betriebe, Praxen und Büros in Visp bieten wir die regelmässige Unterhaltsreinigung im Schichtrhythmus Ihrer Wahl an — früh morgens, abends oder am Wochenende. Von Naters aus sind wir schnell vor Ort, auch wenn kurzfristig etwas anfällt.",
+        <>
+          Für Betriebe,{" "}
+          <Link href="/praxisreinigung" className={PROSE_LINK}>
+            Praxen
+          </Link>{" "}
+          und Büros in Visp bieten wir die regelmässige Unterhaltsreinigung im Schichtrhythmus Ihrer
+          Wahl an — früh morgens, abends oder am Wochenende. Von Naters aus sind wir schnell vor
+          Ort, auch wenn kurzfristig etwas anfällt.
+        </>,
       ]}
       servicesTitle="Unsere Leistungen in Visp und Eyholz"
       processTitle="In vier Schritten zur Reinigung in Visp"
