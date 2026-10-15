@@ -63,7 +63,12 @@ export default function Page() {
               <p className="mt-3 text-brand-deep/70 leading-relaxed">
                 Si vous utilisez notre formulaire de contact, nous collectons en outre les données
                 que vous nous communiquez volontairement : nom, adresse e-mail, numéro de téléphone
-                (facultatif), type de nettoyage souhaité et votre message.
+                (facultatif), type de nettoyage souhaité, votre message ainsi que, si vous en
+                ajoutez, jusqu’à cinq photos. Les photos sont réduites dans votre navigateur avant
+                l’envoi. Nous recevons en outre automatiquement l’indication de la page de notre
+                site (chemin de la page) depuis laquelle vous avez envoyé la demande. Lors de
+                l’envoi, votre adresse IP sert uniquement à limiter le nombre de demandes
+                (protection contre le spam) ; elle ne nous est pas transmise.
               </p>
             </section>
 
@@ -72,7 +77,10 @@ export default function Page() {
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Nous utilisons les données transmises via le formulaire de contact exclusivement
                 pour traiter votre demande, vous contacter et vous établir une offre pour nos
-                services de nettoyage. Elles ne sont pas réutilisées à des fins publicitaires.
+                services de nettoyage. Les éventuelles photos nous servent uniquement à évaluer
+                l’ampleur du travail et à préparer l’offre ; le chemin de la page, à rattacher votre
+                demande à la bonne prestation ou région. Elles ne sont pas réutilisées à des fins
+                publicitaires.
               </p>
             </section>
 
@@ -81,8 +89,9 @@ export default function Page() {
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Pour l’acheminement de votre demande par e-mail, nous faisons appel au prestataire
                 Resend (Resend, Inc.) en tant que service technique d’envoi d’e-mails. Le contenu de
-                votre formulaire de contact est traité à cette fin pour être transmis à notre
-                adresse e-mail professionnelle.
+                votre formulaire de contact – y compris les éventuelles photos, envoyées en pièces
+                jointes de l’e-mail – est traité à cette fin pour être transmis à notre adresse
+                e-mail professionnelle.
               </p>
               <p className="mt-3 text-brand-deep/70 leading-relaxed">
                 Ce site est hébergé par Vercel Inc. Lors de la consultation du site, des données
@@ -91,13 +100,14 @@ export default function Page() {
                 fonctionnement et à la sécurité du site.
               </p>
               <p className="mt-3 text-brand-deep/70 leading-relaxed">
-                Pour analyser l’utilisation du site, nous utilisons Vercel Analytics (Vercel Inc.),
-                Google Analytics 4 (Google Ireland Limited ou Google LLC) et Microsoft Clarity
-                (Microsoft Corporation). Ces services nous aident à comprendre comment les visiteurs
-                utilisent nos pages, afin d’améliorer continuellement notre offre. Avec Google
-                Analytics, des données peuvent être transmises à des serveurs aux États-Unis. Vous
-                pouvez empêcher la collecte par Google Analytics en installant le module
-                complémentaire de navigateur pour la désactivation de Google Analytics :{" "}
+                Pour analyser l’utilisation du site, nous utilisons Vercel Analytics et Vercel Speed
+                Insights (mesure des temps de chargement ; tous deux Vercel Inc.), Google Analytics
+                4 (Google Ireland Limited ou Google LLC) et Microsoft Clarity (Microsoft
+                Corporation). Ces services nous aident à comprendre comment les visiteurs utilisent
+                nos pages, afin d’améliorer continuellement notre offre. Avec Google Analytics, des
+                données peuvent être transmises à des serveurs aux États-Unis. Vous pouvez empêcher
+                la collecte par Google Analytics en installant le module complémentaire de
+                navigateur pour la désactivation de Google Analytics :{" "}
                 <a
                   href="https://tools.google.com/dlpage/gaoptout"
                   target="_blank"
@@ -123,11 +133,36 @@ export default function Page() {
             <section>
               <h2 className="text-lg font-bold">6. Cookies</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
-                Vercel Analytics fonctionne sans cookies et sans enregistrement d’identifiants
-                personnels. Google Analytics 4 et Microsoft Clarity utilisent des cookies pour
-                analyser de manière anonymisée l’utilisation du site (notamment pages consultées,
-                clics, mouvements de souris et défilement) et améliorer ainsi sa facilité
-                d’utilisation. Aucun autre cookie de tiers n’est utilisé.
+                Vercel Analytics et Vercel Speed Insights fonctionnent sans cookies et sans
+                enregistrement d’identifiants personnels. Google Analytics 4 et Microsoft Clarity
+                peuvent utiliser des cookies pour analyser de manière anonymisée l’utilisation du
+                site (notamment pages consultées, clics, mouvements de souris et défilement) et
+                améliorer ainsi sa facilité d’utilisation. Conformément aux règles de Microsoft,
+                Clarity ne dépose toutefois pas de cookies chez les visiteurs de Suisse, de l’EEE et
+                du Royaume-Uni sans leur consentement ; comme nous ne demandons pas de consentement,
+                Clarity fonctionne sans cookies pour ces visiteurs. Aucun autre cookie de tiers
+                n’est utilisé.
+              </p>
+              <p className="mt-3 text-brand-deep/70 leading-relaxed">
+                Vous pouvez refuser ces cookies à tout moment : les paramètres de votre navigateur
+                permettent de bloquer ou de supprimer les cookies, pour tous les sites ou uniquement
+                pour ce site. Vous pouvez en outre empêcher la collecte par Google Analytics avec le
+                module complémentaire de navigateur proposé par Google :{" "}
+                <a
+                  href="https://tools.google.com/dlpage/gaoptout"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-bright hover:underline"
+                >
+                  tools.google.com/dlpage/gaoptout
+                </a>
+                . Microsoft ne propose pas d’opt-out propre à Clarity pour les visiteurs ; vous
+                pouvez bloquer ou supprimer les cookies de Clarity via les paramètres de votre
+                navigateur.
+              </p>
+              <p className="mt-3 text-brand-deep/70 leading-relaxed">
+                Notre site fonctionne entièrement sans ces cookies, y compris le formulaire de
+                contact.
               </p>
             </section>
 

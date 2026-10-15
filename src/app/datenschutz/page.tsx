@@ -59,7 +59,12 @@ export default function Page() {
               <p className="mt-3 text-brand-deep/70 leading-relaxed">
                 Wenn Sie unser Kontaktformular nutzen, erheben wir zusätzlich die von Ihnen
                 freiwillig angegebenen Daten: Name, E-Mail-Adresse, Telefonnummer (optional), Art
-                der gewünschten Reinigung und Ihre Nachricht.
+                der gewünschten Reinigung, Ihre Nachricht sowie – falls Sie welche hinzufügen – bis
+                zu fünf Fotos. Die Fotos werden vor dem Versand in Ihrem Browser verkleinert.
+                Zusätzlich wird automatisch übermittelt, von welcher Seite unserer Website
+                (Seitenpfad) Sie die Anfrage gesendet haben. Ihre IP-Adresse wird beim Absenden nur
+                verwendet, um die Anzahl Anfragen zu begrenzen (Schutz vor Spam); sie wird nicht an
+                uns weitergeleitet.
               </p>
             </section>
 
@@ -68,7 +73,9 @@ export default function Page() {
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Wir verwenden die über das Kontaktformular übermittelten Daten ausschliesslich, um
                 Ihre Anfrage zu bearbeiten, mit Ihnen Kontakt aufzunehmen und Ihnen eine Offerte für
-                unsere Reinigungsdienstleistungen zu erstellen. Eine Weiterverwendung für
+                unsere Reinigungsdienstleistungen zu erstellen. Allfällige Fotos nutzen wir nur, um
+                den Aufwand einzuschätzen und die Offerte vorzubereiten; den Seitenpfad, um Ihre
+                Anfrage der richtigen Leistung bzw. Region zuzuordnen. Eine Weiterverwendung für
                 Werbezwecke findet nicht statt.
               </p>
             </section>
@@ -77,7 +84,8 @@ export default function Page() {
               <h2 className="text-lg font-bold">4. Weitergabe an Dritte</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
                 Zur Zustellung Ihrer Anfrage per E-Mail nutzen wir den Dienstleister Resend (Resend,
-                Inc.) als technischen E-Mail-Versanddienst. Die Inhalte Ihres Kontaktformulars
+                Inc.) als technischen E-Mail-Versanddienst. Die Inhalte Ihres Kontaktformulars –
+                einschliesslich allfälliger Fotos, die als E-Mail-Anhänge mitgesendet werden –
                 werden dabei zur Übermittlung an unsere Geschäfts-E-Mail-Adresse verarbeitet.
               </p>
               <p className="mt-3 text-brand-deep/70 leading-relaxed">
@@ -87,13 +95,14 @@ export default function Page() {
                 erforderlich sind.
               </p>
               <p className="mt-3 text-brand-deep/70 leading-relaxed">
-                Für die Auswertung der Websitenutzung setzen wir Vercel Analytics (Vercel Inc.),
-                Google Analytics 4 (Google Ireland Limited bzw. Google LLC) und Microsoft Clarity
-                (Microsoft Corporation) ein. Diese Dienste helfen uns zu verstehen, wie Besucher
-                unsere Seiten nutzen, damit wir das Angebot laufend verbessern können. Bei Google
-                Analytics kann dabei eine Übermittlung von Daten an Server in den USA erfolgen. Sie
-                können die Erfassung durch Google Analytics verhindern, indem Sie das Browser-Add-on
-                zur Deaktivierung von Google Analytics installieren:{" "}
+                Für die Auswertung der Websitenutzung setzen wir Vercel Analytics und Vercel Speed
+                Insights (Messung der Ladezeiten; beide Vercel Inc.), Google Analytics 4 (Google
+                Ireland Limited bzw. Google LLC) und Microsoft Clarity (Microsoft Corporation) ein.
+                Diese Dienste helfen uns zu verstehen, wie Besucher unsere Seiten nutzen, damit wir
+                das Angebot laufend verbessern können. Bei Google Analytics kann dabei eine
+                Übermittlung von Daten an Server in den USA erfolgen. Sie können die Erfassung durch
+                Google Analytics verhindern, indem Sie das Browser-Add-on zur Deaktivierung von
+                Google Analytics installieren:{" "}
                 <a
                   href="https://tools.google.com/dlpage/gaoptout"
                   target="_blank"
@@ -118,11 +127,36 @@ export default function Page() {
             <section>
               <h2 className="text-lg font-bold">6. Cookies</h2>
               <p className="mt-2 text-brand-deep/70 leading-relaxed">
-                Vercel Analytics arbeitet ohne Cookies und ohne Speicherung von personenbezogenen
-                Kennungen. Google Analytics 4 und Microsoft Clarity setzen Cookies, um die Nutzung
-                der Website (u. a. aufgerufene Seiten, Klicks, Maus- und Scrollverhalten)
-                anonymisiert auszuwerten und so die Bedienbarkeit der Website zu verbessern. Weitere
-                Cookies von Drittanbietern werden nicht eingesetzt.
+                Vercel Analytics und Vercel Speed Insights arbeiten ohne Cookies und ohne
+                Speicherung von personenbezogenen Kennungen. Google Analytics 4 und Microsoft
+                Clarity können Cookies setzen, um die Nutzung der Website (u. a. aufgerufene Seiten,
+                Klicks, Maus- und Scrollverhalten) anonymisiert auszuwerten und so die Bedienbarkeit
+                der Website zu verbessern. Gemäss den Vorgaben von Microsoft setzt Clarity jedoch
+                bei Besuchern aus der Schweiz, dem EWR und dem Vereinigten Königreich ohne deren
+                Einwilligung keine Cookies; da wir keine Einwilligung abfragen, läuft Clarity für
+                diese Besucher ohne Cookies. Weitere Cookies von Drittanbietern werden nicht
+                eingesetzt.
+              </p>
+              <p className="mt-3 text-brand-deep/70 leading-relaxed">
+                Sie können diese Cookies jederzeit ablehnen: In den Einstellungen Ihres Browsers
+                lassen sich Cookies blockieren oder löschen – für alle Websites oder gezielt für
+                diese Website. Die Erfassung durch Google Analytics können Sie zusätzlich mit dem
+                Browser-Add-on von Google verhindern:{" "}
+                <a
+                  href="https://tools.google.com/dlpage/gaoptout"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-bright hover:underline"
+                >
+                  tools.google.com/dlpage/gaoptout
+                </a>
+                . Für Microsoft Clarity bietet Microsoft kein eigenes Opt-out für Besucher an;
+                Cookies von Clarity können Sie über die Einstellungen Ihres Browsers blockieren oder
+                löschen.
+              </p>
+              <p className="mt-3 text-brand-deep/70 leading-relaxed">
+                Unsere Website funktioniert auch ohne diese Cookies vollständig, einschliesslich des
+                Kontaktformulars.
               </p>
             </section>
 

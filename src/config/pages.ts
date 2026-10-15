@@ -44,7 +44,7 @@ export const PAGES: PageEntry[] = [
   { path: "/ueber-uns", updatedAt: "2026-10-09" },
   { path: "/fr/a-propos", updatedAt: "2026-10-09" },
   { path: "/impressum", updatedAt: "2026-10-15" },
-  { path: "/datenschutz", updatedAt: "2026-07-17" },
+  { path: "/datenschutz", updatedAt: "2026-10-15" },
   { path: "/agb", updatedAt: "2026-06-12" },
   { path: "/fr/mentions-legales", updatedAt: "2026-10-15" },
   { path: "/fr/protection-des-donnees", updatedAt: "2026-10-15" },
