@@ -51,7 +51,7 @@ const SERVICES: ServiceCard[] = [
     ],
     image: GENERIC_PHOTOS.officeReception.src,
     imageAlt: GENERIC_PHOTOS.officeReception.alt.fr,
-    imagePosition: "object-[50%_62%]",
+    imagePosition: "object-[50%_78%]",
   },
   {
     key: "special",
