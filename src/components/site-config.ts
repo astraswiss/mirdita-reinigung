@@ -147,7 +147,8 @@ export const SERVICES: Record<
     description:
       "Repräsentative Räume sind Ihre Visitenkarte. Wir reinigen diskret ausserhalb Ihrer Geschäftszeiten — zuverlässig und nach Schweizer Standard.",
     items: [
-      { label: "Büro- & Praxisreinigung", href: "/praxisreinigung" },
+      { label: "Büroreinigung", href: "/bueroreinigung" },
+      { label: "Praxisreinigung", href: "/praxisreinigung" },
       "Ladenlokale & Showrooms",
       "Fitness- & Wellnessbereiche",
       { label: "Baureinigung & Bauendreinigung", href: "/baureinigung" },

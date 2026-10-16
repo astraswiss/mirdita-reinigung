@@ -37,8 +37,9 @@ const SERVICES: ServiceCard[] = [
     description:
       "Des locaux soignés sont votre carte de visite. Nous nettoyons avec discrétion en dehors de vos heures d’ouverture — de façon fiable et selon les standards suisses.",
     items: [
+      { label: "Nettoyage de bureaux", href: "/fr/nettoyage-bureaux-valais" },
       {
-        label: "Nettoyage de bureaux et de cabinets",
+        label: "Nettoyage de cabinets médicaux",
         href: "/fr/nettoyage-cabinets-medicaux-valais",
       },
       "Commerces et showrooms",
