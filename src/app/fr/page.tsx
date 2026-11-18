@@ -9,6 +9,7 @@ import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
 import { ReviewsSection } from "@/components/reviews-section";
 import { PHOTO_HERO, alternatesFor } from "@/components/site-config";
+import { OG_DEFAULT } from "@/config/images";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TrustedBy } from "@/components/trusted-by";
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
       "Nettoyage fin de bail, appartements, bureaux et immeubles dans tout le Valais. Devis gratuit, réponse rapide.",
     url: "/fr",
     locale: "fr_CH",
-    images: [{ url: "/hero.jpg", width: 1200, height: 844 }],
+    images: [OG_DEFAULT.fr],
   },
 };
 

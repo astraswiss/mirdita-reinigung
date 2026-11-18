@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       "Un entretien de bureaux discret et régulier dans tout le Valais, en dehors de vos horaires.",
     url: PATH,
     locale: "fr_CH",
-    images: [{ url: PHOTO_BUERO, width: 1200, height: 844 }],
+    images: [{ url: PHOTO_BUERO, width: 1280, height: 854 }],
   },
 };
 

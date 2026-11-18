@@ -9,6 +9,7 @@ import { GoogleAnalytics } from "@/components/google-analytics";
 import { Toaster } from "@/components/toaster";
 import { WhatsappButton } from "@/components/whatsapp-button";
 import { LOCAL_BUSINESS_JSON_LD, WEBSITE_JSON_LD } from "@/components/site-config";
+import { OG_DEFAULT } from "@/config/images";
 import "./globals.css";
 
 const inter = Inter({
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     title: "Mirdita Reinigung — Sauberkeit im Wallis",
     description: "Professionelle Reinigungen im Wallis — mit Abnahmegarantie.",
     type: "website",
-    images: [{ url: "/hero.jpg", width: 1200, height: 844 }],
+    images: [OG_DEFAULT.de],
   },
   twitter: {
     card: "summary",

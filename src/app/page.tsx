@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { Home } from "@/components/home";
 import { alternatesFor } from "@/components/site-config";
+import { OG_DEFAULT } from "@/config/images";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
 export const metadata: Metadata = {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
     title: "Mirdita Reinigung — Sauberkeit im Wallis",
     description: "Professionelle Reinigungen im Wallis — mit Abnahmegarantie.",
     url: "/",
+    // A page-level openGraph replaces the layout's, so the image must be repeated here.
+    images: [OG_DEFAULT.de],
   },
 };
 
